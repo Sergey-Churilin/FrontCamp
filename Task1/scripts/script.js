@@ -104,6 +104,16 @@ let application = null;
 // everything https://newsapi.org/v2/everything?q=bitcoin&apiKey=f5d0ede14cdc42a990a57ff137f6c5ee
 // topHeadlines https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=f5d0ede14cdc42a990a57ff137f6c5ee
 
+document.onkeyup = function (e) {
+    e = e || window.event;
+    if (e.keyCode === 13) {
+        application.onButtonGetArticlePress();
+    }
+    // Отменяем действие браузера
+    return false;
+}
+
+
 window.onload = function(){
     init();
 };
@@ -119,6 +129,8 @@ class Application{
     }
 
     createLayout() {
+        this.createSelectBar();
+        this.createMainSection();
         this.createSources();
         this.createEndpoints();
         this.createLanguages();
@@ -127,10 +139,23 @@ class Application{
         this.createSearchButton();
     }
 
+    createSelectBar(){
+        this.selectBar = document.createElement("section");
+        this.selectBar.classList.add("selectBar");
+        this.body.appendChild(this.selectBar);
+    }
+
+    createMainSection(){
+        this.mainSection = document.createElement("section");
+        this.mainSection.classList.add("mainSection");
+        this.body.appendChild(this.mainSection);
+    }
+
     createSources(){
         const selectSources = document.createElement("select");
         selectSources.id = "selectSources";
-        this.body.appendChild(selectSources);
+        selectSources.classList.add("select");
+        this.selectBar.appendChild(selectSources);
 
         //Create and append the options
         arraySources.forEach(function(source){
@@ -144,12 +169,14 @@ class Application{
     createEndpoints(){
         const selectEndpoints = document.createElement("select");
         selectEndpoints.id = "selectEndpoints";
-        this.body.appendChild(selectEndpoints);
+        selectEndpoints.classList.add("select");
+        this.selectBar.appendChild(selectEndpoints);
 
         //Create and append the options
         const optionEndpoint = document.createElement("option");
         optionEndpoint.value = '';
-        optionEndpoint.text = '';
+        optionEndpoint.text = 'Select endpoint';
+        optionEndpoint.setAttribute("selected", "selected");
         selectEndpoints.appendChild(optionEndpoint);
         arrayEndpoints.forEach(function(endpoint){
             const option = document.createElement("option");
@@ -162,12 +189,13 @@ class Application{
     createLanguages(){
         const selectLanguages = document.createElement("select");
         selectLanguages.id = "selectLanguages";
-        this.body.appendChild(selectLanguages);
+        selectLanguages.classList.add("select");
+        this.selectBar.appendChild(selectLanguages);
 
         //Create and append the options
         const optionLang = document.createElement("option");
         optionLang.value = '';
-        optionLang.text = '';
+        optionLang.text = 'Select language';
         selectLanguages.appendChild(optionLang);
         arrayLanguages.forEach(function(language){
             const option = document.createElement("option");
@@ -180,12 +208,13 @@ class Application{
     createCountries(){
         const selectCountries = document.createElement("select");
         selectCountries.id = "selectCountries";
-        this.body.appendChild(selectCountries);
+        selectCountries.classList.add("select");
+        this.selectBar.appendChild(selectCountries);
 
         //Create and append the options
         const optionCountry = document.createElement("option");
         optionCountry.value = '';
-        optionCountry.text = '';
+        optionCountry.text = 'Select country';
         selectCountries.appendChild(optionCountry);
         arrayCountires.forEach(function(country){
             const option = document.createElement("option");
@@ -198,16 +227,19 @@ class Application{
     createSearch(){
         const inputSearch = document.createElement("input");
         inputSearch.id = "inputSearch";
+        inputSearch.classList.add("search");
         inputSearch.setAttribute("type", "search");
-        this.body.appendChild(inputSearch);
+        inputSearch.setAttribute("placeholder", "Search");
+        this.selectBar.appendChild(inputSearch);
     }
 
     createSearchButton(){
         const buttonGetArticle = document.createElement("button");
+        buttonGetArticle.classList.add("buttonGetArticle");
         const buttonText = document.createTextNode("Get Article");
         buttonGetArticle.appendChild(buttonText);
         buttonGetArticle.addEventListener("click",this.onButtonGetArticlePress.bind(this));
-        this.body.appendChild(buttonGetArticle);
+        this.selectBar.appendChild(buttonGetArticle);
     }
 
     onButtonGetArticlePress (){
@@ -227,60 +259,108 @@ class Application{
         let country = selectCountries.options[selectCountries.selectedIndex].value;
 
         const newsRequester = new NewsRequester(source, endpoint, language, country, searchString);
+        newsRequester.source = source;
+        newsRequester.endpoint = endpoint;
+        newsRequester.language = language;
+        newsRequester.country = country;
+        newsRequester.searchString = searchString;
+
         newsRequester.requestNews()
             .then(function(response){
                 const articles = response.articles;
+
                 if(articles && articles.length > 0){
-                    articles.forEach(function(oneArticle){
+                    this.mainSection.innerHTML = "";
+                    articles.forEach(function(oneArticle, index){
                         const article = new Article(oneArticle);
-                        this.appendArticle(article);
+                        this.appendArticle(article, index);
                     }.bind(this))
+                } else {
+                    this.mainSection.innerHTML = "No content";
                 }
-            }.bind(this));
+            }.bind(this))
+            .catch(function(){
+                this.mainSection.innerHTML = "No content";
+            }.bind(this))
     }
 
-    appendArticle(article){
+    appendArticle(articleObj, index){
+        const bOdd = index %2 === 0;
         const section = document.createElement('section');
+        section.classList.add("articleSection");
 
+        const aside = document.createElement('aside');
+        aside.classList.add("aside");
+
+        const article = document.createElement('article');
+        article.classList.add("article");
+
+        const h2 = document.createElement('h2');
         const aTitle = document.createElement('a');
-        aTitle.setAttribute("link", article.url);
+        aTitle.setAttribute("href", articleObj.url);
         aTitle.setAttribute("target", '_blank');
-        const aTitleText = document.createTextNode(article.title);
+        const aTitleText = document.createTextNode(articleObj.title);
         aTitle.appendChild(aTitleText);
-        section.appendChild(aTitle);
+        h2.appendChild(aTitle);
+        article.appendChild(h2);
 
         const aDesc = document.createElement('a');
-        aDesc.setAttribute("link", article.url);
+        aDesc.setAttribute("href", articleObj.url);
         aDesc.setAttribute("target", '_blank');
-        const aDescText = document.createTextNode(article.description);
+        const aDescText = document.createTextNode(articleObj.description);
         aDesc.appendChild(aDescText);
-        section.appendChild(aDesc);
+        article.appendChild(aDesc);
 
         const aImg = document.createElement('a');
+        aImg.setAttribute("href", articleObj.url);
         const img = new Image();   // Create new img element
-        img.src = article.urlToImage;
+        if(articleObj.urlToImage){
+            img.src = articleObj.urlToImage;
+        } else {
+            img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKmlsV_RI01siSEtxGGhU4vk2pHFyPKYoM2RQFWLPanrE6Vm2D";
+        }
+
+        img.classList.add("img");
         aImg.appendChild(img);
-        section.appendChild(aImg);
+        aside.appendChild(aImg);
 
+        section.appendChild(aside);
+        section.appendChild(article);
 
-        this.body.appendChild(section);
+        this.mainSection.appendChild(section);
+
+        if(!bOdd){
+            const sectionCleaner = document.createElement('section');
+            sectionCleaner.classList.add("sectionCleaner");
+            this.mainSection.appendChild(sectionCleaner);
+        }
     }
 }
 
 
 class NewsRequester{
-    constructor(source, endpoint, language, country, searchString){
-        this._source = source;
-        this._endpoint = endpoint;
-        this._language = language;
-        this._country = country;
-        this._searchString = searchString;
-
+    constructor(){
         if (!requesterInstance) {
             requesterInstance = this;
         }
 
         return requesterInstance;
+    }
+
+    set source(source){
+        this._source = source;
+    }
+    set endpoint(_endpoint){
+        this._endpoint = _endpoint;
+    }
+    set language(language){
+        this._language = language;
+    }
+    set country(_country){
+        this._country = _country;
+    }
+    set searchString(searchString){
+        this._searchString = searchString;
     }
 
     requestNews(){
@@ -318,11 +398,17 @@ class NewsRequester{
                     if(response.status === 200){
                         return response.json();
                     }
+
+                    if(response.status >=400){
+                        throw new Error(response);
+                    }
+                },function(){
+                    alert("can't retrieve articles");
                 })
                 .then(function(response) {
                     resolve(response);
                 })
-                .catch(function(){
+                .catch(function(error){
                     alert("can't retrieve articles");
                     reject();
                 });
