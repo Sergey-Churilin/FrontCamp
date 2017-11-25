@@ -1,157 +1,44 @@
-'use strict';
-//constants
-const API_KEY = "f5d0ede14cdc42a990a57ff137f6c5ee";
-const arraySources = [
-    "abc-news",
-    "bbc-sport",
-    "bbc-news",
-    "cnn",
-    "fox-news"
-];
-const arrayEndpoints = [
-    {
-        'text' : 'Top headlines',
-        'path' : 'top-headlines'
-    },
-    {
-        'text' : 'All articles',
-        'path' : 'everything'
-    },
-    {
-        'text' : 'All sources',
-        'path' : 'sources'
-    }
-];
-const arrayLanguages = [
-    {
-        'lang' : 'ar',
-        'desc' : 'Arabian'
-    },
-    {
-        'lang' : 'en',
-        'desc' : 'English'
-    },
-    {
-        'lang' : 'de',
-        'desc' : 'Deutch'
-    },
-    {
-        'lang' : 'es',
-        'desc' : 'Spain'
-    },
-    {
-        'lang' : 'fr',
-        'desc' : 'French'
-    },
-    {
-        'lang' : 'it',
-        'desc' : 'Italy'
-    },
-    {
-        'lang' : 'pt',
-        'desc' : 'Portuguese'
-    },
-    {
-        'lang' : 'ru',
-        'desc' : 'Russian'
-    },
-    {
-        'lang' : 'sv',
-        'desc' : 'Swedish'
-    }
-];
-
-const arrayCountires = [
-    {
-        'lang' : 'ar',
-        'desc' : 'Arabian'
-    },
-    {
-        'lang' : 'de',
-        'desc' : 'Deutch'
-    },
-    {
-        'lang' : 'es',
-        'desc' : 'Spain'
-    },
-    {
-        'lang' : 'fr',
-        'desc' : 'French'
-    },
-    {
-        'lang' : 'it',
-        'desc' : 'Italy'
-    },
-    {
-        'lang' : 'pt',
-        'desc' : 'Portuguese'
-    },
-    {
-        'lang' : 'ru',
-        'desc' : 'Russian'
-    },
-    {
-        'lang' : 'sv',
-        'desc' : 'Swedish'
-    }
-];
-
-const URL_TO_API ="https://newsapi.org/v2/";
-
-let requesterInstance = null;
-let application = null;
-// sources https://newsapi.org/v2/sources?apiKey=f5d0ede14cdc42a990a57ff137f6c5ee
-// everything https://newsapi.org/v2/everything?q=bitcoin&apiKey=f5d0ede14cdc42a990a57ff137f6c5ee
-// topHeadlines https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=f5d0ede14cdc42a990a57ff137f6c5ee
-
-document.onkeyup = function (e) {
-    e = e || window.event;
-    if (e.keyCode === 13) {
-        application.onButtonGetArticlePress();
-    }
-    // Отменяем действие браузера
-    return false;
-}
-
-
-window.onload = function(){
-    init();
-};
-
-function init(){
-    application = new Application();
-    application.createLayout();
-}
-
+/**
+ * Class representing the main application logic
+ */
 class Application{
     constructor(){
         this.body = document.getElementById("body");
     }
 
     createLayout() {
-        this.createSelectBar();
-        this.createMainSection();
-        this.createSources();
-        this.createEndpoints();
-        this.createLanguages();
-        this.createCountries();
-        this.createSearch();
-        this.createSearchButton();
+        this._createSelectBar();
+        this._createMainSection();
+        this._createSources();
+        this._createEndpoints();
+        this._createLanguages();
+        this._createCountries();
+        this._createSearchField();
+        this._createSearchButton();
     }
 
-    createSelectBar(){
-        this.selectBar = document.createElement("section");
+    /**
+     * Create select bar
+     */
+    _createSelectBar(){
+        this.selectBar = document.createElement("header");
         this.selectBar.classList.add("selectBar");
         this.body.appendChild(this.selectBar);
     }
 
-    createMainSection(){
+    /**
+     * Create main section
+     */
+    _createMainSection(){
         this.mainSection = document.createElement("section");
         this.mainSection.classList.add("mainSection");
         this.body.appendChild(this.mainSection);
     }
 
-    createSources(){
+    /**
+     * Create select with news sources
+     */
+    _createSources(){
         const selectSources = document.createElement("select");
         selectSources.id = "selectSources";
         selectSources.classList.add("select");
@@ -166,7 +53,10 @@ class Application{
         });
     }
 
-    createEndpoints(){
+    /**
+     * Create select with news endpoints
+     */
+    _createEndpoints(){
         const selectEndpoints = document.createElement("select");
         selectEndpoints.id = "selectEndpoints";
         selectEndpoints.classList.add("select");
@@ -186,7 +76,10 @@ class Application{
         });
     }
 
-    createLanguages(){
+    /**
+     * Create select with possible news languages
+     */
+    _createLanguages(){
         const selectLanguages = document.createElement("select");
         selectLanguages.id = "selectLanguages";
         selectLanguages.classList.add("select");
@@ -205,7 +98,10 @@ class Application{
         });
     }
 
-    createCountries(){
+    /**
+     * Create select with possible news countries
+     */
+    _createCountries(){
         const selectCountries = document.createElement("select");
         selectCountries.id = "selectCountries";
         selectCountries.classList.add("select");
@@ -224,7 +120,10 @@ class Application{
         });
     }
 
-    createSearch(){
+    /**
+     * Create search field
+     */
+    _createSearchField(){
         const inputSearch = document.createElement("input");
         inputSearch.id = "inputSearch";
         inputSearch.classList.add("search");
@@ -233,16 +132,22 @@ class Application{
         this.selectBar.appendChild(inputSearch);
     }
 
-    createSearchButton(){
+    /**
+     * Create search button
+     */
+    _createSearchButton(){
         const buttonGetArticle = document.createElement("button");
         buttonGetArticle.classList.add("buttonGetArticle");
         const buttonText = document.createTextNode("Get Article");
         buttonGetArticle.appendChild(buttonText);
-        buttonGetArticle.addEventListener("click",this.onButtonGetArticlePress.bind(this));
+        buttonGetArticle.addEventListener("click",this._onButtonGetArticlePress.bind(this));
         this.selectBar.appendChild(buttonGetArticle);
     }
 
-    onButtonGetArticlePress (){
+    /**
+     * Handler, which fired when GetArticle button pressed
+     */
+    _onButtonGetArticlePress (){
         const selectSources = document.getElementById("selectSources");
         const source = selectSources.options[selectSources.selectedIndex].value;
 
@@ -267,6 +172,10 @@ class Application{
 
         newsRequester.requestNews()
             .then(function(response){
+                if(response.status && response.status === "error"){
+                    const errorHandler = new ErrorHandler();
+                    errorHandler.handleError(response);
+                }
                 const articles = response.articles;
 
                 if(articles && articles.length > 0){
@@ -284,41 +193,62 @@ class Application{
             }.bind(this))
     }
 
+    /**
+     * Append an article to page
+     */
     appendArticle(articleObj, index){
         const bOdd = index %2 === 0;
+        //create section for article
         const section = document.createElement('section');
         section.classList.add("articleSection");
 
+        //create aside block that will be in the left of section in full screen on desktop
         const aside = document.createElement('aside');
         aside.classList.add("aside");
 
+        //create article block that will be in the right of section in full screen on desktop
         const article = document.createElement('article');
         article.classList.add("article");
 
+        //create title for article on the page
         const h2 = document.createElement('h2');
         const aTitle = document.createElement('a');
+        const aTitleText = document.createTextNode(articleObj.title);
         aTitle.setAttribute("href", articleObj.url);
         aTitle.setAttribute("target", '_blank');
-        const aTitleText = document.createTextNode(articleObj.title);
         aTitle.appendChild(aTitleText);
         h2.appendChild(aTitle);
         article.appendChild(h2);
 
+        //create description for article on the page
+        const pDesc = document.createElement('p');
+        pDesc.classList.add("desc");
+
         const aDesc = document.createElement('a');
+        const aDescText = document.createTextNode(articleObj.description);
         aDesc.setAttribute("href", articleObj.url);
         aDesc.setAttribute("target", '_blank');
-        const aDescText = document.createTextNode(articleObj.description);
         aDesc.appendChild(aDescText);
-        article.appendChild(aDesc);
+        pDesc.appendChild(aDesc);
+        article.appendChild(pDesc);
 
+        //create image for article on the page
         const aImg = document.createElement('a');
+        const img = new Image();
         aImg.setAttribute("href", articleObj.url);
-        const img = new Image();   // Create new img element
+        aImg.setAttribute("target", '_blank');
+
         if(articleObj.urlToImage){
             img.src = articleObj.urlToImage;
         } else {
-            img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKmlsV_RI01siSEtxGGhU4vk2pHFyPKYoM2RQFWLPanrE6Vm2D";
+            img.src = DEFAULT_IMG;
         }
+
+        img.onerror = function (oEvent) {
+            if(img.src !== DEFAULT_IMG){
+                img.src = DEFAULT_IMG;
+            }
+        };
 
         img.classList.add("img");
         aImg.appendChild(img);
@@ -327,102 +257,42 @@ class Application{
         section.appendChild(aside);
         section.appendChild(article);
 
+        //create author for article on the page
+        if(articleObj.author) {
+            const pAuthor = document.createElement('p');
+            const pAuthorText = document.createTextNode(articleObj.author);
+            pAuthor.classList.add("author");
+            pAuthor.appendChild(pAuthorText);
+            article.appendChild(pAuthor);
+        }
+
+        //create published date for article on the page
+        if(articleObj.publishedAt){
+            const pDatePubliched = document.createElement('p');
+            const oDate = new Date(articleObj.publishedAt);
+
+            const hours = oDate.getHours();
+            const formattedHours = hours < 10 ? `0${hours}` : hours;
+
+            const minutes = oDate.getMinutes();
+            const formattedMinuter = minutes < 10 ? `0${minutes}` : minutes;
+
+            const formattedDate = `${oDate.getDate()}/${oDate.getMonth()}/${oDate.getFullYear()}  ${formattedHours}:${formattedMinuter}`;
+            const pDatePublichedText = document.createTextNode(formattedDate);
+            pDatePubliched.classList.add("publishedDate");
+            pDatePubliched.appendChild(pDatePublichedText);
+            article.appendChild(pDatePubliched);
+        }
+
         this.mainSection.appendChild(section);
 
-        if(!bOdd){
+        if(bOdd){
+            section.classList.add("sectionLeft");
+        }  else{
+            section.classList.add("sectionRight");
             const sectionCleaner = document.createElement('section');
             sectionCleaner.classList.add("sectionCleaner");
             this.mainSection.appendChild(sectionCleaner);
         }
-    }
-}
-
-
-class NewsRequester{
-    constructor(){
-        if (!requesterInstance) {
-            requesterInstance = this;
-        }
-
-        return requesterInstance;
-    }
-
-    set source(source){
-        this._source = source;
-    }
-    set endpoint(_endpoint){
-        this._endpoint = _endpoint;
-    }
-    set language(language){
-        this._language = language;
-    }
-    set country(_country){
-        this._country = _country;
-    }
-    set searchString(searchString){
-        this._searchString = searchString;
-    }
-
-    requestNews(){
-        let endpoint;
-
-        switch(this._endpoint){
-            case 'top-headlines':
-                endpoint = 'top-headlines?sources';
-                break;
-            case 'everything':
-                endpoint = 'everything?';
-                break;
-            case 'sources':
-                endpoint = 'sources?';
-                break;
-            default:
-                endpoint = 'top-headlines?sources';
-                break;
-        }
-
-        let url = `${URL_TO_API}${endpoint}=${this._source}&apiKey=${API_KEY}`;
-        if(this._searchString){
-            url = `${url}&q=${this._searchString}`;
-        }
-        if(this._language){
-            url = `${url}&language=${this._language}`;
-        }
-        if(this._country){
-            url = `${url}&country=${this._country}`;
-        }
-
-        return new Promise(function(resolve, reject){
-            fetch(url)
-                .then(function(response) {
-                    if(response.status === 200){
-                        return response.json();
-                    }
-
-                    if(response.status >=400){
-                        throw new Error(response);
-                    }
-                },function(){
-                    alert("can't retrieve articles");
-                })
-                .then(function(response) {
-                    resolve(response);
-                })
-                .catch(function(error){
-                    alert("can't retrieve articles");
-                    reject();
-                });
-        })
-
-    }
-}
-
-class Article{
-    constructor(article){
-        this.author = article.author;
-        this.description = article.description;
-        this.title = article.title;
-        this.url = article.url;
-        this.urlToImage = article.urlToImage;
     }
 }
