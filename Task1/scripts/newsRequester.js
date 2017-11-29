@@ -28,25 +28,23 @@ class NewsRequester {
     requestNews() {
         const url = this._getNewsUrl();
 
-        return new Promise(function (resolve, reject) {
-            fetch(url)
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (response) {
-                    resolve(response);
-                })
-                .catch(function (error) {
-                    reject(error);
-                });
-        });
+        return fetch(url)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (response) {
+                return response;
+            })
+            .catch(function (error) {
+                return (error);
+            });
     }
 
     /**
      * Return request url
      * @return {string} Url for request
      */
-    _getNewsUrl(){
+    _getNewsUrl() {
         const endpoint = this._getEndpoint();
 
         let url = `${URL_TO_API}${endpoint}=${this._source}&apiKey=${API_KEY}`;
@@ -70,7 +68,7 @@ class NewsRequester {
      * Return endpoint url
      * @return {string} Endpoint for url
      */
-    _getEndpoint(){
+    _getEndpoint() {
         let endpoint;
 
         switch (this._endpoint) {
