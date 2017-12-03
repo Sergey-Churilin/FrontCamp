@@ -6,22 +6,6 @@ module.exports = function (babel) {
         visitor: {
             CallExpression(path) {
 
-            /*    if(!path.node){
-                    return false;
-                }
-
-                if(!path.node.callee){
-                    return false;
-                }
-
-                if(!path.node.callee.object){
-                    return false;
-                }
-
-                const isConsole = path.node.callee.object.name === 'console';
-
-                const hasPropertyLog = path.node.callee.property.name === 'log';*/
-
                 const isConsole = hasNameConsole(path);
 
                 if(!isConsole){
@@ -38,26 +22,25 @@ module.exports = function (babel) {
     };
 
     function hasNameConsole(path){
-        if(!path.node){
+        const node = path.node;
+        if(!node){
             return false;
         }
 
-        if(!path.node.callee){
+        const callee = node.callee;
+        if(!callee){
             return false;
         }
 
-        if(!path.node.callee.object){
+        const calleeObject = callee.object;
+        if(!calleeObject){
             return false;
         }
 
-        return path.node.callee.object.name === 'console';
+        return calleeObject.name === 'console';
     }
 
     function hasPropertyLog(path){
-        if(!hasNameConsole(path)){
-            return false;
-        }
-
         return path.node.callee.property.name === 'log';
     }
 };

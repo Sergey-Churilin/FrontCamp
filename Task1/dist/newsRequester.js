@@ -2,6 +2,8 @@
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var requesterInstance = null;
@@ -38,17 +40,46 @@ var NewsRequester = function () {
 
     _createClass(NewsRequester, [{
         key: 'requestNews',
-        value: function requestNews() {
-            var url = this._getNewsUrl();
+        value: function () {
+            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+                var url, response, responseJson;
+                return regeneratorRuntime.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                url = this._getNewsUrl();
+                                _context.prev = 1;
+                                _context.next = 4;
+                                return fetch(url);
 
-            return fetch(url).then(function (response) {
-                return response.json();
-            }).then(function (response) {
-                return response;
-            }).catch(function (error) {
-                return error;
-            });
-        }
+                            case 4:
+                                response = _context.sent;
+                                _context.next = 7;
+                                return response.json();
+
+                            case 7:
+                                responseJson = _context.sent;
+                                return _context.abrupt('return', responseJson);
+
+                            case 11:
+                                _context.prev = 11;
+                                _context.t0 = _context['catch'](1);
+                                return _context.abrupt('return', _context.t0);
+
+                            case 14:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, this, [[1, 11]]);
+            }));
+
+            function requestNews() {
+                return _ref.apply(this, arguments);
+            }
+
+            return requestNews;
+        }()
 
         /**
          * Return request url

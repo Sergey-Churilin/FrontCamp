@@ -37,6 +37,7 @@ class Application {
                     const errorHandler = new ErrorHandler();
                     errorHandler.handleError(response);
                 }
+
                 const articles = response.articles;
 
                 if (articles && articles.length > 0) {
