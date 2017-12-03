@@ -5,25 +5,59 @@ module.exports = function (babel) {
         name: "remove-console-log",
         visitor: {
             CallExpression(path) {
-                if(!path.node){
-                    return;
+
+            /*    if(!path.node){
+                    return false;
                 }
 
                 if(!path.node.callee){
-                    return;
+                    return false;
                 }
 
                 if(!path.node.callee.object){
-                    return;
+                    return false;
                 }
+
                 const isConsole = path.node.callee.object.name === 'console';
 
-                const isPropertyLog = path.node.callee.property.name === 'log';
+                const hasPropertyLog = path.node.callee.property.name === 'log';*/
 
-                if(isConsole && isPropertyLog){
-                    path.remove()
+                const isConsole = hasNameConsole(path);
+
+                if(!isConsole){
+                    return;
+                }
+
+                const isLog = hasPropertyLog(path);
+
+                if(isLog){
+                    path.remove();
                 }
             }
         }
     };
+
+    function hasNameConsole(path){
+        if(!path.node){
+            return false;
+        }
+
+        if(!path.node.callee){
+            return false;
+        }
+
+        if(!path.node.callee.object){
+            return false;
+        }
+
+        return path.node.callee.object.name === 'console';
+    }
+
+    function hasPropertyLog(path){
+        if(!hasNameConsole(path)){
+            return false;
+        }
+
+        return path.node.callee.property.name === 'log';
+    }
 };
