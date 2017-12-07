@@ -32,28 +32,29 @@ class Application {
         const newsRequester = new NewsRequester(selectedValues);
 
         newsRequester.requestNews()
-            .then(function (response) {
+            .then((response) => {
                 if (response.status && response.status === 'error') {
                     const errorHandler = new ErrorHandler();
                     errorHandler.handleError(response);
                 }
+
                 const articles = response.articles;
 
                 if (articles && articles.length > 0) {
                     this.mainSection.innerHTML = '';
                     const articlesWrapper = document.createElement('section');
-                    articles.forEach(function (oneArticle, index) {
+                    articles.forEach( (oneArticle, index) => {
                         const article = new Article(oneArticle);
                         this.appendArticle(article, index, articlesWrapper);
-                    }.bind(this));
+                    });
                     this.mainSection.appendChild(articlesWrapper);
                 } else {
                     this.mainSection.innerHTML = 'No content';
                 }
-            }.bind(this))
-            .catch(function () {
+            })
+            .catch(()=> {
                 this.mainSection.innerHTML = 'No content';
-            }.bind(this))
+            })
     }
 
     /**

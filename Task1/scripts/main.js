@@ -6,4 +6,5 @@ window.onload = function () {
 
 function init() {
     application = new Application();
+    console.log(application);
 }
