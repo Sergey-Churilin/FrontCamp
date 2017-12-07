@@ -52,7 +52,7 @@ class Application {
                     this.mainSection.innerHTML = 'No content';
                 }
             })
-            .catch( ()=> {
+            .catch(()=> {
                 this.mainSection.innerHTML = 'No content';
             })
     }
