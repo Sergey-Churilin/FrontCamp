@@ -32,7 +32,7 @@ class Application {
         const newsRequester = new NewsRequester(selectedValues);
 
         newsRequester.requestNews()
-            .then(function (response) {
+            .then((response) => {
                 if (response.status && response.status === 'error') {
                     const errorHandler = new ErrorHandler();
                     errorHandler.handleError(response);
@@ -51,7 +51,7 @@ class Application {
                 } else {
                     this.mainSection.innerHTML = 'No content';
                 }
-            }.bind(this))
+            })
             .catch( ()=> {
                 this.mainSection.innerHTML = 'No content';
             })
