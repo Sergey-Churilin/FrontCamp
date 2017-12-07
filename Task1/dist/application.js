@@ -43,14 +43,19 @@ var Application = function () {
     }, {
         key: '_onButtonGetArticlePress',
         value: function _onButtonGetArticlePress() {
+            var _this2 = this;
+
             var selectedValues = this._getSelectedValues();
             var newsRequester = new NewsRequester(selectedValues);
 
             newsRequester.requestNews().then(function (response) {
+                var _this = this;
+
                 if (response.status && response.status === 'error') {
                     var errorHandler = new ErrorHandler();
                     errorHandler.handleError(response);
                 }
+
                 var articles = response.articles;
 
                 if (articles && articles.length > 0) {
@@ -58,15 +63,15 @@ var Application = function () {
                     var articlesWrapper = document.createElement('section');
                     articles.forEach(function (oneArticle, index) {
                         var article = new Article(oneArticle);
-                        this.appendArticle(article, index, articlesWrapper);
-                    }.bind(this));
+                        _this.appendArticle(article, index, articlesWrapper);
+                    });
                     this.mainSection.appendChild(articlesWrapper);
                 } else {
                     this.mainSection.innerHTML = 'No content';
                 }
             }.bind(this)).catch(function () {
-                this.mainSection.innerHTML = 'No content';
-            }.bind(this));
+                _this2.mainSection.innerHTML = 'No content';
+            });
         }
 
         /**

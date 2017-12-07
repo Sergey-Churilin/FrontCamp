@@ -34,8 +34,9 @@ var NewsRequester = function () {
     }
 
     /**
-     * Make a fetch request to the server, return promise
+     * Make async request to the server, return articles
      */
+    // example with async / await
 
 
     _createClass(NewsRequester, [{
@@ -80,6 +81,21 @@ var NewsRequester = function () {
 
             return requestNews;
         }()
+
+        /**
+         * Make a fetch request to the server, return promise
+         */
+        // example with fetch
+        /*    return fetch(url)
+         .then(function (response) {
+         return response.json();
+         })
+         .then(function (response) {
+         return response;
+         })
+         .catch(function (error) {
+         return (error);
+         });*/
 
         /**
          * Return request url
