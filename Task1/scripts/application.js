@@ -1,7 +1,12 @@
+import NewsRequester from './newsRequester';
+import Article from './article';
+import ErrorHandler from './errorHandler';
+import {APP_CONSTANTS} from './constants'
+
 /**
  * Class representing the main application logic
  */
-class Application {
+export default class Application {
     constructor() {
         this.mainSection = document.getElementById('mainSection');
         const buttonGetArticle = document.getElementById('buttonArticle');
@@ -171,12 +176,12 @@ class Application {
         if (urlToImage) {
             img.src = urlToImage;
         } else {
-            img.src = DEFAULT_IMG;
+            img.src = APP_CONSTANTS.DEFAULT_IMG;
         }
 
         img.onerror = function (oEvent) {
-            if (img.src !== DEFAULT_IMG) {
-                img.src = DEFAULT_IMG;
+            if (img.src !== APP_CONSTANTS.DEFAULT_IMG) {
+                img.src = APP_CONSTANTS.DEFAULT_IMG;
             }
         };
 

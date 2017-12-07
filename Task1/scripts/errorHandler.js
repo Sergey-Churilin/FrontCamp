@@ -1,8 +1,10 @@
+import {arrayEndpoints} from './constants';
+
 let errorHandlerInstance = null;
 /**
  * Class for error handling
  */
-class ErrorHandler {
+export default class ErrorHandler {
     /**
      * Create only one instance of error handler
      */
@@ -26,7 +28,7 @@ class ErrorHandler {
         }
 
         if (message) {
-            arrayEndpoints.forEach(function (endpoint) {
+            arrayEndpoints.arrayEndpoints.forEach(function (endpoint) {
                 if (message.indexOf(endpoint.path) > -1) {
                     message = message.replace('/', '');
                     message = message.replace(endpoint.path, endpoint.text.toUpperCase());
