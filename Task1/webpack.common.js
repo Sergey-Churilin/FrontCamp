@@ -1,13 +1,11 @@
 const path = require('path');
-console.log("path = " + path)
 const webpack = require('webpack');
+
 module.exports = {
     context: __dirname + "/",
-    entry: ['./scripts', 'whatwg-fetch', 'babel-polyfill'],
+    entry: ['./scripts'],
     output: {
-        path: path.resolve(__dirname, './dist'),
-        publicPath: __dirname + "/dist/",
-        filename: "bundle.js"
+        filename: "./dist/[name].js"
     },
     resolveLoader: {
         alias: {
@@ -38,12 +36,6 @@ module.exports = {
                     }
                 ]
             },
-/*            {
-                test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    'file-loader'
-                ]
-            },*/
             {
                 test: /\.json$/,
                 exclude: /(node_modules)/,

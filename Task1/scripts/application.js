@@ -34,14 +34,14 @@ export default class Application {
      */
     _onButtonGetArticlePress() {
         import(
-            /*webpackChunkName:"NewsRequester"*/
+            /*webpackChunkName:"newsRequester"*/
             /*webpackMode: "lazy"*/
             './newsRequester')
             .then(NewsRequester => {
                 const selectedValues = this._getSelectedValues();
                 const newsRequesterClass = NewsRequester.default;
                 const newsRequester = new newsRequesterClass(selectedValues);
-                    newsRequester.requestNews()
+                newsRequester.requestNews()
                     .then((response) => {
                         if (response.status && response.status === 'error') {
                             const errorHandler = new ErrorHandler();
