@@ -1,7 +1,12 @@
+//import NewsRequester from './newsRequester';
+import Article from './article';
+import ErrorHandler from './errorHandler';
+import {APP_CONSTANTS} from './constants'
+
 /**
  * Class representing the main application logic
  */
-class Application {
+export default class Application {
     constructor() {
         this.mainSection = document.getElementById('mainSection');
         const buttonGetArticle = document.getElementById('buttonArticle');
@@ -28,33 +33,39 @@ class Application {
      * Handler, which fired when GetArticle or enter button pressed
      */
     _onButtonGetArticlePress() {
-        const selectedValues = this._getSelectedValues();
-        const newsRequester = new NewsRequester(selectedValues);
+        import(
+            /*webpackChunkName:"newsRequester"*/
+            /*webpackMode: "lazy"*/
+            './newsRequester')
+            .then(NewsRequester => {
+                const selectedValues = this._getSelectedValues();
+                const newsRequesterClass = NewsRequester.default;
+                const newsRequester = new newsRequesterClass(selectedValues);
+                newsRequester.requestNews()
+                    .then((response) => {
+                        if (response.status && response.status === 'error') {
+                            const errorHandler = new ErrorHandler();
+                            errorHandler.handleError(response);
+                        }
 
-        newsRequester.requestNews()
-            .then((response) => {
-                if (response.status && response.status === 'error') {
-                    const errorHandler = new ErrorHandler();
-                    errorHandler.handleError(response);
-                }
+                        const articles = response.articles;
 
-                const articles = response.articles;
-
-                if (articles && articles.length > 0) {
-                    this.mainSection.innerHTML = '';
-                    const articlesWrapper = document.createElement('section');
-                    articles.forEach( (oneArticle, index) => {
-                        const article = new Article(oneArticle);
-                        this.appendArticle(article, index, articlesWrapper);
-                    });
-                    this.mainSection.appendChild(articlesWrapper);
-                } else {
-                    this.mainSection.innerHTML = 'No content';
-                }
-            })
-            .catch(()=> {
-                this.mainSection.innerHTML = 'No content';
-            })
+                        if (articles && articles.length > 0) {
+                            this.mainSection.innerHTML = '';
+                            const articlesWrapper = document.createElement('section');
+                            articles.forEach((oneArticle, index) => {
+                                const article = new Article(oneArticle);
+                                this.appendArticle(article, index, articlesWrapper);
+                            });
+                            this.mainSection.appendChild(articlesWrapper);
+                        } else {
+                            this.mainSection.innerHTML = 'No content';
+                        }
+                    })
+                    .catch(() => {
+                        this.mainSection.innerHTML = 'No content';
+                    })
+            }).catch(error => console.log(error));
     }
 
     /**
@@ -171,12 +182,12 @@ class Application {
         if (urlToImage) {
             img.src = urlToImage;
         } else {
-            img.src = DEFAULT_IMG;
+            img.src = APP_CONSTANTS.DEFAULT_IMG;
         }
 
         img.onerror = function (oEvent) {
-            if (img.src !== DEFAULT_IMG) {
-                img.src = DEFAULT_IMG;
+            if (img.src !== APP_CONSTANTS.DEFAULT_IMG) {
+                img.src = APP_CONSTANTS.DEFAULT_IMG;
             }
         };
 

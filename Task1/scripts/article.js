@@ -1,7 +1,7 @@
 /**
  * Class representing an article
  */
-class Article {
+export default class Article {
     /**
      * Create an article
      * @param {object} article - article object

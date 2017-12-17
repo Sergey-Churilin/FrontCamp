@@ -1,9 +1,11 @@
+import {API_CONSTANTS} from './constants';
+
 let requesterInstance = null;
 
 /**
  * Class representing a request instance
  */
-class NewsRequester {
+export default class NewsRequester {
     /**
      * Creates only one instance of requester
      * @param {object} selectedValues - Selected values
@@ -26,7 +28,7 @@ class NewsRequester {
      * Make async request to the server, return articles
      */
     // example with async / await
-    async requestNews() {
+/*    async requestNews() {
         const url = this._getNewsUrl();
 
         try {
@@ -36,31 +38,32 @@ class NewsRequester {
         } catch (error) {
             return error;
         }
-    }
+    }*/
 
     /**
      * Make a fetch request to the server, return promise
      */
     // example with fetch
-    /*    return fetch(url)
-     .then(function (response) {
-     return response.json();
-     })
-     .then(function (response) {
-     return response;
-     })
-     .catch(function (error) {
-     return (error);
-     });*/
-
+    requestNews() {
+        const url = this._getNewsUrl();
+        return fetch(url)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (response) {
+                return response;
+            })
+            .catch(function (error) {
+                return (error);
+            });
+    }
     /**
      * Return request url
      * @return {string} Url for request
      */
     _getNewsUrl() {
         const endpoint = this._getEndpoint();
-
-        let url = `${URL_TO_API}${endpoint}=${this._source}&apiKey=${API_KEY}`;
+        let url = `${API_CONSTANTS.URL_TO_API}${endpoint}=${this._source}&apiKey=${API_CONSTANTS.API_KEY}`;
 
         if (this._searchString) {
             url = `${url}&q=${this._searchString}`;
@@ -102,3 +105,4 @@ class NewsRequester {
         return endpoint;
     }
 }
+
