@@ -1,5 +1,5 @@
 import Layout from './Views/Layout';
-import Reducer from './Model/Reducer';
+import Reducers from './Reducers/Reducers';
 import Redux from './Redux/Redux';
 
 /*PERFORMS MEDIATOR ROLE*/
@@ -18,14 +18,11 @@ export default class Application {
         this.numberOfNewsRequests = 0;
 
         // Redux
-        const reducer = new Reducer();
+        const reducer = new Reducers();
         const redux = new Redux();
 
         this.store = redux.createStore(reducer.dataReducer);
 
-
-        // this.appData = new AppData();
-        // this.layout = new Layout(this.appData);
         this.layout = new Layout(this.store);
     }
 
@@ -46,6 +43,7 @@ export default class Application {
      * Handler, which fired when GetArticle or enter button pressed
      */
 
+    /*DECORATOR PATTERN*/
     // decorator to handle number of requests
     _onButtonGetArticlePress() {
         this.numberOfNewsRequests++;
@@ -56,7 +54,7 @@ export default class Application {
     }
 
     /**
-     * Call to retrieve news
+     * Call to retrieve newsRequester
      */
     requestNews() {
         if (!this.newsRequester) {
@@ -76,6 +74,9 @@ export default class Application {
         }
     }
 
+    /**
+     * Call to retrieve news
+     */
     _requestNews() {
         const selectedValues = this._getSelectedValues();
         this.newsRequester.setSelectedValues(selectedValues);
@@ -86,6 +87,10 @@ export default class Application {
             })
     }
 
+    /**
+     * Handler to handle call for articles
+     * @param {object} response - Call response
+     */
     handleArticlesResponse(response) {
         if (response.status && response.status === 'error') {
             this.store.dispatch({

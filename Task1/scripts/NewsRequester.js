@@ -2,15 +2,16 @@ import {API_CONSTANTS} from './constants';
 
 let requesterInstance = null;
 
+/*OBSERVER PATTERN*/
 /**
  * Class representing a request instance
  */
+
 export default class NewsRequester {
     /**
      * Creates only one instance of requester
-     * @param {object} selectedValues - Selected values
      */
-    constructor(selectedValues) {
+    constructor() {
         if (!requesterInstance) {
             requesterInstance = this;
             this.handlers = [];
@@ -19,6 +20,10 @@ export default class NewsRequester {
         return requesterInstance;
     }
 
+    /**
+     * Setter for class properties
+     * @param {object} selectedValues - Selected values
+     */
     setSelectedValues(selectedValues) {
         this._source = selectedValues.source;
         this._endpoint = selectedValues.endpoint;
@@ -27,10 +32,18 @@ export default class NewsRequester {
         this._searchString = selectedValues.searchString;
     }
 
+    /**
+     * Subscribe method
+     * @param {function} fn - function that subscribes for class
+     */
     subscribe(fn) {
         this.handlers.push(fn);
     }
 
+    /**
+     * Unsubscribe method
+     * @param {function} fn - function that will be unsubscribed
+     */
     unsubscribe(fn) {
         this.handlers = this.handlers.filter(
             item => {
@@ -41,6 +54,10 @@ export default class NewsRequester {
         );
     }
 
+    /**
+     * Unsubscribe method
+     * @param {array} results - array of functions that will be called
+     */
     fire(results) {
         this.handlers.forEach(item => item(results));
     }
@@ -69,7 +86,7 @@ export default class NewsRequester {
         const url = this._getNewsUrl();
         return fetch(url)
             .then(response => response.json())
-            .then(response =>  this.fire(response))//return response;
+            .then(response => this.fire(response))//return response;
             .catch(error => {
                 console.log(error);
                 return error;

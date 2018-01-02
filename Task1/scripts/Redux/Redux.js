@@ -32,7 +32,7 @@ export default class Redux {
     }
 
     /**
-     * Combines reducers that will be called for every dispatch
+     * Combines reducers
      *
      * @param {array} reducers - Array of reducers
      */

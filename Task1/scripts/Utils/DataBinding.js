@@ -1,5 +1,5 @@
 /**
- * Class representing binding
+ * Class representing binding example
  */
 export default class DataBinding {
     /**
@@ -8,7 +8,7 @@ export default class DataBinding {
     constructor() {
         this.bindMap = {};
         this.scope = {};
-        const bindedElsArray= document.querySelectorAll('*[data-bind]');
+        const bindedElsArray = document.querySelectorAll('*[data-bind]');
 
         bindedElsArray.forEach(element => {
             const bindTo = element.dataset.bind;
@@ -23,20 +23,28 @@ export default class DataBinding {
         this.attachListeners();
     }
 
+    /**
+     * Handler to bind values
+     * @param {string} bindingName
+     * @param {string} value
+     */
     bindValue(bindingName, value) {
         this.scope[bindingName] = value;
     }
 
+    /**
+     * Sync binding values
+     */
     syncBindings() {
         for (let bindTo in this.scope) {
             const value = this.scope[bindTo];
 
-            this.bindMap[bindTo].forEach(function(el) {
-                if (el.tagName === 'INPUT' ) {
+            this.bindMap[bindTo].forEach(function (el) {
+                if (el.tagName === 'INPUT') {
                     el.value = value;
                 } else {
-                    // Selecc updates automatically
-                    if(el.tagName !== 'SELECT'){
+                    // Select updates automatically
+                    if (el.tagName !== 'SELECT') {
                         el.innerText = value;
                     }
                 }
@@ -46,7 +54,10 @@ export default class DataBinding {
         }
     }
 
-    attachListeners(){
+    /**
+     * Attach listeners to the document
+     */
+    attachListeners() {
         document.addEventListener('keyup', e => {
             this.handleListeners(e, 'i')
         }, true);
@@ -56,12 +67,15 @@ export default class DataBinding {
         }, true);
     }
 
-    handleListeners(e, el){
+    /**
+     * Handle listeners
+     */
+    handleListeners(e, el) {
         const target = e.target;
         const bindTo = target.dataset.bind;
         let value = target.value;
 
-        if(el === 's' && value && target.selectedOptions){
+        if (el === 's' && value && target.selectedOptions) {
             value = target.selectedOptions[0].text;
         }
         if (bindTo && this.bindMap[bindTo]) {

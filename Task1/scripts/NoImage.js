@@ -5,7 +5,7 @@ import {APP_CONSTANTS} from "./constants";
  */
 export default class NoImage {
     /**
-     * Create an image with defaul picture
+     * Create an image with default picture
      */
     constructor() {
         this.img = new Image();

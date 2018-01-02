@@ -1,4 +1,4 @@
-import Application from './application';
+import Application from './Application';
 import '../css/style.css';
 import Data from '../models/data.json';
 import DataBinding from './Utils/DataBinding';

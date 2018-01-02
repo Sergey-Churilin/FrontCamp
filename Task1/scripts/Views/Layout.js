@@ -45,20 +45,28 @@ export default class Layout {
         this.articlesCount = articles.length;
 
         this.refreshLayout();
-        //this.mainSection.appendChild(articlesWrapper);
     }
 
+    /**
+     * Refresh current layout
+     */
     refreshLayout() {
         const articles = this.appData.getState().articles;
         this.articles.forEach(article => article.updateLayout(articles));
     }
 
+    /**
+     * Append article to layout
+     */
     appendArticle(index, articles) {
         const article = new Article(index, articles);
         this._appendArticle(article, index, this.mainSection);
         this.articles.push(article);
     }
 
+    /**
+     * Remove article from layout
+     */
     removeArticles(newCount) {
         let currentCount = this.articlesCount;
 

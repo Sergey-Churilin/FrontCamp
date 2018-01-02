@@ -1,10 +1,11 @@
 import NoImage from './NoImage';
 import RemoteImage from './RemoteImage';
 import {APP_CONSTANTS} from "./constants";
-/*PERFORMS FACTORY ROLE*/
+
 /**
  * Class representing an image
  */
+/*FACTORY PATTERN*/
 export default class ImagesFactory {
     /**
      * Create an article

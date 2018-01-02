@@ -1,5 +1,5 @@
 /**
- * Class representing an article
+ * Class representing application utils
  */
 export default class Util {
     /**
@@ -17,7 +17,7 @@ export default class Util {
      * Static method
      * @return formatter date
      */
-    static formatDate(oDate){
+    static formatDate(oDate) {
         const hours = oDate.getHours();
         const formattedHours = hours < 10 ? `0${hours}` : hours;
 

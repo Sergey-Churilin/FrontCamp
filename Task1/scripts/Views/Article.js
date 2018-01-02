@@ -8,13 +8,18 @@ import {APP_CONSTANTS} from "../constants";
 export default class Article {
     /**
      * Create an article
-     * @param {object} article - article object
+     * @param {number} index - index of article in store
+     * @param {array} articles - array of articles in store
      */
     constructor(index, articles) {
         this.index = index;
         this.path = articles[index];
     }
 
+    /**
+     * Create section node with content
+     * @return article layout
+     */
     getArticleLayout() {
         this.section = document.createElement('section');
         this.section.classList.add('articleSection');
@@ -37,6 +42,9 @@ export default class Article {
         return this.section;
     }
 
+    /**
+     * @return article section
+     */
     getDomElement() {
         return this.section;
     }
@@ -45,8 +53,6 @@ export default class Article {
      * Append title to article
      *
      * @param {object} article - Article DOM element
-     * @param {string} title - Article title
-     * @param {string} urlToArticle - Link to article
      */
     _appendTitleToArticle(article) {
         //create title for article on the page
@@ -65,8 +71,6 @@ export default class Article {
      * Append title to article
      *
      * @param {object} article - Article DOM element
-     * @param {string} description - Article description
-     * @param {string} urlToArticle - Link to article
      */
     _appendDescriptionToArticle(article) {
         const pDesc = document.createElement('p');
@@ -86,8 +90,6 @@ export default class Article {
      * Append title to article
      *
      * @param {object} aside -  Aside DOM element
-     * @param {string} urlToImage - Link to image
-     * @param {string} urlToArticle - Link to article
      */
     _appendImageToArticle(aside) {
         const aImg = document.createElement('a');
@@ -105,7 +107,6 @@ export default class Article {
      * Append title to article
      *
      * @param {object} article - Article DOM element
-     * @param {string} author - Author of the article
      */
     _appendAuthorToArticle(article) {
         //create author for article on the page
@@ -129,7 +130,6 @@ export default class Article {
      * Append title to article
      *
      * @param {object} article - Article DOM element
-     * @param {string} date - Date when article was published
      */
     _appendPublishedDateToArticle(article) {
         //create published date for article on the page
@@ -162,7 +162,7 @@ export default class Article {
         this.aDesc.innerText = this.path.description;
         this.aDesc.setAttribute('href', this.path.url);
 
-        if(this.path.urlToImage){
+        if (this.path.urlToImage) {
             this.img.src = this.path.urlToImage;
         } else {
             this.img.src = APP_CONSTANTS.DEFAULT_IMG;
@@ -177,8 +177,7 @@ export default class Article {
         }
 
         if (this.path.date) {
-            const formattedDate = Util.formatDate(new Date(this.path.date));
-            this.pDatePublished.innerText = formattedDate;
+            this.pDatePublished.innerText = Util.formatDate(new Date(this.path.date));
         } else {
             this.pDatePublished.innerText = '';
         }
