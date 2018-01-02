@@ -1,19 +1,32 @@
-//import NewsRequester from './newsRequester';
-import Article from './article';
-import ErrorHandler from './errorHandler';
-import {APP_CONSTANTS} from './constants'
+import Layout from './Views/Layout';
+import Reducer from './Model/Reducer';
+import Redux from './Redux/Redux';
 
+/*PERFORMS MEDIATOR ROLE*/
 /**
  * Class representing the main application logic
  */
 export default class Application {
     constructor() {
-        this.mainSection = document.getElementById('mainSection');
+
         const buttonGetArticle = document.getElementById('buttonArticle');
         buttonGetArticle.addEventListener('click', this._onButtonGetArticlePress.bind(this));
 
         const inputSearch = document.getElementById('inputSearch');
         inputSearch.addEventListener('keyup', this._onInputSearchKeyUp.bind(this));
+
+        this.numberOfNewsRequests = 0;
+
+        // Redux
+        const reducer = new Reducer();
+        const redux = new Redux();
+
+        this.store = redux.createStore(reducer.dataReducer);
+
+
+        // this.appData = new AppData();
+        // this.layout = new Layout(this.appData);
+        this.layout = new Layout(this.store);
     }
 
     /**
@@ -32,40 +45,68 @@ export default class Application {
     /**
      * Handler, which fired when GetArticle or enter button pressed
      */
+
+    // decorator to handle number of requests
     _onButtonGetArticlePress() {
-        import(
-            /*webpackChunkName:"newsRequester"*/
-            /*webpackMode: "lazy"*/
-            './newsRequester')
-            .then(NewsRequester => {
-                const selectedValues = this._getSelectedValues();
-                const newsRequesterClass = NewsRequester.default;
-                const newsRequester = new newsRequesterClass(selectedValues);
-                newsRequester.requestNews()
-                    .then((response) => {
-                        if (response.status && response.status === 'error') {
-                            const errorHandler = new ErrorHandler();
-                            errorHandler.handleError(response);
-                        }
+        this.numberOfNewsRequests++;
+        this.store.dispatch({
+            type:"DATA_CALL"
+        });
+        this.requestNews();
+    }
 
-                        const articles = response.articles;
+    /**
+     * Call to retrieve news
+     */
+    requestNews() {
+        if (!this.newsRequester) {
+            import(
+                /*webpackChunkName:"newsRequester"*/
+                /*webpackMode: "lazy"*/
+                './NewsRequester')
+                .then(NewsRequester => {
+                    const newsRequesterClass = NewsRequester.default;
+                    this.newsRequester = new newsRequesterClass();
+                    //Observer pattern
+                    this.newsRequester.subscribe(this.handleArticlesResponse.bind(this));
+                    this._requestNews();
+                }).catch(error => console.log(error));
+        } else {
+            this._requestNews();
+        }
+    }
 
-                        if (articles && articles.length > 0) {
-                            this.mainSection.innerHTML = '';
-                            const articlesWrapper = document.createElement('section');
-                            articles.forEach((oneArticle, index) => {
-                                const article = new Article(oneArticle);
-                                this.appendArticle(article, index, articlesWrapper);
-                            });
-                            this.mainSection.appendChild(articlesWrapper);
-                        } else {
-                            this.mainSection.innerHTML = 'No content';
-                        }
-                    })
-                    .catch(() => {
-                        this.mainSection.innerHTML = 'No content';
-                    })
-            }).catch(error => console.log(error));
+    _requestNews() {
+        const selectedValues = this._getSelectedValues();
+        this.newsRequester.setSelectedValues(selectedValues);
+
+        this.newsRequester.requestNews()
+            .catch(() => {
+                this.layout.clear(true);
+            })
+    }
+
+    handleArticlesResponse(response) {
+        if (response.status && response.status === 'error') {
+            this.store.dispatch({
+                type:"DATA_ERROR",
+                response : response
+            });
+        }
+
+        const articles = response.articles;
+
+        if (articles && articles.length > 0) {
+            this.store.dispatch({
+                type:"DATA_RECEIVED",
+                articles : articles
+            });
+            // this.appData.saveData(articles);
+            this.layout.drawArticles();
+
+        } else {
+            this.layout.clear(true);
+        }
     }
 
     /**
@@ -95,168 +136,5 @@ export default class Application {
             searchString,
             country
         };
-    }
-
-    /**
-     * Append an article to page
-     *
-     * @param {object} articleObj - Article object
-     * @param {number} index - Index number of article
-     * @param {object} articlesWrapper - DOM element where article will be appended
-     */
-    appendArticle(articleObj, index, articlesWrapper) {
-        const section = document.createElement('section');
-        section.classList.add('articleSection');
-
-        const aside = document.createElement('aside');
-        aside.classList.add('aside');
-
-        const article = document.createElement('article');
-        article.classList.add('article');
-
-        this._appendTitleToArticle(article, articleObj.title, articleObj.url);
-        this._appendDescriptionToArticle(article, articleObj.description, articleObj.url);
-        this._appendImageToArticle(aside, articleObj.urlToImage, articleObj.url);
-        this._appendAuthorToArticle(article, articleObj.author);
-        this._appendPublishedDateToArticle(article, articleObj.publishedAt);
-
-        section.appendChild(aside);
-        section.appendChild(article);
-        articlesWrapper.appendChild(section);
-
-        this._stylizeSection(section, index, articlesWrapper);
-    }
-
-    /**
-     * Append title to article
-     *
-     * @param {object} article - Article DOM element
-     * @param {string} title - Article title
-     * @param {string} urlToArticle - Link to article
-     */
-    _appendTitleToArticle(article, title, urlToArticle) {
-        //create title for article on the page
-        const h2 = document.createElement('h2');
-        const aTitle = document.createElement('a');
-        const aTitleText = document.createTextNode(title);
-        aTitle.setAttribute('href', urlToArticle);
-        aTitle.setAttribute('target', '_blank');
-        aTitle.appendChild(aTitleText);
-        h2.appendChild(aTitle);
-        article.appendChild(h2);
-    }
-
-    /**
-     * Append title to article
-     *
-     * @param {object} article - Article DOM element
-     * @param {string} description - Article description
-     * @param {string} urlToArticle - Link to article
-     */
-    _appendDescriptionToArticle(article, description, urlToArticle) {
-        const pDesc = document.createElement('p');
-        pDesc.classList.add('desc');
-
-        const aDesc = document.createElement('a');
-        const aDescText = document.createTextNode(description);
-        aDesc.setAttribute('href', urlToArticle);
-        aDesc.setAttribute('target', '_blank');
-        aDesc.appendChild(aDescText);
-        pDesc.appendChild(aDesc);
-        article.appendChild(pDesc);
-    }
-
-    /**
-     * Append title to article
-     *
-     * @param {object} aside -  Aside DOM element
-     * @param {string} urlToImage - Link to image
-     * @param {string} urlToArticle - Link to article
-     */
-    _appendImageToArticle(aside, urlToImage, urlToArticle) {
-        const aImg = document.createElement('a');
-        const img = new Image();
-        aImg.setAttribute('href', urlToArticle);
-        aImg.setAttribute('target', '_blank');
-
-        if (urlToImage) {
-            img.src = urlToImage;
-        } else {
-            img.src = APP_CONSTANTS.DEFAULT_IMG;
-        }
-
-        img.onerror = function (oEvent) {
-            if (img.src !== APP_CONSTANTS.DEFAULT_IMG) {
-                img.src = APP_CONSTANTS.DEFAULT_IMG;
-            }
-        };
-
-        img.classList.add('img');
-        aImg.appendChild(img);
-        aside.appendChild(aImg);
-    }
-
-    /**
-     * Append title to article
-     *
-     * @param {object} article - Article DOM element
-     * @param {string} author - Author of the article
-     */
-    _appendAuthorToArticle(article, author) {
-        //create author for article on the page
-        if (author) {
-            const pAuthor = document.createElement('p');
-            const pAuthorText = document.createTextNode(author);
-            pAuthor.classList.add('author');
-            pAuthor.appendChild(pAuthorText);
-            article.appendChild(pAuthor);
-        }
-    }
-
-
-    /**
-     * Append title to article
-     *
-     * @param {object} article - Article DOM element
-     * @param {string} date - Date when article was published
-     */
-    _appendPublishedDateToArticle(article, date) {
-        //create published date for article on the page
-        if (date) {
-            const pDatePubliched = document.createElement('p');
-            const oDate = new Date(date);
-
-            const hours = oDate.getHours();
-            const formattedHours = hours < 10 ? `0${hours}` : hours;
-
-            const minutes = oDate.getMinutes();
-            const formattedMinuter = minutes < 10 ? `0${minutes}` : minutes;
-
-            const formattedDate = `${oDate.getDate()}/${oDate.getMonth()}/${oDate.getFullYear()}  ${formattedHours}:${formattedMinuter}`;
-            const pDatePublichedText = document.createTextNode(formattedDate);
-            pDatePubliched.classList.add('publishedDate');
-            pDatePubliched.appendChild(pDatePublichedText);
-            article.appendChild(pDatePubliched);
-        }
-    }
-
-    /**
-     * Append title to article
-     *
-     * @param {object} section - Section DOM element
-     * @param {number} index - Index number of article
-     * @param {object} articlesWrapper - DOM element where article will be appended
-     */
-    _stylizeSection(section, index, articlesWrapper) {
-        const bOdd = index % 2 === 0;
-
-        if (bOdd) {
-            section.classList.add('sectionLeft');
-        } else {
-            section.classList.add('sectionRight');
-            const sectionCleaner = document.createElement('section');
-            sectionCleaner.classList.add('sectionCleaner');
-            articlesWrapper.appendChild(sectionCleaner);
-        }
     }
 }
