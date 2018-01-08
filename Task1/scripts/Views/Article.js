@@ -1,6 +1,6 @@
 import ImagesFactory from '../ImagesFactory';
 import Util from '../Utils/Util';
-import {APP_CONSTANTS} from "../constants";
+import {APP_CONSTANTS} from '../constants';
 
 /**
  * Class representing an article
@@ -96,8 +96,8 @@ export default class Article {
         aImg.setAttribute('href', this.path.url);
         aImg.setAttribute('target', '_blank');
 
-        const imageObject = new ImagesFactory(this.path.urlToImage);
-        this.img = imageObject.img;
+        this.imageObject = new ImagesFactory(this.path.urlToImage);
+        this.img = this.imageObject.img;
         aImg.appendChild(this.img);
         this.aImg = aImg;
         aside.appendChild(aImg);
@@ -181,5 +181,9 @@ export default class Article {
         } else {
             this.pDatePublished.innerText = '';
         }
+    }
+
+    removeListeners(){
+        this.imageObject.removeListeners();
     }
 }

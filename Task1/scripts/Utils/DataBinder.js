@@ -6,6 +6,11 @@ export default class DataBinding {
      * Create a DataBinding
      */
     constructor() {
+        this.initBindElements();
+        this.attachListeners();
+    }
+
+    initBindElements(){
         this.bindMap = {};
         this.scope = {};
         const bindedElsArray = document.querySelectorAll('*[data-bind]');
@@ -19,8 +24,6 @@ export default class DataBinding {
 
             this.bindMap[bindTo].push(element);
         });
-
-        this.attachListeners();
     }
 
     /**
@@ -59,25 +62,38 @@ export default class DataBinding {
      */
     attachListeners() {
         document.addEventListener('keyup', e => {
-            this.handleListeners(e, 'i')
+            this.onKeyUp(e);
         }, true);
 
         document.addEventListener('change', e => {
-            this.handleListeners(e, 's')
+            this.onChange(e);
         }, true);
+    }
+
+    onKeyUp(e){
+        const target = e.target;
+        const value = target.value;
+
+        this.handleListeners(target, value);
+    }
+
+    onChange(e){
+        const target = e.target;
+        let value = target.value;
+
+        if (value && target.selectedOptions) {
+            value = target.selectedOptions[0].text;
+        }
+
+        this.handleListeners(target, value);
     }
 
     /**
      * Handle listeners
      */
-    handleListeners(e, el) {
-        const target = e.target;
+    handleListeners(target, value) {
         const bindTo = target.dataset.bind;
-        let value = target.value;
 
-        if (el === 's' && value && target.selectedOptions) {
-            value = target.selectedOptions[0].text;
-        }
         if (bindTo && this.bindMap[bindTo]) {
             this.bindValue(bindTo, value);
             this.syncBindings();

@@ -1,6 +1,8 @@
 import Layout from './Views/Layout';
 import Reducers from './Reducers/Reducers';
 import Redux from './Redux/Redux';
+import NewsRequester from './NewsRequester';
+import {API_CONSTANTS} from "./constants";
 
 /*PERFORMS MEDIATOR ROLE*/
 /**
@@ -8,15 +10,6 @@ import Redux from './Redux/Redux';
  */
 export default class Application {
     constructor() {
-
-        const buttonGetArticle = document.getElementById('buttonArticle');
-        buttonGetArticle.addEventListener('click', this._onButtonGetArticlePress.bind(this));
-
-        const inputSearch = document.getElementById('inputSearch');
-        inputSearch.addEventListener('keyup', this._onInputSearchKeyUp.bind(this));
-
-        this.numberOfNewsRequests = 0;
-
         // Redux
         const reducer = new Reducers();
         const redux = new Redux();
@@ -24,6 +17,20 @@ export default class Application {
         this.store = redux.createStore(reducer.dataReducer);
 
         this.layout = new Layout(this.store);
+
+        this._addListeners();
+
+        this.numberOfNewsRequests = 0;
+
+
+    }
+
+    _addListeners() {
+        const buttonGetArticle = this.layout.getButtonArticle();
+        buttonGetArticle.addEventListener('click', () => this._onButtonGetArticlePress());
+
+        const inputSearch = this.layout.getSearch();
+        inputSearch.addEventListener('keyup', () => this._onInputSearchKeyUp());
     }
 
     /**
@@ -44,11 +51,12 @@ export default class Application {
      */
 
     /*DECORATOR PATTERN*/
+
     // decorator to handle number of requests
     _onButtonGetArticlePress() {
         this.numberOfNewsRequests++;
         this.store.dispatch({
-            type:"DATA_CALL"
+            type: "DATA_CALL"
         });
         this.requestNews();
     }
@@ -58,17 +66,10 @@ export default class Application {
      */
     requestNews() {
         if (!this.newsRequester) {
-            import(
-                /*webpackChunkName:"newsRequester"*/
-                /*webpackMode: "lazy"*/
-                './NewsRequester')
-                .then(NewsRequester => {
-                    const newsRequesterClass = NewsRequester.default;
-                    this.newsRequester = new newsRequesterClass();
-                    //Observer pattern
-                    this.newsRequester.subscribe(this.handleArticlesResponse.bind(this));
-                    this._requestNews();
-                }).catch(error => console.log(error));
+            this.newsRequester = new NewsRequester();
+            //Observer pattern
+            this.newsRequester.subscribe((response) => this.handleArticlesResponse(response));
+            this._requestNews();
         } else {
             this._requestNews();
         }
@@ -78,13 +79,36 @@ export default class Application {
      * Call to retrieve news
      */
     _requestNews() {
-        const selectedValues = this._getSelectedValues();
-        this.newsRequester.setSelectedValues(selectedValues);
+        const articles = this._getArticlesFromCache();
 
-        this.newsRequester.requestNews()
-            .catch(() => {
-                this.layout.clear(true);
-            })
+        if(articles){
+            this._onArticleReceived(articles, true);
+        } else {
+            const selectedValues = this._getSelectedValues();
+            this.newsRequester.setSelectedValues(selectedValues);
+
+            this.newsRequester.requestNews()
+                .catch(() => {
+                    this.layout.clear(true);
+                })
+        }
+    }
+
+    _getArticlesFromCache(){
+        const hash = this._getCacheHash();
+        const cache = this.store.getState().cache;
+        let articles = null;
+
+        if(cache && cache[hash]){
+            const currTime = new Date().getTime();
+            const prevTime = cache[hash].time;
+
+            if((currTime-prevTime) < 10000){
+                articles = cache[hash].articles;
+            }
+        }
+
+        return articles;
     }
 
     /**
@@ -94,19 +118,32 @@ export default class Application {
     handleArticlesResponse(response) {
         if (response.status && response.status === 'error') {
             this.store.dispatch({
-                type:"DATA_ERROR",
-                response : response
+                type: "DATA_ERROR",
+                response: response
             });
         }
 
         const articles = response.articles;
 
+        this._onArticleReceived(articles, false);
+    }
+
+    _onArticleReceived(articles, isFromCache){
         if (articles && articles.length > 0) {
-            this.store.dispatch({
-                type:"DATA_RECEIVED",
-                articles : articles
-            });
-            // this.appData.saveData(articles);
+            if(isFromCache){
+                this.store.dispatch({
+                    type: "DATA_RECEIVED_FROM_CACHE",
+                    articles: articles
+                });
+            } else {
+                const hash = this._getCacheHash();
+                this.store.dispatch({
+                    type: "DATA_RECEIVED",
+                    articles: articles,
+                    hash : hash
+                });
+            }
+
             this.layout.drawArticles();
 
         } else {
@@ -114,24 +151,30 @@ export default class Application {
         }
     }
 
+    _getCacheHash() {
+        const selectedValues = this._getSelectedValues();
+        const hash = `${selectedValues.source}-${selectedValues.endpoint}-${selectedValues.language}-${selectedValues.searchString}-${selectedValues.country}`;
+        return hash;
+    }
+
     /**
      * Return selected values
      * @return {object} Object contains selected values
      */
     _getSelectedValues() {
-        const selectSources = document.getElementById('selectSources');
+        const selectSources = this.layout.getSources();
         const source = selectSources.options[selectSources.selectedIndex].value;
 
-        const selectEndpoints = document.getElementById('selectEndpoints');
+        const selectEndpoints = this.layout.getEndpoints();
         const endpoint = selectEndpoints.options[selectEndpoints.selectedIndex].value;
 
-        const selectLanguages = document.getElementById('selectLanguages');
+        const selectLanguages = this.layout.getLanguages();
         let language = selectLanguages.options[selectLanguages.selectedIndex].value;
 
-        const inputSearch = document.getElementById('inputSearch');
+        const inputSearch = this.layout.getSearch();
         let searchString = inputSearch.value;
 
-        const selectCountries = document.getElementById('selectCountries');
+        const selectCountries = this.layout.getCountries();
         let country = selectCountries.options[selectCountries.selectedIndex].value;
 
         return {

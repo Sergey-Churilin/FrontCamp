@@ -1,7 +1,7 @@
 import Application from './Application';
 import '../css/style.css';
 import Data from '../models/data.json';
-import DataBinding from './Utils/DataBinding';
+import DataBinding from './Utils/DataBinder';
 
 window.onload = function () {
     init();

@@ -12,6 +12,24 @@ export default class ImagesFactory {
      * @param {string} urlToImage - url to image
      */
     constructor(urlToImage) {
+        this.img = this._getImage(urlToImage);
+
+        this.errorListener = () => {
+            if (this.img.src !== APP_CONSTANTS.DEFAULT_IMG) {
+                this.img.src = APP_CONSTANTS.DEFAULT_IMG;
+            }
+        };
+
+        this.img.addEventListener('error', this.errorListener);
+
+        this.img.classList.add('img');
+    }
+
+    removeListeners() {
+        this.img.removeEventListener('error', this.errorListener);
+    }
+
+    _getImage(urlToImage) {
         let image;
 
         if (urlToImage) {
@@ -20,14 +38,6 @@ export default class ImagesFactory {
             image = new NoImage();
         }
 
-        this.img = image.img;
-
-        this.img.onerror = function (oEvent) {
-            if (!this.src || this.src !== APP_CONSTANTS.DEFAULT_IMG) {
-                this.src = APP_CONSTANTS.DEFAULT_IMG;
-            }
-        };
-
-        this.img.classList.add('img');
+        return image.img;
     }
 }

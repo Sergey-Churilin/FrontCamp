@@ -22,12 +22,25 @@ export default class Reducers {
             case "DATA_CALL" :
                 return Object.assign({}, state, {dataRecieving: true});
 
-            case "DATA_RECEIVED" :
+            case "DATA_RECEIVED_FROM_CACHE":
                 return Object.assign({}, state, {
                     dataRecieving: false,
                     dataRecieved: true,
-                    articles: action.articles
+                    articles: action.articles,
                 });
+            case "DATA_RECEIVED" :
+                return Object.assign({}, state, {
+                        dataRecieving: false,
+                        dataRecieved: true,
+                        articles: action.articles,
+                        cache: {
+                            [action.hash]: {
+                                articles: action.articles,
+                                time: new Date().getTime()
+                            }
+                        }
+                    }
+                );
 
             case "DATA_ERROR" :
                 const errorHandler = new ErrorHandler();
