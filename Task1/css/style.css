@@ -20,6 +20,13 @@ main {
     padding-bottom: 30px;
 }
 
+.selectedValues{
+    padding: 0 10px;
+}
+
+.selectedValues span{
+    background: #63fecc;;
+}
 .mainSection {
     padding: 10px;
 }
@@ -128,6 +135,10 @@ footer a {
 }
 
 @media screen and (min-width: 600px) {
+    .selectedValues{
+        padding: 0 20px;
+    }
+
     .aside {
         float: left;
         width: 45%;

@@ -13,7 +13,102 @@ const APP_CONSTANTS = {
     DEFAULT_IMG
 };
 
+const arraySources = [
+    "abc-news",
+    "bbc-sport",
+    "bbc-news",
+    "cnn",
+    "fox-news",
+    "google-news-ru"
+];
+
+const arrayLanguages = [
+    {
+        'lang': '',
+        'desc': 'Select language'
+    },
+    {
+        'lang': 'ar',
+        'desc': 'Arabian'
+    },
+    {
+        'lang': 'en',
+        'desc': 'English'
+    },
+    {
+        'lang': 'de',
+        'desc': 'Deutch'
+    },
+    {
+        'lang': 'es',
+        'desc': 'Spain'
+    },
+    {
+        'lang': 'fr',
+        'desc': 'French'
+    },
+    {
+        'lang': 'it',
+        'desc': 'Italy'
+    },
+    {
+        'lang': 'pt',
+        'desc': 'Portuguese'
+    },
+    {
+        'lang': 'ru',
+        'desc': 'Russian'
+    },
+    {
+        'lang': 'sv',
+        'desc': 'Swedish'
+    }
+];
+
+const arrayCountires = [
+    {
+        'lang': '',
+        'desc': 'Select country'
+    },
+    {
+        'lang': 'ar',
+        'desc': 'Arabian'
+    },
+    {
+        'lang': 'de',
+        'desc': 'Deutch'
+    },
+    {
+        'lang': 'es',
+        'desc': 'Spain'
+    },
+    {
+        'lang': 'fr',
+        'desc': 'French'
+    },
+    {
+        'lang': 'it',
+        'desc': 'Italy'
+    },
+    {
+        'lang': 'pt',
+        'desc': 'Portuguese'
+    },
+    {
+        'lang': 'ru',
+        'desc': 'Russian'
+    },
+    {
+        'lang': 'sv',
+        'desc': 'Swedish'
+    }
+];
+
 const arrayEndpoints = [
+    {
+        'text': 'Select endpoint',
+        'path': ''
+    },
     {
         'text': 'Top headlines',
         'path': 'top-headlines'
@@ -28,9 +123,19 @@ const arrayEndpoints = [
     }
 ];
 
+const arrayBindValues = ['source', 'endpoint', 'language', 'country', 'search'];
+const arrayBindValuesTexts = ['Selected source: ', 'Selected endpoint: ', 'Selected language:', 'Selected country: ', 'Search string: '];
+const arrayBindValuesSpanTexts = ['abc-news'];
+
 export {
     API_CONSTANTS,
     APP_CONSTANTS,
-    arrayEndpoints
+    arraySources,
+    arrayLanguages,
+    arrayCountires,
+    arrayEndpoints,
+    arrayBindValues,
+    arrayBindValuesTexts,
+    arrayBindValuesSpanTexts
 }
 
