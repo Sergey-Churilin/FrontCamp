@@ -1,7 +1,7 @@
-import Application from './application';
+import Application from './Application';
 import '../css/style.css';
 import Data from '../models/data.json';
-let application = null;
+import DataBinding from './Utils/DataBinder';
 
 window.onload = function () {
     init();
@@ -9,6 +9,7 @@ window.onload = function () {
 };
 
 function init() {
-    application = new Application();
-    console.log(application);
+    const application = new Application();
+    new DataBinding();
+    console.log(application.numberOfNewsRequests);
 }
