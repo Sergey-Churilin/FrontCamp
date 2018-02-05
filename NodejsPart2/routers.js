@@ -22,7 +22,6 @@ router.use(function (req, res, next) {
         level: 'info',
         message: 'url: ' + JSON.stringify(url) + ', date: ' + new Date()
     });
-   // console.log('Something is happening.');
     next(); // make sure we go to the next routes and don't stop here
 });
 
@@ -73,7 +72,7 @@ router.route('/blogs')
     })
 
     // get all the blogs (accessed at GET http://localhost:8080/blogs)
-    .get(passportConfig.isAuthenticated, function (req, res, next) {
+    .get(function (req, res, next) {
         BlogModel.find({}, function (err, blogs) {
             if (err) {
                 err.description = "Can't get blogs";

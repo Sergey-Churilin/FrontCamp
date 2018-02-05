@@ -1,5 +1,5 @@
 const logger = require('./logger');
-const errorHandler = {};
+let errorHandler = {};
 errorHandler.handleError = function(err, req, res) {
     logger.log({
         level: 'error',
@@ -32,8 +32,4 @@ errorHandler.handleError = function(err, req, res) {
     res.render('error', objExplanation);
 };
 
-errorHandler.handleAuthenticationError = function(err){
-    console.log("error in Auth");
-    console.log(err);
-};
 module.exports = errorHandler;
