@@ -1,17 +1,14 @@
-// call the packages we need
 const express = require('express');
 const bodyParser = require('body-parser');
 const router = require('./routers');
 const errorHandler = require('./errorHandler');
-const passport = require('./passportConfig').passport;
+const passportConfig = require('./passportConfig')();
 
 const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'pug');
-app.use(passport.initialize());
-app.use(passport.session());
 app.use('/', router);
 
 app.get('*', function (req, res) {
