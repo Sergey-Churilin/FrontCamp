@@ -13,7 +13,6 @@ module.exports = function() {
     const strategy = new Strategy(params, function(payload, done) {
         UserModel.findOne({_id: payload.id}, function (err, user) {
             if (user) {
-                console.log(user)
                 return done(null, {
                     id: user.id,
                     role:user.role

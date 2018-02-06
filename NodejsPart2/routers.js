@@ -36,7 +36,7 @@ router.get('/', function (req, res) {
 // ----------------------------------------------------
 router.route('/login')
 
-// create a blog (accessed at POST http://localhost:8080/blogs)
+// create a new user or return existed (accessed at POST http://localhost:8080/login)
     .post(function (req, res, next) {
         const userData = req.body;
         UserModel.findOne({userLogin: userData.username, userPassword: userData.password}, function (err, user) {
@@ -62,6 +62,11 @@ router.route('/login')
         });
 
 
+    })
+
+    // get all the blogs (accessed at GET http://localhost:8080/blogs)
+    .get(function (req, res, next) {
+        res.render('index', {title: 'Login page', message: 'Please Log In!'})
     });
 
 // on routes that end in /blogs
