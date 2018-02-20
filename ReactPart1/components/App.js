@@ -3,7 +3,6 @@ import Post from './Post'
 import AddPost from './AddPost'
 import Filter from './Filter'
 import postsStore from './store';
-import Requester from '../Helpers/Requester';
 const uuidV4 = require('uuid/v4');
 class App extends React.Component {
     constructor(props){
@@ -13,14 +12,6 @@ class App extends React.Component {
         this.deletePost = this.deletePost.bind(this);
         this.addPost = this.addPost.bind(this);
         this.filterPost = this.filterPost.bind(this);
-    }
-
-    componentDidMount(){
-        /*Requester.getPosts()
-            .then((posts)=>{
-                console.log("posts get");
-                this.setState({posts:posts});
-            })*/
     }
 
     addPost(postData){
@@ -61,7 +52,7 @@ class App extends React.Component {
 
         return (
             <div>
-                <h1 className="title">Awesome Posts application</h1>
+                <h1 className="title">Posts application</h1>
                 {postsArray}
                 <AddPost addPost={this.addPost}/>
                 <Filter filterPost={this.filterPost}/>
