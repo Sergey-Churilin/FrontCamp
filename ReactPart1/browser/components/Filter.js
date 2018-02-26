@@ -22,5 +22,5 @@ class Filter extends React.Component {
     }
 }
 
-export default Filter;
+module.exports = Filter;
 

@@ -1,9 +1,10 @@
 import React from 'react';
-import Post from './Post'
-import AddPost from './AddPost'
-import Filter from './Filter'
+import Post from './Post';
+import AddPost from './AddPost';
+import Filter from './Filter';
 import postsStore from './store';
 const uuidV4 = require('uuid/v4');
+
 class App extends React.Component {
     constructor(props){
         super(props);
@@ -62,4 +63,4 @@ class App extends React.Component {
     }
 }
 
-export default App;
+module.exports =  App;

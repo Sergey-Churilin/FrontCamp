@@ -1,4 +1,4 @@
-;import React from 'react';
+import React from 'react';
 class AddPost extends React.Component {
     constructor(props){
         super(props);
@@ -27,7 +27,7 @@ class AddPost extends React.Component {
     }
 }
 
-export default AddPost;
+module.exports = AddPost;
 AddPost.defaultProps = {
     author: "Anonim",
     post : "post"
