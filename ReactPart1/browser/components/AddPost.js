@@ -1,5 +1,4 @@
 import React from 'react';
-import Menu from './Menu';
 
 class AddPost extends React.Component {
     constructor(props) {
@@ -16,16 +15,13 @@ class AddPost extends React.Component {
 
     render() {
         return (
-            <div>
-                <Menu/>
-                <div className="addPost">
-                    <h2>Add post</h2>
-                    <form onSubmit={this.submit}>
-                        <input type="text" id="author" name="author" ref="author" placeholder="author name"/>
-                        <textarea name="post" ref="post" placeholder="post"/>
-                        <button>Add</button>
-                    </form>
-                </div>
+            <div className="addPost">
+                <h2>Add post</h2>
+                <form onSubmit={this.submit}>
+                    <input type="text" id="author" name="author" ref="author" placeholder="author name"/>
+                    <textarea name="post" ref="post" placeholder="post"/>
+                    <button>Add</button>
+                </form>
             </div>
         );
     }

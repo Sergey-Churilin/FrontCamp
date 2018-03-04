@@ -1,7 +1,6 @@
 import React from 'react';
 import Post from './Post';
 import AddPost from './AddPost';
-import Menu from './Menu';
 import Filter from './Filter';
 import postsStore from './store';
 const uuidV4 = require('uuid/v4');
@@ -64,9 +63,10 @@ class App extends React.Component {
         }.bind(this));
 
         return (
-            <div><Menu />
+            <div>
                 <h1 className="title">Posts application</h1>
                 {postsArray}
+                <AddPost/>
                 <Filter filterPost={this.filterPost}/>
             </div>
         )

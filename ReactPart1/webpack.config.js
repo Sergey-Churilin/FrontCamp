@@ -1,15 +1,11 @@
 const webpack = require('webpack');
-const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-//const autoprefixer = require('autoprefixer');
 const nodeExternals = require('webpack-node-externals');
 
 const browserConfig = {
     entry: './browser/index.js',
-    //entry: './scripts/main.js',
     output: {
         path: __dirname,
-        filename: './dist/bundle.js',
+        filename: './build/bundle.js',
     },
     module: {
         loaders: [{
@@ -29,15 +25,6 @@ const browserConfig = {
             maxChunks: 1
         })
     ]
-
-    /*plugins: [
-        new ExtractTextPlugin({
-            filename: 'browser/css/[name].css'
-        }),
-        new InlineManifestWebpackPlugin({
-            name: 'webpackManifest'
-        })
-    ]*/
 };
 
 const serverConfig = {
@@ -45,7 +32,7 @@ const serverConfig = {
     target: 'node',
     output: {
         path: __dirname,
-        filename: 'server.js',
+        filename: './build/server.js',
         libraryTarget: 'commonjs2'
     },
     resolve: {
