@@ -4,6 +4,7 @@ const router = express.Router();
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const App = require('../browser/components/App');
+const Menu = require('../browser/components/Menu');
 const logger = require('./logger');
 const jwt = require("jwt-simple");
 const PostModel = require('./Database/PostSchema.js');
@@ -52,7 +53,10 @@ router.use(function (req, res, next) {
 });
 
 router.get('/', function (req, res) {
-    res.json({message: 'hooray! welcome to our post!'});
+    const content = ReactDOMServer.renderToString(<App/>);
+    // console.log(content);
+    res.render('index', {entry: content});
+   // res.json({message: 'hooray! welcome to our post!'});
 });
 
 // on routes that end in /posts
@@ -121,6 +125,9 @@ router.route('/posts')
                 err.description = "Can't get posts";
                 next(err);
             } else {
+                //const content = ReactDOMServer.renderToString(<App/>);
+                // console.log(content);
+                //res.render('index', {entry: content});
                 res.send(posts);
             }
         });

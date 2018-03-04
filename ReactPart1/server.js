@@ -61,7 +61,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -72,24 +72,101 @@ module.exports = require("react");
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
-
-module.exports = require("mongoose");
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-module.exports = require("express");
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var winston = __webpack_require__(17);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _reactRouterDom = __webpack_require__(15);
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Menu = function (_React$Component) {
+    _inherits(Menu, _React$Component);
+
+    function Menu() {
+        _classCallCheck(this, Menu);
+
+        return _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).apply(this, arguments));
+    }
+
+    _createClass(Menu, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                _reactRouterDom.BrowserRouter,
+                null,
+                _react2.default.createElement(
+                    'nav',
+                    { className: 'menu' },
+                    _react2.default.createElement(
+                        _reactRouterDom.Link,
+                        { to: '/' },
+                        'All'
+                    ),
+                    _react2.default.createElement(
+                        _reactRouterDom.Link,
+                        { to: '/posts' },
+                        'All posts'
+                    ),
+                    _react2.default.createElement(
+                        _reactRouterDom.Link,
+                        { to: '/addpost' },
+                        'Add post'
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Menu;
+}(_react2.default.Component);
+
+module.exports = Menu;
+;
+
+var _temp = function () {
+    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+        return;
+    }
+
+    __REACT_HOT_LOADER__.register(Menu, 'Menu', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart1/browser/components/Menu.js');
+}();
+
+;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+module.exports = require("mongoose");
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("express");
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var winston = __webpack_require__(20);
 var transports = [new winston.transports.File({ filename: 'debug.log', level: 'debug' }), new winston.transports.File({ filename: 'error.log', level: 'error' })];
 var logger = new winston.createLogger({
     level: 'info',
@@ -113,13 +190,13 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var mongoose = __webpack_require__(1);
+var mongoose = __webpack_require__(2);
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
@@ -148,16 +225,16 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var passport = __webpack_require__(20);
-var passportJWT = __webpack_require__(21);
-var UserModel = __webpack_require__(4);
-var cfg = __webpack_require__(6);
+var passport = __webpack_require__(23);
+var passportJWT = __webpack_require__(24);
+var UserModel = __webpack_require__(5);
+var cfg = __webpack_require__(7);
 var ExtractJwt = passportJWT.ExtractJwt;
 var Strategy = passportJWT.Strategy;
 var params = {
@@ -205,7 +282,7 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -230,7 +307,7 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -242,12 +319,12 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var express = __webpack_require__(2);
+var express = __webpack_require__(3);
 
-var bodyParser = __webpack_require__(8);
-var router = __webpack_require__(9);
-var errorHandler = __webpack_require__(22);
-var passportConfig = __webpack_require__(5)();
+var bodyParser = __webpack_require__(9);
+var router = __webpack_require__(10);
+var errorHandler = __webpack_require__(25);
+var passportConfig = __webpack_require__(6)();
 
 var app = express();
 app.use(express.json());
@@ -264,7 +341,7 @@ app.get('*', function (req, res) {
 
 app.use(function (err, req, res, next) {
     if (err) {
-        res.send(err);
+        //res.send(err);
         errorHandler.handleError(err, req, res);
     }
 });
@@ -285,32 +362,33 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports) {
 
 module.exports = require("body-parser");
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // call the packages we need
-var express = __webpack_require__(2);
+var express = __webpack_require__(3);
 var router = express.Router();
 var React = __webpack_require__(0);
-var ReactDOMServer = __webpack_require__(10);
-var App = __webpack_require__(11);
-var logger = __webpack_require__(3);
-var jwt = __webpack_require__(18);
-var PostModel = __webpack_require__(19);
-var UserModel = __webpack_require__(4);
-var passportConfig = __webpack_require__(5)();
-var cfg = __webpack_require__(6);
+var ReactDOMServer = __webpack_require__(11);
+var App = __webpack_require__(12);
+var Menu = __webpack_require__(1);
+var logger = __webpack_require__(4);
+var jwt = __webpack_require__(21);
+var PostModel = __webpack_require__(22);
+var UserModel = __webpack_require__(5);
+var passportConfig = __webpack_require__(6)();
+var cfg = __webpack_require__(7);
 
-var mongoose = __webpack_require__(1);
+var mongoose = __webpack_require__(2);
 mongoose.connect('mongodb://Siarhei:w333eq1@ds211588.mlab.com:11588/blog');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -351,7 +429,10 @@ router.use(function (req, res, next) {
 });
 
 router.get('/', function (req, res) {
-    res.json({ message: 'hooray! welcome to our post!' });
+    var content = ReactDOMServer.renderToString(React.createElement(App, null));
+    // console.log(content);
+    res.render('index', { entry: content });
+    // res.json({message: 'hooray! welcome to our post!'});
 });
 
 // on routes that end in /posts
@@ -418,6 +499,9 @@ router.route('/posts')
             err.description = "Can't get posts";
             next(err);
         } else {
+            //const content = ReactDOMServer.renderToString(<App/>);
+            // console.log(content);
+            //res.render('index', {entry: content});
             res.send(posts);
         }
     });
@@ -553,13 +637,13 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -571,21 +655,29 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Post = __webpack_require__(12);
+var _Post = __webpack_require__(13);
 
 var _Post2 = _interopRequireDefault(_Post);
 
-var _AddPost = __webpack_require__(13);
+var _AddPost = __webpack_require__(14);
 
 var _AddPost2 = _interopRequireDefault(_AddPost);
 
-var _Filter = __webpack_require__(14);
+var _Menu = __webpack_require__(1);
+
+var _Menu2 = _interopRequireDefault(_Menu);
+
+var _Filter = __webpack_require__(16);
 
 var _Filter2 = _interopRequireDefault(_Filter);
 
-var _store = __webpack_require__(15);
+var _store = __webpack_require__(17);
 
 var _store2 = _interopRequireDefault(_store);
+
+var _axios = __webpack_require__(18);
+
+var _axios2 = _interopRequireDefault(_axios);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -595,7 +687,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var uuidV4 = __webpack_require__(16);
+var uuidV4 = __webpack_require__(19);
 
 var App = function (_React$Component) {
     _inherits(App, _React$Component);
@@ -613,6 +705,15 @@ var App = function (_React$Component) {
     }
 
     _createClass(App, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            _axios2.default.get('http://localhost:8080/posts').then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    }, {
         key: 'addPost',
         value: function addPost(postData) {
             var filter = this.state.filter;
@@ -662,13 +763,13 @@ var App = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 null,
+                _react2.default.createElement(_Menu2.default, null),
                 _react2.default.createElement(
                     'h1',
                     { className: 'title' },
                     'Posts application'
                 ),
                 postsArray,
-                _react2.default.createElement(_AddPost2.default, { addPost: this.addPost }),
                 _react2.default.createElement(_Filter2.default, { filterPost: this.filterPost })
             );
         }
@@ -691,7 +792,7 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -772,7 +873,7 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -783,6 +884,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
+
+var _Menu = __webpack_require__(1);
+
+var _Menu2 = _interopRequireDefault(_Menu);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -805,7 +910,7 @@ var AddPost = function (_React$Component) {
     }
 
     _createClass(AddPost, [{
-        key: "submit",
+        key: 'submit',
         value: function submit(e) {
             e.preventDefault();
             this.props.addPost({ author: this.refs.author.value, post: this.refs.post.value });
@@ -813,25 +918,30 @@ var AddPost = function (_React$Component) {
             this.refs.post.value = "";
         }
     }, {
-        key: "render",
+        key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                "div",
-                { className: "addPost" },
+                'div',
+                null,
+                _react2.default.createElement(_Menu2.default, null),
                 _react2.default.createElement(
-                    "h2",
-                    null,
-                    "Add post"
-                ),
-                _react2.default.createElement(
-                    "form",
-                    { onSubmit: this.submit },
-                    _react2.default.createElement("input", { type: "text", id: "author", name: "author", ref: "author", placeholder: "author name" }),
-                    _react2.default.createElement("textarea", { name: "post", ref: "post", placeholder: "post" }),
+                    'div',
+                    { className: 'addPost' },
                     _react2.default.createElement(
-                        "button",
+                        'h2',
                         null,
-                        "Add"
+                        'Add post'
+                    ),
+                    _react2.default.createElement(
+                        'form',
+                        { onSubmit: this.submit },
+                        _react2.default.createElement('input', { type: 'text', id: 'author', name: 'author', ref: 'author', placeholder: 'author name' }),
+                        _react2.default.createElement('textarea', { name: 'post', ref: 'post', placeholder: 'post' }),
+                        _react2.default.createElement(
+                            'button',
+                            null,
+                            'Add'
+                        )
                     )
                 )
             );
@@ -853,13 +963,19 @@ var _temp = function () {
         return;
     }
 
-    __REACT_HOT_LOADER__.register(AddPost, "AddPost", "D:/Mavric/FrontCamp/FrontCamp/ReactPart1/browser/components/AddPost.js");
+    __REACT_HOT_LOADER__.register(AddPost, 'AddPost', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart1/browser/components/AddPost.js');
 }();
 
 ;
 
 /***/ }),
-/* 14 */
+/* 15 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-dom");
+
+/***/ }),
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -929,7 +1045,7 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 15 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -969,31 +1085,37 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 16 */
+/* 18 */
+/***/ (function(module, exports) {
+
+module.exports = require("axios");
+
+/***/ }),
+/* 19 */
 /***/ (function(module, exports) {
 
 module.exports = require("uuid/v4");
 
 /***/ }),
-/* 17 */
+/* 20 */
 /***/ (function(module, exports) {
 
 module.exports = require("winston");
 
 /***/ }),
-/* 18 */
+/* 21 */
 /***/ (function(module, exports) {
 
 module.exports = require("jwt-simple");
 
 /***/ }),
-/* 19 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var mongoose = __webpack_require__(1);
+var mongoose = __webpack_require__(2);
 var Schema = mongoose.Schema;
 
 var PostSchema = new Schema({
@@ -1021,25 +1143,25 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 20 */
+/* 23 */
 /***/ (function(module, exports) {
 
 module.exports = require("passport");
 
 /***/ }),
-/* 21 */
+/* 24 */
 /***/ (function(module, exports) {
 
 module.exports = require("passport-jwt");
 
 /***/ }),
-/* 22 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var logger = __webpack_require__(3);
+var logger = __webpack_require__(4);
 var errorHandler = {};
 errorHandler.handleError = function (err, req, res) {
     logger.log({

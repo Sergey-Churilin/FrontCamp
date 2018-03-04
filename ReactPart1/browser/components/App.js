@@ -1,9 +1,11 @@
 import React from 'react';
 import Post from './Post';
 import AddPost from './AddPost';
+import Menu from './Menu';
 import Filter from './Filter';
 import postsStore from './store';
 const uuidV4 = require('uuid/v4');
+import axios from 'axios';
 
 class App extends React.Component {
     constructor(props){
@@ -13,6 +15,16 @@ class App extends React.Component {
         this.deletePost = this.deletePost.bind(this);
         this.addPost = this.addPost.bind(this);
         this.filterPost = this.filterPost.bind(this);
+    }
+
+    componentDidMount(){
+        axios.get('http://localhost:8080/posts')
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     addPost(postData){
@@ -52,10 +64,9 @@ class App extends React.Component {
         }.bind(this));
 
         return (
-            <div>
+            <div><Menu />
                 <h1 className="title">Posts application</h1>
                 {postsArray}
-                <AddPost addPost={this.addPost}/>
                 <Filter filterPost={this.filterPost}/>
             </div>
         )

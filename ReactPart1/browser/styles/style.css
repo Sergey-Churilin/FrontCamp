@@ -102,3 +102,13 @@ body{
 .addPost button:hover{
     transform: scale(1.02);
 }
+
+.menu{
+text-align: center;
+}
+
+.menu a{
+    margin: 0 10px;
+    color: #05603a;
+    text-transform: uppercase;
+}

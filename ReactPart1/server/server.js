@@ -20,7 +20,7 @@ app.get('*', function (req, res) {
 
 app.use(function (err, req, res, next) {
     if(err){
-        res.send(err);
+        //res.send(err);
         errorHandler.handleError(err, req, res);
     }
 });
