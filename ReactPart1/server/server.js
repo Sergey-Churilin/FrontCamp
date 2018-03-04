@@ -11,10 +11,4 @@ app.set('view engine', 'pug');
 
 app.use('/', router);
 
-app.get('*', function (req, res) {
-    // res.render('index', {title: 'Welcome page', message: 'Hello stranger!'})
-    res.send("Hello");
-});
-
-
 app.listen(8080);

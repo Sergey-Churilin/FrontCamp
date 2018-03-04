@@ -66,7 +66,7 @@ class App extends React.Component {
             <div>
                 <h1 className="title">Posts application</h1>
                 {postsArray}
-                <AddPost/>
+                <AddPost addPost={this.addPost}/>
                 <Filter filterPost={this.filterPost}/>
             </div>
         )
