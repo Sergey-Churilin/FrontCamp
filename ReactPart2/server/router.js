@@ -21,7 +21,7 @@ const passportConfig = require('./passportConfig')();
 const cfg = require("./config.js");
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://Siarhei:w333eq1@ds211588.mlab.com:11588/blog');
+mongoose.connect('mongodb://Siarhei:w333eq1@ds237868.mlab.com:37868/posts');
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
@@ -29,7 +29,7 @@ router.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Credentials', 'true');
     res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
+    res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization');
 //and remove cacheing so we get the most recent comments
     res.setHeader('Cache-Control', 'no-cache');
     next();
@@ -108,8 +108,7 @@ router.route('/login')
             } else {
                 const newUser = new UserModel({
                     'userLogin': userData.username,
-                    'userPassword': userData.password,
-                    'role': userData.role
+                    'userPassword': userData.password
                 });
 
                 newUser.save(function (err, newUser) {
@@ -127,18 +126,13 @@ router.route('/login')
 
     })
 
-    // get all the posts (accessed at GET http://localhost:8080/posts)
-    .get(function (req, res, next) {
-        res.render('index', {title: 'Login page', message: 'Please Log In!'})
-    });
-
 // on routes that end in /posts
 // ----------------------------------------------------
 router.route('/posts')
 
 // create a post (accessed at POST http://localhost:8080/posts)
-//.post(isAdmin, function (req, res, next) {
-    .post(function (req, res, next) {
+.post(isLoggedIn, function (req, res, next) {
+   // .post(function (req, res, next) {
         const postData = req.body;
         const newPost = new PostModel({'author': postData.author, 'post': postData.post, 'visible' : true});
         newPost.save(function (err, newPost) {
@@ -191,7 +185,7 @@ router.route('/posts/:post_id')
     })
 
     // update the post with this id (accessed at PUT http://localhost:8080/posts/:post_id)
-    .put(isAdmin, function (req, res, next) {
+    .put(isLoggedIn, function (req, res, next) {
         const id = req.params.post_id;
         const postData = req.body;
 
@@ -233,7 +227,8 @@ router.route('/posts/:post_id')
         });
     })
     // delete the post with this id (accessed at DELETE http://localhost:8080/posts/:post_id)
-    .delete(isAdmin, function (req, res, next) {
+     .delete(isLoggedIn, function (req, res, next) {
+    //.delete(function (req, res, next) {
         const id = req.params.post_id;
         PostModel.deleteOne({_id: id}, function (err) {
             if (err) {
@@ -245,20 +240,18 @@ router.route('/posts/:post_id')
         });
     });
 
-function isAdmin(req, res, next) {
+function isLoggedIn(req, res, next) {
     const token = req.headers['authorization'];
-
     if (token) {
-        const payload = jwt.decode(token.slice(4), cfg.jwtSecret);
-        const role = payload.role;
+        const payload = jwt.decode(token,cfg.jwtSecret);
 
-        if (role === "admin") {
+        if (payload) {
             next();
         } else {
             res.json({message: 'NO RIGHTS'});
         }
     } else {
-        res.json({message: 'NO RIGHTS'});
+        res.json({message: 'NO TOKEN'});
     }
 }
 
@@ -269,8 +262,7 @@ function sendToken(res, user) {
     };
     const token = jwt.encode(payload, cfg.jwtSecret);
     res.json({
-        token: token,
-        user: user
+        token: token
     });
 }
 

@@ -14,12 +14,13 @@ class App extends React.Component {
     render() {
         const posts = this.props.appPosts.posts;
         const postsArray = [];
+        if(posts){
+            const filteredPosts = posts.filter((post) => post.visible);
 
-        const filteredPosts = posts.filter((post) => post.visible);
-
-        filteredPosts.forEach(function(post, index){
-            postsArray.push(<Post key={index} post={post} deletePost={this.props.deletePost}/>);
-        }.bind(this));
+            filteredPosts.forEach(function(post){
+                postsArray.push(<Post key={post._id} post={post} deletePost={this.props.deletePost}/>);
+            }.bind(this));
+        }
 
         return (
             <div><Menu />

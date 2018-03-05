@@ -14,8 +14,7 @@ module.exports = function() {
         UserModel.findOne({_id: payload.id}, function (err, user) {
             if (user) {
                 return done(null, {
-                    id: user.id,
-                    role:user.role
+                    id: user.id
                 });
             } else {
                 return done(new Error("User not found"), null);

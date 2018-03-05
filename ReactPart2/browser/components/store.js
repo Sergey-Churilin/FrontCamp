@@ -1,9 +1,11 @@
 import {createStore, combineReducers, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import postsReducer from '../reducers/PostReducer';
+import userReducer from '../reducers/UserReducer';
 
 const appReducer = combineReducers({
-    appPosts: postsReducer
+    appPosts: postsReducer,
+    authorization:userReducer
 });
 
 const store = createStore(appReducer,

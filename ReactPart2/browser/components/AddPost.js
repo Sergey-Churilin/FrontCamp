@@ -12,7 +12,7 @@ class AddPost extends React.Component {
 
     submit(e) {
         e.preventDefault();
-        this.props.addPost({author: this.refs.author.value, post: this.refs.post.value});
+        this.props.addPost({author: this.refs.author.value, post: this.refs.post.value}, this.props.authorization.token);
         this.refs.author.value = "";
         this.refs.post.value = "";
     }

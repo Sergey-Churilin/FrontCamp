@@ -112,3 +112,7 @@ text-align: center;
     color: #05603a;
     text-transform: uppercase;
 }
+
+.invisible{
+    display: none;
+}

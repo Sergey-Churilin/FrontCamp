@@ -1,4 +1,6 @@
 import React from 'react';
+import {mapActionsToProps, mapStateToProps} from "../selectors/Selectors";
+import {connect} from "react-redux";
 class Filter extends React.Component {
     constructor(props){
         super(props);
@@ -7,7 +9,9 @@ class Filter extends React.Component {
 
     submit(e){
         e.preventDefault();
-        this.props.filterPosts(this.refs.author.value);
+        const value = this.refs.author.value;
+        //this.props.history.push('/filter/'+value);
+        this.props.filterPosts(value);
     }
 
     render() {
@@ -22,5 +26,5 @@ class Filter extends React.Component {
     }
 }
 
-module.exports = Filter;
+module.exports = connect(mapStateToProps, mapActionsToProps)(Filter);
 

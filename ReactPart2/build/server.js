@@ -118,8 +118,7 @@ var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
     userLogin: { type: String, min: [3, 'Too small userLogin'] },
-    userPassword: { type: String, min: [3, 'Too small userPassword'] },
-    role: String
+    userPassword: { type: String, min: [3, 'Too small userPassword'] }
 });
 
 var UserModel = mongoose.model('User', UserSchema);
@@ -164,8 +163,7 @@ module.exports = function () {
         UserModel.findOne({ _id: payload.id }, function (err, user) {
             if (user) {
                 return done(null, {
-                    id: user.id,
-                    role: user.role
+                    id: user.id
                 });
             } else {
                 return done(new Error("User not found"), null);
@@ -320,7 +318,7 @@ var passportConfig = __webpack_require__(4)();
 var cfg = __webpack_require__(5);
 
 var mongoose = __webpack_require__(0);
-mongoose.connect('mongodb://Siarhei:w333eq1@ds211588.mlab.com:11588/blog');
+mongoose.connect('mongodb://Siarhei:w333eq1@ds237868.mlab.com:37868/posts');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
@@ -328,7 +326,7 @@ router.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Credentials', 'true');
     res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
+    res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization');
     //and remove cacheing so we get the most recent comments
     res.setHeader('Cache-Control', 'no-cache');
     next();
@@ -406,8 +404,7 @@ router.route('/login')
         } else {
             var newUser = new UserModel({
                 'userLogin': userData.username,
-                'userPassword': userData.password,
-                'role': userData.role
+                'userPassword': userData.password
             });
 
             newUser.save(function (err, newUser) {
@@ -428,15 +425,43 @@ router.route('/login')
     res.render('index', { title: 'Login page', message: 'Please Log In!' });
 });
 
+/*router.route('/logout')
+
+// create a new user or return existed (accessed at POST http://localhost:8080/login)
+    .post(function (req, res, next) {
+        const userData = req.body;
+        UserModel.findOne({userLogin: userData.username, userPassword: userData.password}, function (err, user) {
+            if (user) {
+                sendToken(res, user);
+            } else {
+                const newUser = new UserModel({
+                    'userLogin': userData.username,
+                    'userPassword': userData.password,
+                    'role': userData.role
+                });
+
+                newUser.save(function (err, newUser) {
+                    if (err) {
+                        err.description = "Error in adding new user";
+                        console.log('error to add new user');
+                        next(err);
+                    } else {
+                        sendToken(res, newUser);
+                    }
+                });
+            }
+        });
+    })*/
+
 // on routes that end in /posts
 // ----------------------------------------------------
 router.route('/posts')
 
 // create a post (accessed at POST http://localhost:8080/posts)
-//.post(isAdmin, function (req, res, next) {
-.post(function (req, res, next) {
+.post(isLoggedIn, function (req, res, next) {
+    // .post(function (req, res, next) {
     var postData = req.body;
-    var newPost = new PostModel({ 'author': postData.author, 'body': postData.body });
+    var newPost = new PostModel({ 'author': postData.author, 'post': postData.post, 'visible': true });
     newPost.save(function (err, newPost) {
         if (err) {
             err.description = "Error in adding new post";
@@ -487,7 +512,7 @@ router.route('/posts/:post_id')
 })
 
 // update the post with this id (accessed at PUT http://localhost:8080/posts/:post_id)
-.put(isAdmin, function (req, res, next) {
+.put(isLoggedIn, function (req, res, next) {
     var id = req.params.post_id;
     var postData = req.body;
 
@@ -529,7 +554,8 @@ router.route('/posts/:post_id')
     });
 })
 // delete the post with this id (accessed at DELETE http://localhost:8080/posts/:post_id)
-.delete(isAdmin, function (req, res, next) {
+.delete(isLoggedIn, function (req, res, next) {
+    //.delete(function (req, res, next) {
     var id = req.params.post_id;
     PostModel.deleteOne({ _id: id }, function (err) {
         if (err) {
@@ -541,20 +567,18 @@ router.route('/posts/:post_id')
     });
 });
 
-function isAdmin(req, res, next) {
+function isLoggedIn(req, res, next) {
     var token = req.headers['authorization'];
-
     if (token) {
-        var payload = jwt.decode(token.slice(4), cfg.jwtSecret);
-        var role = payload.role;
+        var payload = jwt.decode(token, cfg.jwtSecret);
 
-        if (role === "admin") {
+        if (payload) {
             next();
         } else {
             res.json({ message: 'NO RIGHTS' });
         }
     } else {
-        res.json({ message: 'NO RIGHTS' });
+        res.json({ message: 'NO TOKEN' });
     }
 }
 
@@ -565,8 +589,7 @@ function sendToken(res, user) {
     };
     var token = jwt.encode(payload, cfg.jwtSecret);
     res.json({
-        token: token,
-        user: user
+        token: token
     });
 }
 
@@ -581,7 +604,7 @@ var _temp = function () {
         return;
     }
 
-    __REACT_HOT_LOADER__.register(isAdmin, 'isAdmin', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/router.js');
+    __REACT_HOT_LOADER__.register(isLoggedIn, 'isLoggedIn', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/router.js');
 
     __REACT_HOT_LOADER__.register(sendToken, 'sendToken', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/router.js');
 
@@ -618,12 +641,13 @@ var Schema = mongoose.Schema;
 
 var PostSchema = new Schema({
     author: { type: String, min: [3, 'Too small Title'] },
-    body: String
+    post: String,
+    visible: Boolean
 });
 
-var BlogModel = mongoose.model('Post', PostSchema);
+var PostModel = mongoose.model('Post', PostSchema);
 
-module.exports = BlogModel;
+module.exports = PostModel;
 ;
 
 var _temp = function () {
@@ -635,7 +659,7 @@ var _temp = function () {
 
     __REACT_HOT_LOADER__.register(PostSchema, 'PostSchema', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/Database/PostSchema.js');
 
-    __REACT_HOT_LOADER__.register(BlogModel, 'BlogModel', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/Database/PostSchema.js');
+    __REACT_HOT_LOADER__.register(PostModel, 'PostModel', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/Database/PostSchema.js');
 }();
 
 ;

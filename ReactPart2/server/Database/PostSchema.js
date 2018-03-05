@@ -7,7 +7,7 @@ const PostSchema = new Schema({
     visible:Boolean
 });
 
-const BlogModel = mongoose.model('Post', PostSchema);
+const PostModel = mongoose.model('Post', PostSchema);
 
-module.exports = BlogModel;
+module.exports = PostModel;
 
