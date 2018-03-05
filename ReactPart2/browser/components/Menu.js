@@ -6,8 +6,8 @@ class Menu extends React.Component {
         return (
             <div className="menu">
                 <Link to="/">All</Link>
-                <Link to="/posts">All posts</Link>
-                <Link to="/addpost">Add post</Link>
+                <Link to="/main">All posts</Link>
+                <Link to="/addPost">Add post</Link>
             </div>
         );
 

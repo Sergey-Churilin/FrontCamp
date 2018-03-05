@@ -18,11 +18,16 @@ app.get('*', function (req, res) {
     res.send("Hello");
 });
 
-app.use(function (err, req, res, next) {
+app.use(function (err, req, res) {
     if(err){
         //res.send(err);
         errorHandler.handleError(err, req, res);
     }
 });
 
-app.listen(8080);
+
+
+
+
+
+app.listen(3000);

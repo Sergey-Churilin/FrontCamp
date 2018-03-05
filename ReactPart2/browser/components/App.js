@@ -2,7 +2,6 @@ import React from 'react';
 import Post from './Post';
 import Menu from './Menu';
 import Filter from './Filter';
-import AddPost from './AddPost';
 import {connect} from 'react-redux';
 import {mapStateToProps, mapActionsToProps} from '../selectors/Selectors';
 
@@ -27,7 +26,6 @@ class App extends React.Component {
                 <h1 className="title">Posts application</h1>
                 {postsArray}
                 <Filter filterPosts={this.props.filterPosts}/>
-                <AddPost addPost={this.props.addPost}/>
             </div>
         )
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import Menu from './Menu';
+import {mapStateToProps, mapActionsToProps} from '../selectors/Selectors';
+import {connect} from "react-redux";
 
 class AddPost extends React.Component {
     constructor(props) {
@@ -32,7 +34,7 @@ class AddPost extends React.Component {
     }
 }
 
-module.exports = AddPost;
+module.exports = connect(mapStateToProps, mapActionsToProps)(AddPost);
 AddPost.defaultProps = {
     author: "Anonim",
     post: "post"

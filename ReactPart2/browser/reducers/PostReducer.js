@@ -46,14 +46,26 @@ function postsReducer(state = initialState, action) {
                 visible: action.payload.author === filter || filter === ""
             };
 
+            axios.post('http://localhost:3000/posts')
+                .then(function (response) {
+                    state.posts = response.data;
+                    console.log("posts = "+response);
+                    return Object.assign({},state);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
             let posts = state.posts;
             posts.push(newPost);
             return Object.assign({},state);
         }
         case 'GET_POSTS':{
-            axios.get('http://localhost:8080/posts')
+            axios.get('http://localhost:3000/posts')
                 .then(function (response) {
-                    console.log(response);
+                    state.posts = response.data;
+                    console.log("posts = "+response);
+                    return Object.assign({},state);
                 })
                 .catch(function (error) {
                     console.log(error);

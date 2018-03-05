@@ -12,8 +12,8 @@ const Routes = props => {
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={Menu}/>
-                    <Route path="/posts" component={App}/>
-                    <Route path="/addpost" component={AddPost}/>
+                    <Route path="/main" component={App}/>
+                    <Route path="/addPost" component={AddPost}/>
                 </Switch>
             </BrowserRouter>
         </Provider>

@@ -1,17 +1,18 @@
 // call the packages we need
 const express = require('express');
 const router = express.Router();
-const React = require('react');
-const path = require('path');
-const fs = require('fs');
-const ReactDOMServer = require('react-dom/server');
-const ReactRouter = require('react-router');
-const renderToString = ReactDOMServer.renderToString;
-const match = ReactRouter.match;
-const RouterContext = ReactRouter.RouterContext;
-const routes = require('../browser/components/Routes').default();
-const App = require('../browser/components/App');
-const Menu = require('../browser/components/Menu');
+// const React = require('react');
+// const path = require('path');
+// const fs = require('fs');
+// const ReactDOMServer = require('react-dom/server');
+// const ReactRouter = require('react-router');
+// const renderToString = ReactDOMServer.renderToString;
+// const match = ReactRouter.match;
+// const RouterContext = ReactRouter.RouterContext;
+// const routes = require('../browser/components/Routes').default();
+
+// const App = require('../browser/components/App');
+// const Menu = require('../browser/components/Menu');
 const logger = require('./logger');
 const jwt = require("jwt-simple");
 const PostModel = require('./Database/PostSchema.js');
@@ -23,6 +24,16 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://Siarhei:w333eq1@ds211588.mlab.com:11588/blog');
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+router.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
+//and remove cacheing so we get the most recent comments
+    res.setHeader('Cache-Control', 'no-cache');
+    next();
+});
 
 router.use(passportConfig.initialize());
 /*const staticFiles = [
@@ -79,10 +90,10 @@ router.use(function (req, res, next) {
 // =============================================================================
 
 
-router.get('/ppp', function (req, res) {
+/*router.get('/ppp', function (req, res) {
     const content = ReactDOMServer.renderToString(<App/>);
     res.render('index', {entry: content});
-});
+});*/
 
 // on routes that end in /posts
 // ----------------------------------------------------
@@ -129,7 +140,7 @@ router.route('/posts')
 //.post(isAdmin, function (req, res, next) {
     .post(function (req, res, next) {
         const postData = req.body;
-        const newPost = new PostModel({'author': postData.author, 'body': postData.body});
+        const newPost = new PostModel({'author': postData.author, 'post': postData.post, 'visible' : true});
         newPost.save(function (err, newPost) {
             if (err) {
                 err.description = "Error in adding new post";

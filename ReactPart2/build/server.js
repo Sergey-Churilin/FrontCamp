@@ -61,318 +61,29 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports) {
 
-module.exports = require("react");
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _reactRouterDom = __webpack_require__(5);
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Menu = function (_React$Component) {
-    _inherits(Menu, _React$Component);
-
-    function Menu() {
-        _classCallCheck(this, Menu);
-
-        return _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).apply(this, arguments));
-    }
-
-    _createClass(Menu, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                { className: 'menu' },
-                _react2.default.createElement(
-                    _reactRouterDom.Link,
-                    { to: '/' },
-                    'All'
-                ),
-                _react2.default.createElement(
-                    _reactRouterDom.Link,
-                    { to: '/posts' },
-                    'All posts'
-                ),
-                _react2.default.createElement(
-                    _reactRouterDom.Link,
-                    { to: '/addpost' },
-                    'Add post'
-                )
-            );
-        }
-    }]);
-
-    return Menu;
-}(_react2.default.Component);
-
-module.exports = Menu;
-;
-
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-        return;
-    }
-
-    __REACT_HOT_LOADER__.register(Menu, 'Menu', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/Menu.js');
-}();
-
-;
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
 module.exports = require("mongoose");
 
 /***/ }),
-/* 3 */
+/* 1 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-redux");
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-router-dom");
-
-/***/ }),
-/* 6 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Menu = __webpack_require__(1);
-
-var _Menu2 = _interopRequireDefault(_Menu);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var AddPost = function (_React$Component) {
-    _inherits(AddPost, _React$Component);
-
-    function AddPost(props) {
-        _classCallCheck(this, AddPost);
-
-        var _this = _possibleConstructorReturn(this, (AddPost.__proto__ || Object.getPrototypeOf(AddPost)).call(this, props));
-
-        var arr = props;
-        _this.submit = _this.submit.bind(_this);
-        return _this;
-    }
-
-    _createClass(AddPost, [{
-        key: 'submit',
-        value: function submit(e) {
-            e.preventDefault();
-            this.props.addPost({ author: this.refs.author.value, post: this.refs.post.value });
-            this.refs.author.value = "";
-            this.refs.post.value = "";
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(_Menu2.default, null),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'addPost' },
-                    _react2.default.createElement(
-                        'h2',
-                        null,
-                        'Add post'
-                    ),
-                    _react2.default.createElement(
-                        'form',
-                        { onSubmit: this.submit },
-                        _react2.default.createElement('input', { type: 'text', id: 'author', name: 'author', ref: 'author', placeholder: 'author name' }),
-                        _react2.default.createElement('textarea', { name: 'post', ref: 'post', placeholder: 'post' }),
-                        _react2.default.createElement(
-                            'button',
-                            null,
-                            'Add'
-                        )
-                    )
-                )
-            );
-        }
-    }]);
-
-    return AddPost;
-}(_react2.default.Component);
-
-module.exports = AddPost;
-AddPost.defaultProps = {
-    author: "Anonim",
-    post: "post"
-};
-;
-
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-        return;
-    }
-
-    __REACT_HOT_LOADER__.register(AddPost, 'AddPost', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/AddPost.js');
-}();
-
-;
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Post = __webpack_require__(26);
-
-var _Post2 = _interopRequireDefault(_Post);
-
-var _Menu = __webpack_require__(1);
-
-var _Menu2 = _interopRequireDefault(_Menu);
-
-var _Filter = __webpack_require__(27);
-
-var _Filter2 = _interopRequireDefault(_Filter);
-
-var _AddPost = __webpack_require__(6);
-
-var _AddPost2 = _interopRequireDefault(_AddPost);
-
-var _reactRedux = __webpack_require__(4);
-
-var _Selectors = __webpack_require__(28);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var App = function (_React$Component) {
-    _inherits(App, _React$Component);
-
-    function App() {
-        _classCallCheck(this, App);
-
-        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
-    }
-
-    _createClass(App, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            this.props.getPosts();
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var posts = this.props.appPosts.posts;
-            var postsArray = [];
-
-            var filteredPosts = posts.filter(function (post) {
-                return post.visible;
-            });
-
-            filteredPosts.forEach(function (post, index) {
-                postsArray.push(_react2.default.createElement(_Post2.default, { key: index, post: post, deletePost: this.props.deletePost }));
-            }.bind(this));
-
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(_Menu2.default, null),
-                _react2.default.createElement(
-                    'h1',
-                    { className: 'title' },
-                    'Posts application'
-                ),
-                postsArray,
-                _react2.default.createElement(_Filter2.default, { filterPosts: this.props.filterPosts }),
-                _react2.default.createElement(_AddPost2.default, { addPost: this.props.addPost })
-            );
-        }
-    }]);
-
-    return App;
-}(_react2.default.Component);
-
-module.exports = (0, _reactRedux.connect)(_Selectors.mapStateToProps, _Selectors.mapActionsToProps)(App);
-;
-
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-        return;
-    }
-
-    __REACT_HOT_LOADER__.register(App, 'App', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/App.js');
-}();
-
-;
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var winston = __webpack_require__(29);
+var winston = __webpack_require__(10);
 var transports = [new winston.transports.File({ filename: 'debug.log', level: 'debug' }), new winston.transports.File({ filename: 'error.log', level: 'error' })];
 var logger = new winston.createLogger({
     level: 'info',
@@ -396,13 +107,13 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 9 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var mongoose = __webpack_require__(2);
+var mongoose = __webpack_require__(0);
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
@@ -431,16 +142,16 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 10 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var passport = __webpack_require__(32);
-var passportJWT = __webpack_require__(33);
-var UserModel = __webpack_require__(9);
-var cfg = __webpack_require__(11);
+var passport = __webpack_require__(13);
+var passportJWT = __webpack_require__(14);
+var UserModel = __webpack_require__(3);
+var cfg = __webpack_require__(5);
 var ExtractJwt = passportJWT.ExtractJwt;
 var Strategy = passportJWT.Strategy;
 var params = {
@@ -488,7 +199,7 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 11 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -513,24 +224,24 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 12 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(7);
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var express = __webpack_require__(3);
+var express = __webpack_require__(1);
 
-var bodyParser = __webpack_require__(13);
-var router = __webpack_require__(14);
-var errorHandler = __webpack_require__(34);
-var passportConfig = __webpack_require__(10)();
+var bodyParser = __webpack_require__(8);
+var router = __webpack_require__(9);
+var errorHandler = __webpack_require__(15);
+var passportConfig = __webpack_require__(4)();
 
 var app = express();
 app.use(express.json());
@@ -545,14 +256,14 @@ app.get('*', function (req, res) {
     res.send("Hello");
 });
 
-app.use(function (err, req, res, next) {
+app.use(function (err, req, res) {
     if (err) {
         //res.send(err);
         errorHandler.handleError(err, req, res);
     }
 });
 
-app.listen(8080);
+app.listen(3000);
 ;
 
 var _temp = function () {
@@ -568,43 +279,60 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 13 */
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = require("react");
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports) {
 
 module.exports = require("body-parser");
 
 /***/ }),
-/* 14 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // call the packages we need
-var express = __webpack_require__(3);
+var express = __webpack_require__(1);
 var router = express.Router();
-var React = __webpack_require__(0);
-var path = __webpack_require__(15);
-var fs = __webpack_require__(16);
-var ReactDOMServer = __webpack_require__(17);
-var ReactRouter = __webpack_require__(18);
-var renderToString = ReactDOMServer.renderToString;
-var match = ReactRouter.match;
-var RouterContext = ReactRouter.RouterContext;
-var routes = __webpack_require__(19).default();
-var App = __webpack_require__(7);
-var Menu = __webpack_require__(1);
-var logger = __webpack_require__(8);
-var jwt = __webpack_require__(30);
-var PostModel = __webpack_require__(31);
-var UserModel = __webpack_require__(9);
-var passportConfig = __webpack_require__(10)();
-var cfg = __webpack_require__(11);
+// const React = require('react');
+// const path = require('path');
+// const fs = require('fs');
+// const ReactDOMServer = require('react-dom/server');
+// const ReactRouter = require('react-router');
+// const renderToString = ReactDOMServer.renderToString;
+// const match = ReactRouter.match;
+// const RouterContext = ReactRouter.RouterContext;
+// const routes = require('../browser/components/Routes').default();
 
-var mongoose = __webpack_require__(2);
+// const App = require('../browser/components/App');
+// const Menu = require('../browser/components/Menu');
+var logger = __webpack_require__(2);
+var jwt = __webpack_require__(11);
+var PostModel = __webpack_require__(12);
+var UserModel = __webpack_require__(3);
+var passportConfig = __webpack_require__(4)();
+var cfg = __webpack_require__(5);
+
+var mongoose = __webpack_require__(0);
 mongoose.connect('mongodb://Siarhei:w333eq1@ds211588.mlab.com:11588/blog');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+router.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
+    //and remove cacheing so we get the most recent comments
+    res.setHeader('Cache-Control', 'no-cache');
+    next();
+});
 
 router.use(passportConfig.initialize());
 /*const staticFiles = [
@@ -658,22 +386,12 @@ router.use(function (req, res, next) {
 
 // ROUTES FOR OUR SERVER
 // =============================================================================
-// middleware to use for all requests
-router.use(function (req, res, next) {
-    // do logging
-    var url = req.headers.host + req.originalUrl;
 
-    logger.log({
-        level: 'info',
-        message: 'url: ' + JSON.stringify(url) + ', date: ' + new Date()
-    });
-    next(); // make sure we go to the next routes and don't stop here
-});
 
-router.get('/ppp', function (req, res) {
-    var content = ReactDOMServer.renderToString(React.createElement(App, null));
-    res.render('index', { entry: content });
-});
+/*router.get('/ppp', function (req, res) {
+    const content = ReactDOMServer.renderToString(<App/>);
+    res.render('index', {entry: content});
+});*/
 
 // on routes that end in /posts
 // ----------------------------------------------------
@@ -869,14 +587,6 @@ var _temp = function () {
 
     __REACT_HOT_LOADER__.register(router, 'router', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/router.js');
 
-    __REACT_HOT_LOADER__.register(renderToString, 'renderToString', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/router.js');
-
-    __REACT_HOT_LOADER__.register(match, 'match', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/router.js');
-
-    __REACT_HOT_LOADER__.register(RouterContext, 'RouterContext', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/router.js');
-
-    __REACT_HOT_LOADER__.register(routes, 'routes', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/router.js');
-
     __REACT_HOT_LOADER__.register(passportConfig, 'passportConfig', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/router.js');
 
     __REACT_HOT_LOADER__.register(db, 'db', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/router.js');
@@ -885,500 +595,25 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 15 */
-/***/ (function(module, exports) {
-
-module.exports = require("path");
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports) {
-
-module.exports = require("fs");
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-dom/server");
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-router");
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = __webpack_require__(4);
-
-var _reactRouterDom = __webpack_require__(5);
-
-var _Menu = __webpack_require__(1);
-
-var _Menu2 = _interopRequireDefault(_Menu);
-
-var _AddPost = __webpack_require__(6);
-
-var _AddPost2 = _interopRequireDefault(_AddPost);
-
-var _store = __webpack_require__(20);
-
-var _store2 = _interopRequireDefault(_store);
-
-var _App = __webpack_require__(7);
-
-var _App2 = _interopRequireDefault(_App);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Routes = function Routes(props) {
-    return _react2.default.createElement(
-        _reactRedux.Provider,
-        { store: _store2.default },
-        _react2.default.createElement(
-            _reactRouterDom.BrowserRouter,
-            null,
-            _react2.default.createElement(
-                _reactRouterDom.Switch,
-                null,
-                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Menu2.default }),
-                _react2.default.createElement(_reactRouterDom.Route, { path: '/posts', component: _App2.default }),
-                _react2.default.createElement(_reactRouterDom.Route, { path: '/addpost', component: _AddPost2.default })
-            )
-        )
-    );
-};
-
-var _default = Routes;
-exports.default = _default;
-;
-
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-        return;
-    }
-
-    __REACT_HOT_LOADER__.register(Routes, 'Routes', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/Routes.js');
-
-    __REACT_HOT_LOADER__.register(_default, 'default', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/Routes.js');
-}();
-
-;
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _redux = __webpack_require__(21);
-
-var _reduxThunk = __webpack_require__(22);
-
-var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
-
-var _PostReducer = __webpack_require__(23);
-
-var _PostReducer2 = _interopRequireDefault(_PostReducer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var appReducer = (0, _redux.combineReducers)({
-    appPosts: _PostReducer2.default
-});
-
-var store = (0, _redux.createStore)(appReducer, (0, _redux.applyMiddleware)(_reduxThunk2.default));
-
-var _default = store;
-exports.default = _default;
-;
-
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-        return;
-    }
-
-    __REACT_HOT_LOADER__.register(appReducer, 'appReducer', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/store.js');
-
-    __REACT_HOT_LOADER__.register(store, 'store', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/store.js');
-
-    __REACT_HOT_LOADER__.register(_default, 'default', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/store.js');
-}();
-
-;
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports) {
-
-module.exports = require("redux");
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports) {
-
-module.exports = require("redux-thunk");
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _axios = __webpack_require__(24);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var uuidV4 = __webpack_require__(25);
-
-
-var initialState = {
-    "posts": [{
-        id: 1,
-        "author": "John Doe",
-        "post": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-        "visible": true
-    }, {
-        id: 2,
-        "author": "Spartanec",
-        "post": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-        "visible": true
-    }, {
-        id: 3,
-        "author": "NLO",
-        "post": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-        "visible": true
-    }],
-    "filter": ""
-};
-
-function postsReducer() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-    var action = arguments[1];
-
-    switch (action.type) {
-        case 'DELETE_POST':
-            {
-                var posts = state.posts;
-                state.posts = posts.filter(function (post) {
-                    return action.payload !== post.id;
-                });
-                return Object.assign({}, state);
-            }
-        case 'FILTER_POSTS':
-            {
-                var _posts = state.posts;
-                _posts.forEach(function (post) {
-                    return post.visible = post.author.toLowerCase().indexOf(action.payload.toLowerCase()) >= 0 || post.author === "";
-                });
-                return Object.assign({}, state);
-            }
-        case 'ADD_POST':
-            {
-                var filter = state.filter;
-                var newPost = {
-                    id: uuidV4(),
-                    author: action.payload.author,
-                    post: action.payload.post,
-                    visible: action.payload.author === filter || filter === ""
-                };
-
-                var _posts2 = state.posts;
-                _posts2.push(newPost);
-                return Object.assign({}, state);
-            }
-        case 'GET_POSTS':
-            {
-                _axios2.default.get('http://localhost:8080/posts').then(function (response) {
-                    console.log(response);
-                }).catch(function (error) {
-                    console.log(error);
-                });
-            }
-        default:
-            return state;
-    }
-}
-
-module.exports = postsReducer;
-;
-
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-        return;
-    }
-
-    __REACT_HOT_LOADER__.register(postsReducer, 'postsReducer', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/reducers/PostReducer.js');
-
-    __REACT_HOT_LOADER__.register(initialState, 'initialState', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/reducers/PostReducer.js');
-}();
-
-;
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports) {
-
-module.exports = require("axios");
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports) {
-
-module.exports = require("uuid/v4");
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Post = function (_React$Component) {
-    _inherits(Post, _React$Component);
-
-    function Post() {
-        _classCallCheck(this, Post);
-
-        return _possibleConstructorReturn(this, (Post.__proto__ || Object.getPrototypeOf(Post)).apply(this, arguments));
-    }
-
-    _createClass(Post, [{
-        key: "render",
-        value: function render() {
-            var _this2 = this;
-
-            var post = this.props.post;
-
-            return _react2.default.createElement(
-                "div",
-                { className: "post" },
-                _react2.default.createElement(
-                    "div",
-                    null,
-                    _react2.default.createElement(
-                        "h3",
-                        { className: "author" },
-                        post.author
-                    ),
-                    _react2.default.createElement(
-                        "div",
-                        null,
-                        post.post
-                    ),
-                    _react2.default.createElement(
-                        "button",
-                        { className: "delete", onClick: function onClick() {
-                                _this2.props.deletePost(post.id);
-                            } },
-                        "X"
-                    )
-                )
-            );
-        }
-    }]);
-
-    return Post;
-}(_react2.default.Component);
-
-module.exports = Post;
-;
-
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-        return;
-    }
-
-    __REACT_HOT_LOADER__.register(Post, "Post", "D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/Post.js");
-}();
-
-;
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Filter = function (_React$Component) {
-    _inherits(Filter, _React$Component);
-
-    function Filter(props) {
-        _classCallCheck(this, Filter);
-
-        var _this = _possibleConstructorReturn(this, (Filter.__proto__ || Object.getPrototypeOf(Filter)).call(this, props));
-
-        _this.submit = _this.submit.bind(_this);
-        return _this;
-    }
-
-    _createClass(Filter, [{
-        key: "submit",
-        value: function submit(e) {
-            e.preventDefault();
-            this.props.filterPosts(this.refs.author.value);
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "div",
-                { className: "filter" },
-                _react2.default.createElement(
-                    "form",
-                    { onChange: this.submit },
-                    _react2.default.createElement("input", { type: "search", id: "author", name: "author", ref: "author", placeholder: "Author" })
-                )
-            );
-        }
-    }]);
-
-    return Filter;
-}(_react2.default.Component);
-
-module.exports = Filter;
-;
-
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-        return;
-    }
-
-    __REACT_HOT_LOADER__.register(Filter, "Filter", "D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/Filter.js");
-}();
-
-;
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-function mapStateToProps(state) {
-    return state;
-}
-
-function mapActionsToProps(dispatch) {
-    return {
-        deletePost: function deletePost(todoId) {
-            dispatch({
-                type: 'DELETE_POST',
-                payload: todoId
-            });
-        },
-        addPost: function addPost(payload) {
-            dispatch({
-                type: 'ADD_POST',
-                payload: payload
-            });
-        },
-        filterPosts: function filterPosts(payload) {
-            dispatch({
-                type: 'FILTER_POSTS',
-                payload: payload
-            });
-        },
-        getPosts: function getPosts() {
-            dispatch({
-                type: 'GET_POSTS',
-                payload: {}
-            });
-        }
-    };
-}
-
-exports.mapStateToProps = mapStateToProps;
-exports.mapActionsToProps = mapActionsToProps;
-;
-
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-        return;
-    }
-
-    __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/selectors/Selectors.js');
-
-    __REACT_HOT_LOADER__.register(mapActionsToProps, 'mapActionsToProps', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/selectors/Selectors.js');
-}();
-
-;
-
-/***/ }),
-/* 29 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = require("winston");
 
 /***/ }),
-/* 30 */
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = require("jwt-simple");
 
 /***/ }),
-/* 31 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var mongoose = __webpack_require__(2);
+var mongoose = __webpack_require__(0);
 var Schema = mongoose.Schema;
 
 var PostSchema = new Schema({
@@ -1406,25 +641,25 @@ var _temp = function () {
 ;
 
 /***/ }),
-/* 32 */
+/* 13 */
 /***/ (function(module, exports) {
 
 module.exports = require("passport");
 
 /***/ }),
-/* 33 */
+/* 14 */
 /***/ (function(module, exports) {
 
 module.exports = require("passport-jwt");
 
 /***/ }),
-/* 34 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var logger = __webpack_require__(8);
+var logger = __webpack_require__(2);
 var errorHandler = {};
 errorHandler.handleError = function (err, req, res) {
     logger.log({
