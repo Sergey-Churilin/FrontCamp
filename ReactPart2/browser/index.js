@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Routes from './components/Routes';
-
-ReactDOM.render(
+import css from './styles/style.css';
+ReactDOM.hydrate(
     <Routes/>,
     document.getElementById('app')
 );

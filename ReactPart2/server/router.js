@@ -1,76 +1,51 @@
-// call the packages we need
 const express = require('express');
 const router = express.Router();
-// const React = require('react');
-// const path = require('path');
-// const fs = require('fs');
-// const ReactDOMServer = require('react-dom/server');
-// const ReactRouter = require('react-router');
-// const renderToString = ReactDOMServer.renderToString;
-// const match = ReactRouter.match;
-// const RouterContext = ReactRouter.RouterContext;
-// const routes = require('../browser/components/Routes').default();
 
-// const App = require('../browser/components/App');
-// const Menu = require('../browser/components/Menu');
+// for SSR
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import {StaticRouter} from 'react-router-dom';
+import Routes from '../browser/components/Routes';
+router.use(express.static('build'));
+
+//logging
 const logger = require('./logger');
+
+//authentication
 const jwt = require("jwt-simple");
-const PostModel = require('./Database/PostSchema.js');
-const UserModel = require('./Database/UserSchema.js');
 const passportConfig = require('./passportConfig')();
 const cfg = require("./config.js");
 
+//db
+const PostModel = require('./Database/PostSchema.js');
+const UserModel = require('./Database/UserSchema.js');
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://Siarhei:w333eq1@ds237868.mlab.com:37868/posts');
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-router.use(function(req, res, next) {
+router.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Credentials', 'true');
     res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization');
-//and remove cacheing so we get the most recent comments
+//and remove caching so we get the most recent comments
     res.setHeader('Cache-Control', 'no-cache');
     next();
 });
 
 router.use(passportConfig.initialize());
-/*const staticFiles = [
-    '/build/!*'
-];
-router.use(express.static('../build'));
 
-router.get('*', (req, res) => {
+//SSR
+router.get('/', function (req, res) {
+    const context = {};
+    const html = ReactDOMServer.renderToString(
+        <StaticRouter location={req.url} context={context}>
+            <Routes/>
+        </StaticRouter>);
+    res.render('index', {entry: html});
 
-    const error = () => res.status(404).send('404');
-    const htmlFilePath = path.join( __dirname, './build', 'index.html' );
-console.log(htmlFilePath)
-    fs.readFile( htmlFilePath, 'utf8', (err, htmlData) => {
-        if(err) {
-            error()
-        }
-        else {
-            match({ routes, location: req.url }, (err, redirect, ssrData) => {
-                if(err) {
-                    error()
-                }
-                else if(redirect) {
-                    res.redirect(302, redirect.pathname + redirect.search)
-                }
-                else if(ssrData) {
-                    const ReactApp = renderToString( react.createElement(RouterContext, ssrData) )
-                    const RenderedApp = htmlData.replace('{{SSR}}', ReactApp)
-                    res.status(200).send(RenderedApp)
-                }
-                else {
-                    error()
-                }
-            })
-        }
-    })
-})*/
-
+});
 
 // ROUTES FOR OUR SERVER
 // =============================================================================
@@ -90,16 +65,11 @@ router.use(function (req, res, next) {
 // =============================================================================
 
 
-/*router.get('/ppp', function (req, res) {
-    const content = ReactDOMServer.renderToString(<App/>);
-    res.render('index', {entry: content});
-});*/
-
 // on routes that end in /posts
 // ----------------------------------------------------
 router.route('/login')
 
-// create a new user or return existed (accessed at POST http://localhost:8080/login)
+// create a new user or return existed (accessed at POST http://localhost:3000/login)
     .post(function (req, res, next) {
         const userData = req.body;
         UserModel.findOne({userLogin: userData.username, userPassword: userData.password}, function (err, user) {
@@ -122,19 +92,17 @@ router.route('/login')
                 });
             }
         });
-
-
-    })
+    });
 
 // on routes that end in /posts
 // ----------------------------------------------------
 router.route('/posts')
 
-// create a post (accessed at POST http://localhost:8080/posts)
-.post(isLoggedIn, function (req, res, next) {
-   // .post(function (req, res, next) {
+// create a post (accessed at POST http://localhost:3000/posts)
+    .post(isLoggedIn, function (req, res, next) {
+        // .post(function (req, res, next) {
         const postData = req.body;
-        const newPost = new PostModel({'author': postData.author, 'post': postData.post, 'visible' : true});
+        const newPost = new PostModel({'author': postData.author, 'post': postData.post, 'visible': true});
         newPost.save(function (err, newPost) {
             if (err) {
                 err.description = "Error in adding new post";
@@ -147,17 +115,13 @@ router.route('/posts')
         });
     })
 
-    // get all the posts (accessed at GET http://localhost:8080/posts)
-    //.get(passportConfig.authenticate(), function (req, res, next) {
+    // get all the posts (accessed at GET http://localhost:3000/posts)
     .get(function (req, res, next) {
         PostModel.find({}, function (err, posts) {
             if (err) {
                 err.description = "Can't get posts";
                 next(err);
             } else {
-                //const content = ReactDOMServer.renderToString(<App/>);
-                // console.log(content);
-                //res.render('index', {entry: content});
                 res.send(posts);
             }
         });
@@ -227,8 +191,8 @@ router.route('/posts/:post_id')
         });
     })
     // delete the post with this id (accessed at DELETE http://localhost:8080/posts/:post_id)
-     .delete(isLoggedIn, function (req, res, next) {
-    //.delete(function (req, res, next) {
+    .delete(isLoggedIn, function (req, res, next) {
+        //.delete(function (req, res, next) {
         const id = req.params.post_id;
         PostModel.deleteOne({_id: id}, function (err) {
             if (err) {
@@ -243,7 +207,7 @@ router.route('/posts/:post_id')
 function isLoggedIn(req, res, next) {
     const token = req.headers['authorization'];
     if (token) {
-        const payload = jwt.decode(token,cfg.jwtSecret);
+        const payload = jwt.decode(token, cfg.jwtSecret);
 
         if (payload) {
             next();
