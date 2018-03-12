@@ -5,7 +5,7 @@ import Filter from './Filter';
 import {connect} from 'react-redux';
 import {mapStateToProps, mapActionsToProps} from '../selectors/Selectors';
 
-class App extends React.Component {
+class PostsContainer extends React.Component {
 
     componentDidMount(){
         this.props.getPosts();
@@ -33,4 +33,4 @@ class App extends React.Component {
     }
 }
 
-module.exports = connect(mapStateToProps, mapActionsToProps)(App);
+module.exports = connect(mapStateToProps, mapActionsToProps)(PostsContainer);

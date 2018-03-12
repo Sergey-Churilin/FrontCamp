@@ -11,7 +11,7 @@ class Menu extends React.Component {
 
         return (
             <div className="menu">
-                <Link to="/">All</Link>
+                <Link to="/">Home</Link>
                 <Link to="/main">All posts</Link>
                 <Link to="/addPost" className={loggedIn}>Add post</Link>
                 <Link to="/login" className={loggedOut}>Login</Link>

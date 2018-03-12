@@ -10,7 +10,6 @@ class Filter extends React.Component {
     submit(e){
         e.preventDefault();
         const value = this.refs.author.value;
-        //this.props.history.push('/filter/'+value);
         this.props.filterPosts(value);
     }
 

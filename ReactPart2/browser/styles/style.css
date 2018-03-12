@@ -116,3 +116,7 @@ text-align: center;
 .invisible{
     display: none;
 }
+
+.center{
+    text-align: center;
+}

@@ -61,40 +61,80 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports) {
 
-module.exports = require("react");
+module.exports = require("react-hot-loader");
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-redux");
+module.exports = function(module) {
+	if(!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+module.exports = require("react");
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux");
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(module) {
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.mapActionsToProps = exports.mapStateToProps = undefined;
 
-var _axios = __webpack_require__(15);
+(function () {
+    var enterModule = __webpack_require__(0).enterModule;
+
+    enterModule && enterModule(module);
+})();
+
+var _axios = __webpack_require__(18);
 
 var _axios2 = _interopRequireDefault(_axios);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var uuidV4 = __webpack_require__(16);
+var uuidV4 = __webpack_require__(19);
 
 
 function mapStateToProps(state) {
@@ -167,42 +207,53 @@ exports.mapStateToProps = mapStateToProps;
 exports.mapActionsToProps = mapActionsToProps;
 ;
 
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+(function () {
+    var reactHotLoader = __webpack_require__(0).default;
+
+    var leaveModule = __webpack_require__(0).leaveModule;
+
+    if (!reactHotLoader) {
         return;
     }
 
-    __REACT_HOT_LOADER__.register(mapStateToProps, 'mapStateToProps', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/selectors/Selectors.js');
-
-    __REACT_HOT_LOADER__.register(mapActionsToProps, 'mapActionsToProps', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/selectors/Selectors.js');
-}();
+    reactHotLoader.register(mapStateToProps, 'mapStateToProps', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/selectors/Selectors.js');
+    reactHotLoader.register(mapActionsToProps, 'mapActionsToProps', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/selectors/Selectors.js');
+    leaveModule(module);
+})();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 3 */
+/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-router-dom");
 
 /***/ }),
-/* 4 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(module) {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _reactRouterDom = __webpack_require__(3);
+(function () {
+    var enterModule = __webpack_require__(0).enterModule;
 
-var _react = __webpack_require__(0);
+    enterModule && enterModule(module);
+})();
+
+var _reactRouterDom = __webpack_require__(5);
+
+var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Selectors = __webpack_require__(2);
+var _Selectors = __webpack_require__(4);
 
-var _reactRedux = __webpack_require__(1);
+var _reactRedux = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -236,7 +287,7 @@ var Menu = function (_React$Component) {
                 _react2.default.createElement(
                     _reactRouterDom.Link,
                     { to: '/' },
-                    'All'
+                    'Home'
                 ),
                 _react2.default.createElement(
                     _reactRouterDom.Link,
@@ -270,36 +321,48 @@ var Menu = function (_React$Component) {
 module.exports = (0, _reactRedux.connect)(_Selectors.mapStateToProps, _Selectors.mapActionsToProps)(Menu);
 ;
 
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+(function () {
+    var reactHotLoader = __webpack_require__(0).default;
+
+    var leaveModule = __webpack_require__(0).leaveModule;
+
+    if (!reactHotLoader) {
         return;
     }
 
-    __REACT_HOT_LOADER__.register(Menu, 'Menu', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/Menu.js');
-}();
+    reactHotLoader.register(Menu, 'Menu', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/Menu.js');
+    leaveModule(module);
+})();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 5 */
+/* 7 */
 /***/ (function(module, exports) {
 
 module.exports = require("mongoose");
 
 /***/ }),
-/* 6 */
+/* 8 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
 
+(function () {
+    var enterModule = __webpack_require__(0).enterModule;
 
-var winston = __webpack_require__(28);
+    enterModule && enterModule(module);
+})();
+
+var winston = __webpack_require__(31);
 var transports = [new winston.transports.File({ filename: 'debug.log', level: 'debug' }), new winston.transports.File({ filename: 'error.log', level: 'error' })];
 var logger = new winston.createLogger({
     level: 'info',
@@ -310,26 +373,37 @@ var logger = new winston.createLogger({
 module.exports = logger;
 ;
 
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+(function () {
+    var reactHotLoader = __webpack_require__(0).default;
+
+    var leaveModule = __webpack_require__(0).leaveModule;
+
+    if (!reactHotLoader) {
         return;
     }
 
-    __REACT_HOT_LOADER__.register(transports, 'transports', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/logger.js');
-
-    __REACT_HOT_LOADER__.register(logger, 'logger', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/logger.js');
-}();
+    reactHotLoader.register(transports, 'transports', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/logger.js');
+    reactHotLoader.register(logger, 'logger', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/logger.js');
+    leaveModule(module);
+})();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
 
+(function () {
+    var enterModule = __webpack_require__(0).enterModule;
 
-var mongoose = __webpack_require__(5);
+    enterModule && enterModule(module);
+})();
+
+var mongoose = __webpack_require__(7);
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
@@ -342,22 +416,26 @@ var UserModel = mongoose.model('User', UserSchema);
 module.exports = UserModel;
 ;
 
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+(function () {
+    var reactHotLoader = __webpack_require__(0).default;
+
+    var leaveModule = __webpack_require__(0).leaveModule;
+
+    if (!reactHotLoader) {
         return;
     }
 
-    __REACT_HOT_LOADER__.register(Schema, 'Schema', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/Database/UserSchema.js');
-
-    __REACT_HOT_LOADER__.register(UserSchema, 'UserSchema', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/Database/UserSchema.js');
-
-    __REACT_HOT_LOADER__.register(UserModel, 'UserModel', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/Database/UserSchema.js');
-}();
+    reactHotLoader.register(Schema, 'Schema', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/Database/UserSchema.js');
+    reactHotLoader.register(UserSchema, 'UserSchema', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/Database/UserSchema.js');
+    reactHotLoader.register(UserModel, 'UserModel', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/Database/UserSchema.js');
+    leaveModule(module);
+})();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -371,28 +449,25 @@ module.exports = {
         failureRedirect: '/login'
     }
 };
-;
-
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-        return;
-    }
-}();
-
-;
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
 
+(function () {
+    var enterModule = __webpack_require__(0).enterModule;
 
-var express = __webpack_require__(6);
-var bodyParser = __webpack_require__(11);
+    enterModule && enterModule(module);
+})();
+
+var express = __webpack_require__(8);
+var bodyParser = __webpack_require__(13);
 var app = express();
-var router = __webpack_require__(12);
-var errorHandler = __webpack_require__(34);
+var router = __webpack_require__(14);
+var errorHandler = __webpack_require__(37);
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -403,7 +478,7 @@ app.use('/', router);
 
 app.use(function (err, req, res) {
     if (err) {
-        //res.send(err);
+        // res.send(err);
         errorHandler.handleError(err, req, res);
     }
 });
@@ -411,46 +486,58 @@ app.use(function (err, req, res) {
 app.listen(3000);
 ;
 
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+(function () {
+    var reactHotLoader = __webpack_require__(0).default;
+
+    var leaveModule = __webpack_require__(0).leaveModule;
+
+    if (!reactHotLoader) {
         return;
     }
 
-    __REACT_HOT_LOADER__.register(app, 'app', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/server.js');
-}();
+    reactHotLoader.register(app, 'app', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/server.js');
+    leaveModule(module);
+})();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 11 */
+/* 13 */
 /***/ (function(module, exports) {
 
 module.exports = require("body-parser");
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
 
+(function () {
+    var enterModule = __webpack_require__(0).enterModule;
 
-var _react = __webpack_require__(0);
+    enterModule && enterModule(module);
+})();
+
+var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(13);
+var _server = __webpack_require__(15);
 
 var _server2 = _interopRequireDefault(_server);
 
-var _reactRouterDom = __webpack_require__(3);
+var _reactRouterDom = __webpack_require__(5);
 
-var _Routes = __webpack_require__(14);
+var _Routes = __webpack_require__(16);
 
 var _Routes2 = _interopRequireDefault(_Routes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var express = __webpack_require__(6);
+var express = __webpack_require__(8);
 var router = express.Router();
 
 // for SSR
@@ -458,17 +545,17 @@ var router = express.Router();
 router.use(express.static('build'));
 
 //logging
-var logger = __webpack_require__(7);
+var logger = __webpack_require__(9);
 
 //authentication
-var jwt = __webpack_require__(29);
-var passportConfig = __webpack_require__(30)();
-var cfg = __webpack_require__(9);
+var jwt = __webpack_require__(32);
+var passportConfig = __webpack_require__(33)();
+var cfg = __webpack_require__(11);
 
 //db
-var PostModel = __webpack_require__(33);
-var UserModel = __webpack_require__(8);
-var mongoose = __webpack_require__(5);
+var PostModel = __webpack_require__(36);
+var UserModel = __webpack_require__(10);
+var mongoose = __webpack_require__(7);
 mongoose.connect('mongodb://Siarhei:w333eq1@ds237868.mlab.com:37868/posts');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -685,68 +772,76 @@ function sendToken(res, user) {
 module.exports = router;
 ;
 
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+(function () {
+    var reactHotLoader = __webpack_require__(0).default;
+
+    var leaveModule = __webpack_require__(0).leaveModule;
+
+    if (!reactHotLoader) {
         return;
     }
 
-    __REACT_HOT_LOADER__.register(isLoggedIn, 'isLoggedIn', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/router.js');
-
-    __REACT_HOT_LOADER__.register(sendToken, 'sendToken', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/router.js');
-
-    __REACT_HOT_LOADER__.register(router, 'router', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/router.js');
-
-    __REACT_HOT_LOADER__.register(passportConfig, 'passportConfig', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/router.js');
-
-    __REACT_HOT_LOADER__.register(db, 'db', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/router.js');
-}();
+    reactHotLoader.register(isLoggedIn, 'isLoggedIn', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/router.js');
+    reactHotLoader.register(sendToken, 'sendToken', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/router.js');
+    reactHotLoader.register(router, 'router', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/router.js');
+    reactHotLoader.register(passportConfig, 'passportConfig', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/router.js');
+    reactHotLoader.register(db, 'db', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/router.js');
+    leaveModule(module);
+})();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 14 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(module) {
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _react = __webpack_require__(0);
+(function () {
+    var enterModule = __webpack_require__(0).enterModule;
+
+    enterModule && enterModule(module);
+})();
+
+var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(1);
+var _reactRedux = __webpack_require__(3);
 
-var _reactRouterDom = __webpack_require__(3);
+var _reactRouterDom = __webpack_require__(5);
 
-var _Menu = __webpack_require__(4);
+var _Home = __webpack_require__(17);
 
-var _Menu2 = _interopRequireDefault(_Menu);
+var _Home2 = _interopRequireDefault(_Home);
 
-var _AddPost = __webpack_require__(17);
+var _AddPost = __webpack_require__(20);
 
 var _AddPost2 = _interopRequireDefault(_AddPost);
 
-var _Login = __webpack_require__(18);
+var _Login = __webpack_require__(21);
 
 var _Login2 = _interopRequireDefault(_Login);
 
-var _store = __webpack_require__(20);
+var _store = __webpack_require__(23);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _App = __webpack_require__(25);
+var _PostsContainer = __webpack_require__(28);
 
-var _App2 = _interopRequireDefault(_App);
+var _PostsContainer2 = _interopRequireDefault(_PostsContainer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -760,8 +855,8 @@ var Routes = function Routes(props) {
             _react2.default.createElement(
                 _reactRouterDom.Switch,
                 null,
-                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Menu2.default }),
-                _react2.default.createElement(_reactRouterDom.Route, { path: '/main', component: _App2.default }),
+                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default }),
+                _react2.default.createElement(_reactRouterDom.Route, { path: '/main', component: _PostsContainer2.default }),
                 _react2.default.createElement(_reactRouterDom.Route, { path: '/addPost', component: _AddPost2.default }),
                 _react2.default.createElement(_reactRouterDom.Route, { path: '/login', component: _Login2.default })
             )
@@ -773,50 +868,143 @@ var _default = Routes;
 exports.default = _default;
 ;
 
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+(function () {
+    var reactHotLoader = __webpack_require__(0).default;
+
+    var leaveModule = __webpack_require__(0).leaveModule;
+
+    if (!reactHotLoader) {
         return;
     }
 
-    __REACT_HOT_LOADER__.register(Routes, 'Routes', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/Routes.js');
-
-    __REACT_HOT_LOADER__.register(_default, 'default', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/Routes.js');
-}();
+    reactHotLoader.register(Routes, 'Routes', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/Routes.js');
+    reactHotLoader.register(_default, 'default', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/Routes.js');
+    leaveModule(module);
+})();
 
 ;
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports) {
-
-module.exports = require("axios");
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports) {
-
-module.exports = require("uuid/v4");
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
 /* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(module) {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
+(function () {
+    var enterModule = __webpack_require__(0).enterModule;
+
+    enterModule && enterModule(module);
+})();
+
+var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Menu = __webpack_require__(4);
+var _Menu = __webpack_require__(6);
 
 var _Menu2 = _interopRequireDefault(_Menu);
 
-var _Selectors = __webpack_require__(2);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _reactRedux = __webpack_require__(1);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Home = function (_React$Component) {
+    _inherits(Home, _React$Component);
+
+    function Home() {
+        _classCallCheck(this, Home);
+
+        return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
+    }
+
+    _createClass(Home, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'post' },
+                _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(_Menu2.default, null),
+                    _react2.default.createElement(
+                        'h2',
+                        { className: 'center' },
+                        'Welcome to Posts Application'
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Home;
+}(_react2.default.Component);
+
+module.exports = Home;
+;
+
+(function () {
+    var reactHotLoader = __webpack_require__(0).default;
+
+    var leaveModule = __webpack_require__(0).leaveModule;
+
+    if (!reactHotLoader) {
+        return;
+    }
+
+    reactHotLoader.register(Home, 'Home', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/Home.js');
+    leaveModule(module);
+})();
+
+;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports) {
+
+module.exports = require("axios");
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports) {
+
+module.exports = require("uuid/v4");
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+(function () {
+    var enterModule = __webpack_require__(0).enterModule;
+
+    enterModule && enterModule(module);
+})();
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Menu = __webpack_require__(6);
+
+var _Menu2 = _interopRequireDefault(_Menu);
+
+var _Selectors = __webpack_require__(4);
+
+var _reactRedux = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -888,34 +1076,46 @@ AddPost.defaultProps = {
 };
 ;
 
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+(function () {
+    var reactHotLoader = __webpack_require__(0).default;
+
+    var leaveModule = __webpack_require__(0).leaveModule;
+
+    if (!reactHotLoader) {
         return;
     }
 
-    __REACT_HOT_LOADER__.register(AddPost, 'AddPost', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/AddPost.js');
-}();
+    reactHotLoader.register(AddPost, 'AddPost', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/AddPost.js');
+    leaveModule(module);
+})();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 18 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(module) {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
+(function () {
+    var enterModule = __webpack_require__(0).enterModule;
+
+    enterModule && enterModule(module);
+})();
+
+var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouter = __webpack_require__(19);
+var _reactRouter = __webpack_require__(22);
 
-var _Selectors = __webpack_require__(2);
+var _Selectors = __webpack_require__(4);
 
-var _reactRedux = __webpack_require__(1);
+var _reactRedux = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -991,44 +1191,56 @@ Login.defaultProps = {
 };
 ;
 
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+(function () {
+    var reactHotLoader = __webpack_require__(0).default;
+
+    var leaveModule = __webpack_require__(0).leaveModule;
+
+    if (!reactHotLoader) {
         return;
     }
 
-    __REACT_HOT_LOADER__.register(Login, 'Login', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/Login.js');
-}();
+    reactHotLoader.register(Login, 'Login', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/Login.js');
+    leaveModule(module);
+})();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 19 */
+/* 22 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-router");
 
 /***/ }),
-/* 20 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(module) {
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _redux = __webpack_require__(21);
+(function () {
+    var enterModule = __webpack_require__(0).enterModule;
 
-var _reduxThunk = __webpack_require__(22);
+    enterModule && enterModule(module);
+})();
+
+var _redux = __webpack_require__(24);
+
+var _reduxThunk = __webpack_require__(25);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _PostReducer = __webpack_require__(23);
+var _PostReducer = __webpack_require__(26);
 
 var _PostReducer2 = _interopRequireDefault(_PostReducer);
 
-var _UserReducer = __webpack_require__(24);
+var _UserReducer = __webpack_require__(27);
 
 var _UserReducer2 = _interopRequireDefault(_UserReducer);
 
@@ -1045,38 +1257,48 @@ var _default = store;
 exports.default = _default;
 ;
 
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+(function () {
+    var reactHotLoader = __webpack_require__(0).default;
+
+    var leaveModule = __webpack_require__(0).leaveModule;
+
+    if (!reactHotLoader) {
         return;
     }
 
-    __REACT_HOT_LOADER__.register(appReducer, 'appReducer', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/store.js');
-
-    __REACT_HOT_LOADER__.register(store, 'store', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/store.js');
-
-    __REACT_HOT_LOADER__.register(_default, 'default', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/store.js');
-}();
+    reactHotLoader.register(appReducer, 'appReducer', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/store.js');
+    reactHotLoader.register(store, 'store', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/store.js');
+    reactHotLoader.register(_default, 'default', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/store.js');
+    leaveModule(module);
+})();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 21 */
+/* 24 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux");
 
 /***/ }),
-/* 22 */
+/* 25 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux-thunk");
 
 /***/ }),
-/* 23 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
 
+(function () {
+    var enterModule = __webpack_require__(0).enterModule;
+
+    enterModule && enterModule(module);
+})();
 
 function postsReducer() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -1104,22 +1326,34 @@ function postsReducer() {
 module.exports = postsReducer;
 ;
 
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+(function () {
+    var reactHotLoader = __webpack_require__(0).default;
+
+    var leaveModule = __webpack_require__(0).leaveModule;
+
+    if (!reactHotLoader) {
         return;
     }
 
-    __REACT_HOT_LOADER__.register(postsReducer, 'postsReducer', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/reducers/PostReducer.js');
-}();
+    reactHotLoader.register(postsReducer, 'postsReducer', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/reducers/PostReducer.js');
+    leaveModule(module);
+})();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 24 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
 
+(function () {
+    var enterModule = __webpack_require__(0).enterModule;
+
+    enterModule && enterModule(module);
+})();
 
 function userReducer() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -1140,44 +1374,56 @@ function userReducer() {
 module.exports = userReducer;
 ;
 
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+(function () {
+    var reactHotLoader = __webpack_require__(0).default;
+
+    var leaveModule = __webpack_require__(0).leaveModule;
+
+    if (!reactHotLoader) {
         return;
     }
 
-    __REACT_HOT_LOADER__.register(userReducer, 'userReducer', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/reducers/UserReducer.js');
-}();
+    reactHotLoader.register(userReducer, 'userReducer', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/reducers/UserReducer.js');
+    leaveModule(module);
+})();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 25 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(module) {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
+(function () {
+    var enterModule = __webpack_require__(0).enterModule;
+
+    enterModule && enterModule(module);
+})();
+
+var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Post = __webpack_require__(26);
+var _Post = __webpack_require__(29);
 
 var _Post2 = _interopRequireDefault(_Post);
 
-var _Menu = __webpack_require__(4);
+var _Menu = __webpack_require__(6);
 
 var _Menu2 = _interopRequireDefault(_Menu);
 
-var _Filter = __webpack_require__(27);
+var _Filter = __webpack_require__(30);
 
 var _Filter2 = _interopRequireDefault(_Filter);
 
-var _reactRedux = __webpack_require__(1);
+var _reactRedux = __webpack_require__(3);
 
-var _Selectors = __webpack_require__(2);
+var _Selectors = __webpack_require__(4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1187,16 +1433,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var App = function (_React$Component) {
-    _inherits(App, _React$Component);
+var PostsContainer = function (_React$Component) {
+    _inherits(PostsContainer, _React$Component);
 
-    function App() {
-        _classCallCheck(this, App);
+    function PostsContainer() {
+        _classCallCheck(this, PostsContainer);
 
-        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (PostsContainer.__proto__ || Object.getPrototypeOf(PostsContainer)).apply(this, arguments));
     }
 
-    _createClass(App, [{
+    _createClass(PostsContainer, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
             this.props.getPosts();
@@ -1231,38 +1477,50 @@ var App = function (_React$Component) {
         }
     }]);
 
-    return App;
+    return PostsContainer;
 }(_react2.default.Component);
 
-module.exports = (0, _reactRedux.connect)(_Selectors.mapStateToProps, _Selectors.mapActionsToProps)(App);
+module.exports = (0, _reactRedux.connect)(_Selectors.mapStateToProps, _Selectors.mapActionsToProps)(PostsContainer);
 ;
 
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+(function () {
+    var reactHotLoader = __webpack_require__(0).default;
+
+    var leaveModule = __webpack_require__(0).leaveModule;
+
+    if (!reactHotLoader) {
         return;
     }
 
-    __REACT_HOT_LOADER__.register(App, 'App', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/App.js');
-}();
+    reactHotLoader.register(PostsContainer, 'PostsContainer', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/PostsContainer.js');
+    leaveModule(module);
+})();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 26 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(module) {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
+(function () {
+    var enterModule = __webpack_require__(0).enterModule;
+
+    enterModule && enterModule(module);
+})();
+
+var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Selectors = __webpack_require__(2);
+var _Selectors = __webpack_require__(4);
 
-var _reactRedux = __webpack_require__(1);
+var _reactRedux = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1323,32 +1581,44 @@ var Post = function (_React$Component) {
 module.exports = (0, _reactRedux.connect)(_Selectors.mapStateToProps, _Selectors.mapActionsToProps)(Post);
 ;
 
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+(function () {
+    var reactHotLoader = __webpack_require__(0).default;
+
+    var leaveModule = __webpack_require__(0).leaveModule;
+
+    if (!reactHotLoader) {
         return;
     }
 
-    __REACT_HOT_LOADER__.register(Post, "Post", "D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/Post.js");
-}();
+    reactHotLoader.register(Post, "Post", "D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/Post.js");
+    leaveModule(module);
+})();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 27 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(module) {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
+(function () {
+    var enterModule = __webpack_require__(0).enterModule;
+
+    enterModule && enterModule(module);
+})();
+
+var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Selectors = __webpack_require__(2);
+var _Selectors = __webpack_require__(4);
 
-var _reactRedux = __webpack_require__(1);
+var _reactRedux = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1399,39 +1669,51 @@ var Filter = function (_React$Component) {
 module.exports = (0, _reactRedux.connect)(_Selectors.mapStateToProps, _Selectors.mapActionsToProps)(Filter);
 ;
 
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+(function () {
+    var reactHotLoader = __webpack_require__(0).default;
+
+    var leaveModule = __webpack_require__(0).leaveModule;
+
+    if (!reactHotLoader) {
         return;
     }
 
-    __REACT_HOT_LOADER__.register(Filter, "Filter", "D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/Filter.js");
-}();
+    reactHotLoader.register(Filter, "Filter", "D:/Mavric/FrontCamp/FrontCamp/ReactPart2/browser/components/Filter.js");
+    leaveModule(module);
+})();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 28 */
+/* 31 */
 /***/ (function(module, exports) {
 
 module.exports = require("winston");
 
 /***/ }),
-/* 29 */
+/* 32 */
 /***/ (function(module, exports) {
 
 module.exports = require("jwt-simple");
 
 /***/ }),
-/* 30 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
 
+(function () {
+    var enterModule = __webpack_require__(0).enterModule;
 
-var passport = __webpack_require__(31);
-var passportJWT = __webpack_require__(32);
-var UserModel = __webpack_require__(8);
-var cfg = __webpack_require__(9);
+    enterModule && enterModule(module);
+})();
+
+var passport = __webpack_require__(34);
+var passportJWT = __webpack_require__(35);
+var UserModel = __webpack_require__(10);
+var cfg = __webpack_require__(11);
 var ExtractJwt = passportJWT.ExtractJwt;
 var Strategy = passportJWT.Strategy;
 var params = {
@@ -1463,40 +1745,50 @@ module.exports = function () {
 };
 ;
 
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+(function () {
+    var reactHotLoader = __webpack_require__(0).default;
+
+    var leaveModule = __webpack_require__(0).leaveModule;
+
+    if (!reactHotLoader) {
         return;
     }
 
-    __REACT_HOT_LOADER__.register(ExtractJwt, "ExtractJwt", "D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/passportConfig.js");
-
-    __REACT_HOT_LOADER__.register(Strategy, "Strategy", "D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/passportConfig.js");
-
-    __REACT_HOT_LOADER__.register(params, "params", "D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/passportConfig.js");
-}();
+    reactHotLoader.register(ExtractJwt, "ExtractJwt", "D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/passportConfig.js");
+    reactHotLoader.register(Strategy, "Strategy", "D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/passportConfig.js");
+    reactHotLoader.register(params, "params", "D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/passportConfig.js");
+    leaveModule(module);
+})();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 31 */
+/* 34 */
 /***/ (function(module, exports) {
 
 module.exports = require("passport");
 
 /***/ }),
-/* 32 */
+/* 35 */
 /***/ (function(module, exports) {
 
 module.exports = require("passport-jwt");
 
 /***/ }),
-/* 33 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
 
+(function () {
+    var enterModule = __webpack_require__(0).enterModule;
 
-var mongoose = __webpack_require__(5);
+    enterModule && enterModule(module);
+})();
+
+var mongoose = __webpack_require__(7);
 var Schema = mongoose.Schema;
 
 var PostSchema = new Schema({
@@ -1510,33 +1802,50 @@ var PostModel = mongoose.model('Post', PostSchema);
 module.exports = PostModel;
 ;
 
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+(function () {
+    var reactHotLoader = __webpack_require__(0).default;
+
+    var leaveModule = __webpack_require__(0).leaveModule;
+
+    if (!reactHotLoader) {
         return;
     }
 
-    __REACT_HOT_LOADER__.register(Schema, 'Schema', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/Database/PostSchema.js');
-
-    __REACT_HOT_LOADER__.register(PostSchema, 'PostSchema', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/Database/PostSchema.js');
-
-    __REACT_HOT_LOADER__.register(PostModel, 'PostModel', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/Database/PostSchema.js');
-}();
+    reactHotLoader.register(Schema, 'Schema', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/Database/PostSchema.js');
+    reactHotLoader.register(PostSchema, 'PostSchema', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/Database/PostSchema.js');
+    reactHotLoader.register(PostModel, 'PostModel', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/Database/PostSchema.js');
+    leaveModule(module);
+})();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 34 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
 
+(function () {
+    var enterModule = __webpack_require__(0).enterModule;
 
-var logger = __webpack_require__(7);
+    enterModule && enterModule(module);
+})();
+
+var logger = __webpack_require__(9);
 var errorHandler = {};
 errorHandler.handleError = function (err, req, res) {
+    var oError = "";
+    try {
+        error = JSON.stringify(err);
+    } catch (error) {
+        oError = "Error";
+    }
+
     logger.log({
         level: 'error',
-        message: 'error: ' + JSON.stringify(err) + ', date: ' + new Date()
+        message: 'error: ' + oError + ', date: ' + new Date()
     });
     console.log("error handled");
     var objExplanation = {
@@ -1562,21 +1871,33 @@ errorHandler.handleError = function (err, req, res) {
     if (err.status) {
         res.status(err.status);
     }
-    res.render('error', objExplanation);
+
+    if (res.render) {
+        res.render('error', objExplanation);
+    } else {
+        //means that res is function next()
+        res();
+    }
 };
 
 module.exports = errorHandler;
 ;
 
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+(function () {
+    var reactHotLoader = __webpack_require__(0).default;
+
+    var leaveModule = __webpack_require__(0).leaveModule;
+
+    if (!reactHotLoader) {
         return;
     }
 
-    __REACT_HOT_LOADER__.register(errorHandler, 'errorHandler', 'D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/errorHandler.js');
-}();
+    reactHotLoader.register(errorHandler, "errorHandler", "D:/Mavric/FrontCamp/FrontCamp/ReactPart2/server/errorHandler.js");
+    leaveModule(module);
+})();
 
 ;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ })
 /******/ ]);

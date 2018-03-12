@@ -59,13 +59,11 @@ router.use(function (req, res, next) {
         message: 'url: ' + JSON.stringify(url) + ', date: ' + new Date()
     });
     next(); // make sure we go to the next routes and don't stop here
+
 });
 
-// ROUTES FOR OUR SERVER
-// =============================================================================
 
-
-// on routes that end in /posts
+// on routes that end in /login
 // ----------------------------------------------------
 router.route('/login')
 
