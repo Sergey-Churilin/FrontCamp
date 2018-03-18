@@ -1,0 +1,14 @@
+<div>
+    <button class="delete" ng-click="removeTask(task)">x</button>
+    <div ng-click="changeMode(task)">
+        <p><b>Name: </b>
+            <a ng-href="#!{{ task.date }}/edit" class="taskLink">{{ task.name }}</a>
+            <input ng-if="task.mode === 'edit'" type="text" ng-value="task.name" placeholder=""
+                   ng-model="currentTask.name" required/>
+        </p>
+    </div>
+    <div><b>Date: </b><span>{{ task.date | date:'medium'}}</span></div>
+
+    <p><b>Status: </b>{{ task.status }}</p>
+    <button ng-if="task.mode === 'edit'" ng-click="save(task)">Save</button>
+</div>

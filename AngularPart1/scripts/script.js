@@ -5,11 +5,24 @@ app.config(function($routeProvider){
             templateUrl:"Components/Home/home.html",
             controller:"toDoController"
         })
-        .when("/details/:id",{
-            templateUrl:"template/details.html",
-            controller:"ListController"
+        .when("/add",{
+            templateUrl:"Components/AddTodo/addTodo.html",
+            controller:"addTodoController"
         })
-        .otherwise({redirectTo: "/home"});
+        .when("/:id/edit",{
+            templateUrl:"Components/EditTodo/editTodo.html",
+            controller:"toDoController"
+        })
+});
+app.directive('todo', function () {
+    return {
+        templateUrl:"Components/Home/todo.html"
+    };
+});
+app.directive('navigation', function () {
+    return {
+        templateUrl:"Components/Navigation/nav.html"
+    };
 });
 var factory = app.factory("todoFactory", function () {
     var taskList = [{
@@ -56,7 +69,7 @@ var factory = app.factory("todoFactory", function () {
         validate: function (name) {
             return name && name.length > 20;
         },
-        changeMode: function (task) {
+        editTodo: function (task) {
             task.mode = "edit";
         },
         save: function (task, newName) {
@@ -84,11 +97,8 @@ var factory = app.factory("todoFactory", function () {
 });
 
 
-app.controller('toDoController', ['$scope', 'todoFactory', function ($scope, todoFactory) {
-    $scope.tasks = todoFactory.getTasks();
+app.controller('addTodoController', ['$scope', 'todoFactory', function ($scope, todoFactory) {
     $scope.newTask = {name: ''};
-    $scope.currentTask = {name: ''};
-    $scope.filterObj = {letters: ''};
 
     $scope.addTask = function () {
         var bCreated = todoFactory.addTask($scope.newTask);
@@ -96,7 +106,12 @@ app.controller('toDoController', ['$scope', 'todoFactory', function ($scope, tod
             $scope.newTask = {name: ''};
         }
     };
+}]);
 
+app.controller('toDoController', ['$scope', 'todoFactory', function ($scope, todoFactory) {
+    $scope.tasks = todoFactory.getTasks();
+    $scope.currentTask = {name: ''};
+    $scope.filterObj = {letters: ''};
     $scope.removeTask = function (task) {
         todoFactory.removeTask(task);
     };
@@ -105,8 +120,8 @@ app.controller('toDoController', ['$scope', 'todoFactory', function ($scope, tod
         todoFactory.filterByDates();
     };
 
-    $scope.changeMode = function (task) {
-        todoFactory.changeMode(task);
+    $scope.editTodo = function (task) {
+        todoFactory.editTodo(task);
     };
 
     $scope.save = function (task) {
