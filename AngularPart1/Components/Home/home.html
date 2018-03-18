@@ -1,0 +1,54 @@
+
+<div ng-controller="toDoController">
+<h3>Active ({{ tasks.length }})</h3>
+<span ng-if="tasks.length === 0">You have no active tasks!</span>
+<div class="filters">
+    <input type="text" ng-model="filterObj.letters" ng-change="filterByLetters()">
+    <button class="filter" ng-click="filterByDates()">Order</button>
+</div>
+<table>
+    <tr>
+        <td>
+            <ul ng-repeat="task in tasks">
+                <li ng-if="task.status === 'done' && task.visible === true">
+                    <button class="delete" ng-click="removeTask(task)">x</button>
+                    <div ng-click="changeMode(task)">
+                        <p><b>Name: </b>
+                            <span class="taskName" ng-if="task.mode !== 'edit'">{{ task.name }}</span>
+                            <input ng-if="task.mode === 'edit'" type="text" ng-value="task.name" placeholder="" ng-model="currentTask.name" required/>
+                        </p>
+                    </div>
+                    <div><b>Date: </b><span>{{ task.date | date:'medium'}}</span></div>
+
+                    <p><b>Status: </b>{{ task.status }}</p>
+                    <button ng-if="task.mode === 'edit'" ng-click="save(task)">Save</button>
+                </li>
+            </ul>
+        </td>
+        <td>
+            <ul ng-repeat="task in tasks">
+                <li ng-if="task.status === 'new' && task.visible === true">
+                    <button class="delete" ng-click="removeTask(task)">x</button>
+                    <div ng-click="changeMode(task)">
+                        <p><b>Name: </b>
+                            <span class="taskName" ng-if="task.mode !== 'edit'">{{ task.name }}</span>
+                            <input ng-if="task.mode === 'edit'" type="text" ng-value="task.name" placeholder="" ng-model="currentTask.name" required/>
+                        </p>
+                    </div>
+                    <div><b>Date: </b><span>{{ task.date | date:'medium'}}</span></div>
+
+                    <p><b>Status: </b>{{ task.status }}</p>
+                    <button ng-if="task.mode === 'edit'" ng-click="save(task)">Save</button>
+                </li>
+            </ul>
+        </td>
+    </tr>
+</table>
+
+
+<h2>Add a Task</h2>
+<form>
+    <input type="text" placeholder="" ng-model="newTask.name" required/>
+    <input type="button" value="Add" ng-click="addTask()"/>
+</form>
+</div>

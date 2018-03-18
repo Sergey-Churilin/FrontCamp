@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+table {
+    width: 90%;
+    margin: 20px auto;
+    text-align: center;
+    border: 1px solid #000;
+}
+
+td {
+    vertical-align: top;
+    width: 50%;
+    padding: 10px;
+    text-align: left;
+    border-right: 1px solid #000;
+}
+
+.delete {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    background: none;
+    cursor: pointer;
+    color: pink;
+    border: 1px solid pink;
+    border-radius: 50%;
+    padding: 0 5px;
+}
+
+.delete:hover {
+    color: #ff6068;
+    border: 1px solid #ff6068;
+}
+
+li {
+    list-style-type: none;
+    position: relative;
+    border-bottom: 1px solid #000;
+    margin-bottom: 10px;
+}
+
+input.ng-invalid {
+    background-color: pink;
+}
+
+input.ng-valid {
+    background-color: lightgreen;
+}
+
+.taskName {
+    cursor: pointer;
+}
+
+.taskName:hover {
+    text-decoration: underline;
+}
+
+form {
+    text-align: center;
+}
+
+.filters {
+    text-align: center;
+}
+
+.filter {
+    background: none;
+    border:1px solid #fa9e8f;
+    padding: 4px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
