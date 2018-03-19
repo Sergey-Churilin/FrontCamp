@@ -1,8 +1,7 @@
-<div>
-    <button class="delete" ng-click="removeTask(task)">x</button>
+<div ng-controller="editController">
     <div ng-click="changeMode(task)">
         <p><b>Name: </b>
-            <a href="#!{{ task.date }}/edit" class="taskLink">{{ task.name }}</a>
+            <span ng-if="task.mode !== 'edit'" class="taskName" ng-click="editTodo(task)">{{ task.name }}</span>
             <input ng-if="task.mode === 'edit'" type="text" ng-value="task.name" placeholder=""
                    ng-model="currentTask.name" required/>
         </p>
