@@ -1,14 +1,14 @@
-app.factory("todoFactory",[], function () {
-    var taskList = [{
-        name: "Buy a new powerful computer",
-        date: 1521388758655,
-        status: "done",
-        mode: "none",
-        visible: true
-    }];
+app.factory("todoFactory",['localRequestFactory', function (localRequestFactory) {
+    var taskList = [];
     return {
-        getTasks: function getTasks() {
-            return taskList;
+        getTasks: function getTasks(callback) {
+            localRequestFactory.getTasks(function(tasks){
+                tasks.sort(function(task1, task2){
+                   return task1.date - task2.date;
+                });
+                taskList = tasks;
+                callback(taskList);
+            });
         },
         getTaskById: function getTaskById(id){
             var aTasks = taskList.filter(function(task){return task.date === id;});
@@ -25,6 +25,7 @@ app.factory("todoFactory",[], function () {
                     mode: "none",
                     visible: true
                 };
+                localRequestFactory.addTask(task);
 
                 taskList.push(task);
                 return true;
@@ -34,12 +35,17 @@ app.factory("todoFactory",[], function () {
         },
         removeTask: function removeTask(todo) {
             var indexToDel;
+            localRequestFactory.removeTask(todo);
             taskList.forEach(function (task,index) {
                 if(todo.date === task.date){
                     indexToDel = index;
                 }
             });
-            taskList.splice(indexToDel,1)
+            if(typeof indexToDel !=="undefined"){
+                taskList.splice(indexToDel,1);
+            }
+
+            return taskList;
         },
         filterByDates: function () {
             return taskList.reverse();
@@ -53,13 +59,9 @@ app.factory("todoFactory",[], function () {
         save: function (task, newName) {
             var bValidate = this.validate(newName);
             if (bValidate) {
-                var aTasks = taskList.filter(function (taskInner) {
-                    return taskInner.name === task.name;
-                });
-                if (aTasks && aTasks.length > 0) {
-                    aTasks[0].name = newName;
-                }
+                task.name = newName;
                 task.mode = "none";
+                localRequestFactory.updateTask(task);
                 return true;
             }
 
@@ -72,4 +74,4 @@ app.factory("todoFactory",[], function () {
             });
         }
     };
-});
+}]);

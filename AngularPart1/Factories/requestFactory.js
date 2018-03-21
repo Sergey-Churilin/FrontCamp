@@ -1,72 +1,38 @@
-app.factory("requestFactory",['$resource'], function ($resource) {
+app.factory("localRequestFactory",['$resource', function ($resource) {
     var taskList = [];
     return {
-        getTasks: function getTasks() {
-            var Tasks = $resource('data.json');
-            Tasks.get( function(tasks){
-                taskList = tasks;
+        getTasks: function getTasks(callback) {
+            var resource = $resource('http://localhost:3000/todos');
+            resource.query()
+                .$promise.then(function(tasks) {
+                    callback(tasks)
             });
-        }
-        /*getTaskById: function getTaskById(id){
-            var aTasks = taskList.filter(function(task){return task.date === id;});
-            return aTasks[0];
         },
         addTask: function addTask(todo) {
-            var bValidated = this.validate(todo.name);
-
-            if (bValidated) {
-                var task = {
-                    name: todo.name,
-                    date: new Date().getTime(),
-                    status: "new",
-                    mode: "none",
-                    visible: true
-                };
-
-                taskList.push(task);
-                return true;
-            }
-
-            return false;
+            var Todo = $resource('http://localhost:3000/todos', {}, {
+                create: { method: 'POST', url: 'http://localhost:3000/todos', params: todo }
+            });
+            Todo.create(todo);
+        },
+        updateTask: function (todo) {
+            var Todo = $resource('http://localhost:3000/todos/'+todo.date, {}, {
+                update: { method: 'PUT', url: 'http://localhost:3000/todos/'+todo.date, params: todo }
+            });
+            Todo.update(todo);
         },
         removeTask: function removeTask(todo) {
-            var indexToDel;
+            var Todo = $resource('http://localhost:3000/todos/'+todo._id, {}, {
+                delete: { method: 'DELETE', url: 'http://localhost:3000/todos/'+todo._id}
+            });
+            Todo.delete(todo);
+           /* var indexToDel;
             taskList.forEach(function (task,index) {
                 if(todo.date === task.date){
                     indexToDel = index;
                 }
             });
-            taskList.splice(indexToDel,1)
-        },
-        filterByDates: function () {
-            return taskList.reverse();
-        },
-        validate: function (name) {
-            return name && name.length > 20;
-        },
-        editTodo: function (task) {
-            task.mode = "edit";
-        },
-        save: function (task, newName) {
-            var bValidate = this.validate(newName);
-            if (bValidate) {
-                var aTasks = taskList.filter(function (taskInner) {
-                    return taskInner.name === task.name;
-                });
-                if (aTasks && aTasks.length > 0) {
-                    aTasks[0].name = newName;
-                }
-                task.mode = "none";
-                return true;
-            }
+            taskList.splice(indexToDel,1)*/
+        }
 
-            return false;
-        },
-        filterByLetters:function(letters){
-            var value = letters.toLowerCase();
-            taskList.forEach(function (task) {
-                task.visible = value ? task.name.toLowerCase().indexOf(value) === 0 : true;
-            });
-        }*/
     };
-});
+}]);

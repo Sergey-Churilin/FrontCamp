@@ -8,15 +8,15 @@
     <table>
         <tr>
             <td>
-                <ul ng-repeat="task in tasks">
-                    <li ng-if="task.status === 'done' && task.visible === true">
+                <ul>
+                    <li ng-repeat="task in tasks" ng-if="isTaskVisible(task,'done')">
                         <todo></todo>
                     </li>
                 </ul>
             </td>
             <td>
-                <ul ng-repeat="task in tasks">
-                    <li ng-if="task.status === 'new' && task.visible === true">
+                <ul>
+                    <li ng-repeat="task in tasks" ng-if="isTaskVisible(task,'new')">
                         <todo></todo>
                     </li>
                 </ul>
