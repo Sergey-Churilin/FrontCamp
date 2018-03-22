@@ -1,10 +1,11 @@
 app.controller('toDoController', ['$scope', 'todoFactory', function ($scope, todoFactory) {
+    $scope.currentTask = {name: ''};
+    $scope.filterObj = {letters: ''};
     $scope.tasks = [];
+
     todoFactory.getTasks(function(todos){
         $scope.tasks = todos;
     });
-    $scope.currentTask = {name: ''};
-    $scope.filterObj = {letters: ''};
 
     $scope.removeTask = function (task) {
         $scope.tasks = todoFactory.removeTask(task);

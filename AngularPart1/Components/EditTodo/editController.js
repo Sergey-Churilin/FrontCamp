@@ -12,8 +12,4 @@ app.controller('editController', ['$scope', '$routeParams', 'todoFactory', funct
             $scope.currentTask = {name: ''};
         }
     };
-
-    $scope.filterByLetters = function(){
-        todoFactory.filterByLetters($scope.filterObj.letters);
-    }
 }]);

@@ -57,6 +57,10 @@ app.factory("todoFactory",['localRequestFactory', function (localRequestFactory)
             task.mode = "edit";
         },
         save: function (task, newName) {
+            if(!newName){
+                task.mode = "none";
+                return true;
+            }
             var bValidate = this.validate(newName);
             if (bValidate) {
                 task.name = newName;
