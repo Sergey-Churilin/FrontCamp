@@ -1,0 +1,8 @@
+<h3>{{ctrl.header}}</h3>
+<form name="addForm" class="addForm">
+    <label class="label" for="newText">Enter a text for task:</label>
+    <input class="input" type="text" id="newText" name="newText" ng-model="ctrl.text" required min-length />
+    <span class="error" ng-if="!addForm.newText.$valid">The min length of text is 20 symbols</span>
+    <textarea name="content" ng-model="ctrl.content" required rows="5"></textarea>
+    <button type="button" class="btnSave" ng-click="ctrl.save()" ng-disabled="!addForm.$valid">Save</button>
+</form>

@@ -1,0 +1,32 @@
+{
+  "name": "angularpart1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack  --watch",
+    "start": "nodemon ./app.server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.11",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "nodemon": "^1.14.11",
+    "text-loader": "0.0.1",
+    "webpack": "^3.11.0"
+  },
+  "dependencies": {
+    "angular": "1.6.1",
+    "angular-route": "1.6.1",
+    "angular-resource": "1.6.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.3"
+  }
+}
