@@ -1,81 +1,74 @@
-app.factory("todoFactory",['localRequestFactory', function (localRequestFactory) {
+app.factory("todoFactory", ['ResourceModel', function (ResourceModel) {
     var taskList = [];
     return {
         getTasks: function getTasks(callback) {
-            localRequestFactory.getTasks(function(tasks){
-                tasks.sort(function(task1, task2){
-                   return task1.date - task2.date;
-                });
+            ResourceModel.getTasks(function (tasks) {
                 taskList = tasks;
-                callback(taskList);
+
+                if (callback) {
+                    callback(taskList);
+                }
             });
         },
-        getTaskById: function getTaskById(id){
-            var aTasks = taskList.filter(function(task){return task.date === id;});
-            return aTasks[0];
+        getTaskById: function getTaskById(id, callback) {
+            var aTasks = taskList.filter(function (task) {
+                return task.date === id;
+            });
+
+            if (aTasks.length > 0) {
+                callback(aTasks[0]);
+            } else {
+                this.getTasks(function (tasks) {
+                    callback(tasks[0] || {});
+                })
+            }
         },
         addTask: function addTask(todo) {
-            var bValidated = this.validate(todo.name);
+            var task = {
+                name: todo.name,
+                date: new Date().getTime(),
+                status: "new",
+                mode: "none",
+                visible: true
+            };
+            ResourceModel.addTask(task);
 
-            if (bValidated) {
-                var task = {
-                    name: todo.name,
-                    date: new Date().getTime(),
-                    status: "new",
-                    mode: "none",
-                    visible: true
-                };
-                localRequestFactory.addTask(task);
-
-                taskList.push(task);
-                return true;
-            }
-
-            return false;
+            taskList.push(task);
         },
         removeTask: function removeTask(todo) {
             var indexToDel;
-            localRequestFactory.removeTask(todo);
-            taskList.forEach(function (task,index) {
-                if(todo.date === task.date){
+
+            ResourceModel.removeTask(todo);
+            taskList.forEach(function (task, index) {
+                if (todo.date === task.date) {
                     indexToDel = index;
                 }
             });
-            if(typeof indexToDel !=="undefined"){
-                taskList.splice(indexToDel,1);
+
+            if (typeof indexToDel !== "undefined") {
+                taskList.splice(indexToDel, 1);
             }
 
             return taskList;
         },
-        filterByDates: function () {
-            return taskList.reverse();
-        },
-        validate: function (name) {
-            return name && name.length > 20;
-        },
-        editTodo: function (task) {
-            task.mode = "edit";
-        },
-        save: function (task, newName) {
-            if(!newName){
-                task.mode = "none";
-                return true;
-            }
-            var bValidate = this.validate(newName);
-            if (bValidate) {
-                task.name = newName;
-                task.mode = "none";
-                localRequestFactory.updateTask(task);
-                return true;
-            }
+        filterTasksByStatus: function () {
+            var todosObj = {
+                newTodos: [],
+                doneTodos: []
+            };
 
-            return false;
-        },
-        filterByLetters:function(letters){
-            var value = letters.toLowerCase();
-            taskList.forEach(function (task) {
-                task.visible = value ? task.name.toLowerCase().indexOf(value) === 0 : true;
+            angular.forEach(taskList, function (task) {
+                if (task.status === "new") {
+                    todosObj.newTodos.push(task);
+                } else {
+                    todosObj.doneTodos.push(task);
+                }
             });
+
+            return todosObj;
+        },
+        save: function (task) {
+            ResourceModel.updateTask(task);
         }
     };
 }]);

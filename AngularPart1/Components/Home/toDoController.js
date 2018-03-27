@@ -5,21 +5,13 @@ app.controller('toDoController', ['$scope', 'todoFactory', function ($scope, tod
 
     todoFactory.getTasks(function(todos){
         $scope.tasks = todos;
+        $scope.tasksByStatus =todoFactory.filterTasksByStatus();
+        console.log($scope.tasksByStatus)
     });
 
     $scope.removeTask = function (task) {
         $scope.tasks = todoFactory.removeTask(task);
+        $scope.tasksByStatus = todoFactory.filterTasksByStatus();
+        console.log($scope.tasksByStatus)
     };
-
-    $scope.filterByDates = function () {
-        todoFactory.filterByDates();
-    };
-
-    $scope.filterByLetters = function(){
-        todoFactory.filterByLetters($scope.filterObj.letters);
-    };
-
-    $scope.isTaskVisible = function(task, status){
-        return task.status === status && task.visible;
-    }
 }]);

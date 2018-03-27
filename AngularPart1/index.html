@@ -10,18 +10,21 @@
 <body>
 <div ng-app="toDoApp">
     <h1>Todo application</h1>
-    <navigation></navigation>
+    <ul class="nav">
+        <li><a ng-href="#!/home">Home</a></li>
+        <li><a ng-href="#!/add">Add Todo</a></li>
+    </ul>
     <ng-view></ng-view>
 </div>
 <script src="scripts/script.js"></script>
 <script src="scripts/config.js"></script>
-<script src="Directives/navigation.js"></script>
 <script src="Directives/todoDirective.js"></script>
-<script src="Factories/requestFactory.js"></script>
+<script src="Directives/minLength.js"></script>
+<script src="Factories/ResourceModel.js"></script>
 <script src="Factories/todoFactory.js"></script>
 <script src="Components/Home/toDoController.js"></script>
-<script src="Components/AddTodo/addTodoController.js"></script>
+<script src="Controllers/addTodoController.js"></script>
 <script src="Components/Home/toDoController.js"></script>
-<script src="Components/EditTodo/editController.js"></script>
+<script src="Controllers/editController.js"></script>
 </body>
 </html>

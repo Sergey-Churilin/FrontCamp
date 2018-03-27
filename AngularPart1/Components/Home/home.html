@@ -2,25 +2,18 @@
     <h3>Active ({{ tasks.length }})</h3>
     <span ng-if="tasks.length === 0">You have no active tasks!</span>
     <div class="filters">
-        <input type="text" ng-model="filterObj.letters" ng-change="filterByLetters()">
+        <input type="text" ng-model="searchText">
         <button class="filter" ng-click="filterByDates()">Order</button>
     </div>
-    <table>
-        <tr>
-            <td>
-                <ul>
-                    <li ng-repeat="task in tasks" ng-if="isTaskVisible(task,'done')">
+
+                <ul class="todoList">
+                    <li ng-repeat="task in tasksByStatus.doneTodos | filter : searchText:name:date | orderBy : 'date'">
                         <todo></todo>
                     </li>
                 </ul>
-            </td>
-            <td>
-                <ul>
-                    <li ng-repeat="task in tasks" ng-if="isTaskVisible(task,'new')">
+                <ul class="todoList">
+                    <li ng-repeat="task in tasksByStatus.newTodos | filter : searchText:name:date | orderBy : 'date'">
                         <todo></todo>
                     </li>
                 </ul>
-            </td>
-        </tr>
-    </table>
 </div>

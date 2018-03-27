@@ -5,11 +5,13 @@ app.config(function($routeProvider){
             controller:"toDoController"
         })
         .when("/add",{
-            templateUrl:"Components/AddTodo/addTodo.html",
-            controller:"addTodoController"
+            templateUrl:"Templates/addEditTodo.html",
+            controller:"addTodoController",
+            controllerAs:"ctrl"
         })
         .when("/:id/edit",{
-            templateUrl:"Components/EditTodo/editTodo.html",
-            controller:"toDoController"
+            templateUrl:"Templates/addEditTodo.html",
+            controller:"editController",
+            controllerAs:"ctrl"
         })
 });
