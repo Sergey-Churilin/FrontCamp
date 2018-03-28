@@ -51,13 +51,20 @@ app.factory("todoFactory", ['ResourceModel', function (ResourceModel) {
 
             return taskList;
         },
-        filterTasksByStatus: function () {
+        getTasksFilteredByDate: function (date) {
+            var nTimestamp = date.getTime();
+            var filteredTasks = taskList.filter(function (item) {
+                return nTimestamp >= item.date;
+            });
+            return filteredTasks;
+        },
+        filterTasksByStatus: function (aTasks) {
             var todosObj = {
                 newTodos: [],
                 doneTodos: []
             };
 
-            angular.forEach(taskList, function (task) {
+            angular.forEach(aTasks, function (task) {
                 if (task.status === "new") {
                     todosObj.newTodos.push(task);
                 } else {

@@ -1,5 +1,5 @@
 app.directive('todo', function () {
     return {
-        templateUrl:"Components/Home/todo.html"
+        templateUrl: "Components/Home/todo.html"
     };
 });

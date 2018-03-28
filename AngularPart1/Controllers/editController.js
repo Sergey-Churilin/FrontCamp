@@ -1,12 +1,12 @@
-app.controller('editController', [ '$location','$routeParams', 'todoFactory', function ($location,  $routeParams, todoFactory) {
+app.controller('editController', ['$location', '$routeParams', 'todoFactory', function ($location, $routeParams, todoFactory) {
     var vm = this;
 
     vm.header = "Edit a Task";
     vm.task = {};
     vm.text = "";
 
-    todoFactory.getTaskById(Number($routeParams.id), function(task){
-        if(task){
+    todoFactory.getTaskById(Number($routeParams.id), function (task) {
+        if (task) {
             vm.task = task;
             vm.text = task.name;
         }
