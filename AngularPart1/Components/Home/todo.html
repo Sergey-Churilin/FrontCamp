@@ -1,0 +1,9 @@
+<div>
+    <button class="delete" ng-click="removeTask(task)">x</button>
+    <div><b>Name: </b>
+    <a ng-href="#!{{ task.date }}/edit" class="taskLink">{{ task.name }}</a></div>
+
+    <div><b>Date: </b><span>{{ task.date | date:'medium'}}</span></div>
+
+    <div><b>Status: </b>{{ task.status }}</div>
+</div>
