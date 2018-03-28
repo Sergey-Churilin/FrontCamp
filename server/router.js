@@ -27,7 +27,13 @@ router.route('/todos')
     .post(function (req, res, next) {
         // .post(function (req, res, next) {
         const todoData = req.body;
-        const newTodo = new TodoModel({'name': todoData.name, 'date': todoData.date, 'status': todoData.status, 'mode': todoData.mode, 'visible': todoData.visible});
+        const newTodo = new TodoModel({
+            'name': todoData.name,
+            'date': todoData.date,
+            'status': todoData.status,
+            'mode': todoData.mode,
+            'visible': todoData.visible
+        });
         newTodo.save(function (err, newTodo) {
             if (err) {
                 err.description = "Error in adding new todo";
@@ -78,7 +84,7 @@ router.route('/todos/:todo_id')
         const id = Number(req.params.todo_id);
         const todoData = req.body;
 
-        TodoModel.find({date:id}, function (err, todosArray) {
+        TodoModel.find({date: id}, function (err, todosArray) {
             if (err) {
                 err.description = 'Todo with id ' + id + ' does not exist';
                 next(err);

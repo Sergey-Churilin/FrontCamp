@@ -1,19 +1,18 @@
-<div ng-controller="toDoController">
+<div>
     <h3>Active ({{ tasks.length }})</h3>
-    <span ng-if="tasks.length === 0">You have no active tasks!</span>
     <div class="filters">
         <input type="text" ng-model="searchText">
-        <button class="filter" ng-click="filterByDates()">Order</button>
+        <input type="date" name="date" id="search-date" ng-change="todoCtrl.onDateChange()" ng-model="todoCtrl.date"/>
     </div>
 
-                <ul class="todoList">
-                    <li ng-repeat="task in tasksByStatus.doneTodos | filter : searchText:name:date | orderBy : 'date'">
-                        <todo></todo>
-                    </li>
-                </ul>
-                <ul class="todoList">
-                    <li ng-repeat="task in tasksByStatus.newTodos | filter : searchText:name:date | orderBy : 'date'">
-                        <todo></todo>
-                    </li>
-                </ul>
+    <ul class="todoList">
+        <li ng-repeat="task in todoCtrl.tasksByStatus.doneTodos | filter : searchText:name:date | orderBy : 'date'">
+            <todo></todo>
+        </li>
+    </ul>
+    <ul class="todoList">
+        <li ng-repeat="task in todoCtrl.tasksByStatus.newTodos | filter : searchText:name:date | orderBy : 'date'">
+            <todo></todo>
+        </li>
+    </ul>
 </div>

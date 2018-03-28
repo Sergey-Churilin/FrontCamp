@@ -1,17 +1,18 @@
-app.config(function($routeProvider){
+app.config(function ($routeProvider) {
     $routeProvider
         .when("/home", {
-            templateUrl:"Components/Home/home.html",
-            controller:"toDoController"
+            templateUrl: "Components/Home/home.html",
+            controller: "toDoController",
+            controllerAs: "todoCtrl"
         })
-        .when("/add",{
-            templateUrl:"Templates/addEditTodo.html",
-            controller:"addTodoController",
-            controllerAs:"ctrl"
+        .when("/add", {
+            templateUrl: "Templates/addEditTodo.html",
+            controller: "addTodoController",
+            controllerAs: "ctrl"
         })
-        .when("/:id/edit",{
-            templateUrl:"Templates/addEditTodo.html",
-            controller:"editController",
-            controllerAs:"ctrl"
+        .when("/:id/edit", {
+            templateUrl: "Templates/addEditTodo.html",
+            controller: "editController",
+            controllerAs: "ctrl"
         })
 });
