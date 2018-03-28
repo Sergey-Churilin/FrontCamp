@@ -4,7 +4,7 @@ app.controller('addTodoController', ['todoFactory', function (todoFactory) {
 
     vm.save = function () {
         todoFactory.addTask({
-            name:vm.text
+            name: vm.text
         });
 
         vm.text = '';

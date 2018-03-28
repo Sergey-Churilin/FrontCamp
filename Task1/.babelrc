@@ -1,3 +1,0 @@
-{
-    "plugins": [ "./plugins/remove-console-log.js", "syntax-dynamic-import"]
-}

@@ -1,17 +1,19 @@
-app.controller('toDoController', ['$scope', 'todoFactory', function ($scope, todoFactory) {
-    $scope.currentTask = {name: ''};
-    $scope.filterObj = {letters: ''};
-    $scope.tasks = [];
+app.controller('toDoController', ['todoFactory', function (todoFactory) {
+    var vm = this;
+    vm.tasks = [];
 
-    todoFactory.getTasks(function(todos){
-        $scope.tasks = todos;
-        $scope.tasksByStatus =todoFactory.filterTasksByStatus();
-        console.log($scope.tasksByStatus)
+    todoFactory.getTasks(function (todos) {
+        vm.tasks = todos;
+        vm.tasksByStatus = todoFactory.filterTasksByStatus(vm.tasks);
     });
 
-    $scope.removeTask = function (task) {
-        $scope.tasks = todoFactory.removeTask(task);
-        $scope.tasksByStatus = todoFactory.filterTasksByStatus();
-        console.log($scope.tasksByStatus)
+    vm.onDateChange = function () {
+        vm.tasks = todoFactory.getTasksFilteredByDate(vm.date);
+        vm.tasksByStatus = todoFactory.filterTasksByStatus(vm.tasks);
+    };
+
+    vm.removeTask = function (task) {
+        vm.tasks = todoFactory.removeTask(task);
+        vm.tasksByStatus = todoFactory.filterTasksByStatus(vm.tasks);
     };
 }]);

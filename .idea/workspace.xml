@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0777e695-63d1-47ca-920b-e765a9aae709" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Components/Home/home.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Components/Home/toDoController.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Components/Home/todo.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Controllers/addTodoController.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Controllers/editController.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Directives/minLength.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Directives/todoDirective.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Factories/ResourceModel.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Factories/todoFactory.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Mongo_db_part1/Results.docx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Mongo_db_part2/Results.docx" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/NodejsPart1/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/NodejsPart1/logger.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/NodejsPart1/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/NodejsPart1/server.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/NodejsPart1/views/index.pug" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/NodejsPart2/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/NodejsPart2/Database/BlogSchema.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/NodejsPart2/Database/UserSchema.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/NodejsPart2/config.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/NodejsPart2/debug.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/NodejsPart2/error.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/NodejsPart2/errorHandler.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/NodejsPart2/logger.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/NodejsPart2/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/NodejsPart2/passportConfig.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/NodejsPart2/routers.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/NodejsPart2/server.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/NodejsPart2/views/error.pug" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/NodejsPart2/views/index.pug" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart1/.babelrc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart1/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart1/browser/components/AddPost.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart1/browser/components/App.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart1/browser/components/Filter.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart1/browser/components/Post.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart1/browser/components/store.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart1/browser/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart1/browser/styles/style.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart1/package-lock.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart1/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart1/server/router.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart1/server/server.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart1/views/index.pug" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart1/webpack.config.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/.babelrc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/browser/components/AddPost.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/browser/components/Filter.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/browser/components/Home.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/browser/components/Login.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/browser/components/Menu.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/browser/components/Post.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/browser/components/PostsContainer.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/browser/components/Routes.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/browser/components/store.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/browser/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/browser/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/browser/reducers/PostReducer.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/browser/reducers/UserReducer.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/browser/selectors/Selectors.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/browser/styles/style.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/build/bundle.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/build/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/build/server.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/debug.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/package-lock.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/server/Database/PostSchema.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/server/Database/UserSchema.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/server/config.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/server/errorHandler.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/server/logger.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/server/passportConfig.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/server/router.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/server/server.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/views/error.pug" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/views/index.pug" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ReactPart2/webpack.config.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/.babelrc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/css/style.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/images/defaultImage.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/loaders/remove-number-keys.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/models/data.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/plugins/remove-console-log.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/scripts/Application.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/scripts/ErrorHandler.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/scripts/ImagesFactory.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/scripts/NewsRequester.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/scripts/NoImage.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/scripts/Reducers/Reducers.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/scripts/Redux/Redux.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/scripts/RemoteImage.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/scripts/Utils/DataBinder.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/scripts/Utils/Util.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/scripts/Views/Article.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/scripts/Views/BigFontArticleDecorator.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/scripts/Views/Layout.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/scripts/constants.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/scripts/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/webpack.common.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/webpack.dev.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Task1/webpack.prod.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Templates/addEditTodo.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/data.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/scripts/config.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/scripts/script.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/server/Database/TodoSchema.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/server/router.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/server/server.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/style/style.css" afterPath="" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="ResourceModel.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/AngularPart1/Factories/ResourceModel.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>newTaskName</find>
+      <find>hover</find>
+      <find>changeMode</find>
+      <find>Components/Add/add.html</find>
+      <find>taskLink</find>
+      <find>editTodo</find>
+      <find>postData</find>
+      <find>getRemoteTasks</find>
+      <find>getTaskById</find>
+      <find>todoFactory</find>
+      <find>taskList</find>
+      <find>this.baseUrl</find>
+      <find>localRequestFactory</find>
+      <find>getTasks</find>
+      <find>filterByDates</find>
+      <find>validate</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>editTodo</replace>
+      <replace>todoData</replace>
+      <replace>TodoService</replace>
+      <replace>baseUrl</replace>
+      <replace>ResourceModel</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Components/Home/Home.js" />
+        <option value="$PROJECT_DIR$/Components/AddTodo/addTodo.html" />
+        <option value="$PROJECT_DIR$/Components/Home/addTodoController.js" />
+        <option value="$PROJECT_DIR$/Components/Directives/navigation.js" />
+        <option value="$PROJECT_DIR$/Components/Factories/todoFactory.js" />
+        <option value="$PROJECT_DIR$/Components/Directives/todoDirective.js" />
+        <option value="$PROJECT_DIR$/config.js" />
+        <option value="$PROJECT_DIR$/Components/EditTodo/editTodo.html" />
+        <option value="$PROJECT_DIR$/data.json" />
+        <option value="$PROJECT_DIR$/server/Database/PostSchema.js" />
+        <option value="$PROJECT_DIR$/server/server.js" />
+        <option value="$PROJECT_DIR$/scripts/script.js" />
+        <option value="$PROJECT_DIR$/server/Database/TodoSchema.js" />
+        <option value="$PROJECT_DIR$/Directives/minLengthDirective.js" />
+        <option value="$PROJECT_DIR$/common/todoFactory.js" />
+        <option value="$PROJECT_DIR$/Factories/requestFactory.js" />
+        <option value="$PROJECT_DIR$/style/style.css" />
+        <option value="$PROJECT_DIR$/Components/Templates/addEditTodo.html" />
+        <option value="$PROJECT_DIR$/Components/EditTodo/editController.js" />
+        <option value="$PROJECT_DIR$/Components/AddTodo/addTodoController.js" />
+        <option value="$PROJECT_DIR$/Components/Navigation/nav.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/Factories/todoFactory.js" />
+        <option value="$PROJECT_DIR$/Factories/ResourceModel.js" />
+        <option value="$PROJECT_DIR$/Directives/minLength.js" />
+        <option value="$PROJECT_DIR$/Directives/todoDirective.js" />
+        <option value="$PROJECT_DIR$/Controllers/editController.js" />
+        <option value="$PROJECT_DIR$/Controllers/addTodoController.js" />
+        <option value="$PROJECT_DIR$/Components/Home/home.html" />
+        <option value="$PROJECT_DIR$/Components/Home/todo.html" />
+        <option value="$PROJECT_DIR$/Components/Home/toDoController.js" />
+        <option value="$PROJECT_DIR$/scripts/config.js" />
+        <option value="$PROJECT_DIR$/server/router.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="332" />
+    <option name="y" value="323" />
+    <option name="width" value="1273" />
+    <option name="height" value="614" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>HTML</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>HtmlPresentationalElement</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="AngularPart1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AngularPart1" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Mavric\FrontCamp\FrontCamp\AngularPart1\common" />
+      <recent name="D:\Mavric\FrontCamp\FrontCamp\AngularPart1" />
+      <recent name="D:\Mavric\FrontCamp\FrontCamp\AngularPart1\Components\EditTodo" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Mavric\FrontCamp\FrontCamp\AngularPart1" />
+      <recent name="D:\Mavric\FrontCamp\FrontCamp\AngularPart1\Components\Controllers" />
+      <recent name="D:\Mavric\FrontCamp\FrontCamp\AngularPart1\scripts" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0777e695-63d1-47ca-920b-e765a9aae709" name="Default" comment="" />
+      <created>1521360620052</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1521360620052</updated>
+      <workItem from="1521360621288" duration="4114000" />
+      <workItem from="1521364920980" duration="48000" />
+      <workItem from="1521365035320" duration="2201000" />
+      <workItem from="1521382966368" duration="13991000" />
+      <workItem from="1521482400872" duration="3481000" />
+      <workItem from="1521571172471" duration="2788000" />
+      <workItem from="1521615762654" duration="16195000" />
+      <workItem from="1521741822377" duration="2197000" />
+      <workItem from="1521875224830" duration="50000" />
+      <workItem from="1521875337424" duration="24000" />
+      <workItem from="1522164586787" duration="17051000" />
+      <workItem from="1522220038449" duration="11000" />
+      <workItem from="1522259599882" duration="3332000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="66352000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15600212" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32942554" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32942554" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15600212" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/scripts/config.js" />
+    <entry file="file://$PROJECT_DIR$/data.json" />
+    <entry file="file://$PROJECT_DIR$/Components/Home/todo.html" />
+    <entry file="file://$PROJECT_DIR$/Factories/requestFactory.js" />
+    <entry file="file://$PROJECT_DIR$/index.html" />
+    <entry file="file://$PROJECT_DIR$/Components/Home/Home.js" />
+    <entry file="file://$PROJECT_DIR$/style/style.css" />
+    <entry file="file://$PROJECT_DIR$/Components/EditTodo/editTodo.html" />
+    <entry file="file://$PROJECT_DIR$/Components/Navigation/nav.html" />
+    <entry file="file://$PROJECT_DIR$/Components/AddTodo/addTodo.html" />
+    <entry file="file://$PROJECT_DIR$/.gitignore" />
+    <entry file="file://$PROJECT_DIR$/Components/Home/home.html" />
+    <entry file="file://$PROJECT_DIR$/Components/Home/todo.html" />
+    <entry file="file://$PROJECT_DIR$/scripts/script.js" />
+    <entry file="file://$PROJECT_DIR$/index.html" />
+    <entry file="file://$PROJECT_DIR$/style/style.css" />
+    <entry file="file://$PROJECT_DIR$/index.html" />
+    <entry file="file://$PROJECT_DIR$/style/style.css" />
+    <entry file="file://$PROJECT_DIR$/scripts/script.js" />
+    <entry file="file://$PROJECT_DIR$/index.html" />
+    <entry file="file://$PROJECT_DIR$/style/style.css" />
+    <entry file="file://$PROJECT_DIR$/scripts/script.js" />
+    <entry file="file://$PROJECT_DIR$/Components/Home/Home.js" />
+    <entry file="file://$PROJECT_DIR$/server/config.js" />
+    <entry file="file://$PROJECT_DIR$/data.json" />
+    <entry file="file://$PROJECT_DIR$/server/Database/TodoSchema.js" />
+    <entry file="file://$PROJECT_DIR$/Components/EditTodo/editTodo.html" />
+    <entry file="file://$PROJECT_DIR$/Directives/minLengthDirective.js" />
+    <entry file="file://$PROJECT_DIR$/common/TodoService.js" />
+    <entry file="file://$PROJECT_DIR$/Factories/requestFactory.js" />
+    <entry file="file://$PROJECT_DIR$/Components/AddTodo/addTodo.html" />
+    <entry file="file://$PROJECT_DIR$/style/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="143" column="1" lean-forward="false" selection-start-line="143" selection-start-column="1" selection-end-line="143" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Templates/addEditTodo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Directives/navigation.js" />
+    <entry file="file://$PROJECT_DIR$/Components/Navigation/nav.html" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="17" column="6" lean-forward="true" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Factories/todoFactory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="60" column="48" lean-forward="false" selection-start-line="60" selection-start-column="48" selection-end-line="60" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Directives/minLength.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Directives/todoDirective.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="3" lean-forward="false" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/editController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="9" lean-forward="false" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/addTodoController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Components/Home/toDoController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="3" lean-forward="false" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Components/Home/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Components/Home/todo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="6" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Factories/ResourceModel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPart1/Factories/ResourceModel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
