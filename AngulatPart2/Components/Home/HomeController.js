@@ -1,19 +1,18 @@
-function HomeController($timeout, todoFactory, PaginationFactory) {
+function HomeController(todoFactory) {
     var vm = this;
-
     vm.tasks = [];
     vm.items = [];
 
-    todoFactory.getTasks(function(todos){
+    vm.callback = function (todos) {
         vm.tasks = todos;
-    });
-
-    vm.viewDeleted = function(){
-        todoFactory.getTasks(function(todos){
-            vm.tasks = todos;
-        });
     };
-    vm.updateView = function(startIndex, endIndex){
+
+    todoFactory.getTasks(vm.callback);
+
+    vm.viewDeleted = function () {
+        vm.tasks = todoFactory.getTasks(vm.callback);
+    };
+    vm.updateView = function (startIndex, endIndex) {
         vm.items = vm.tasks.slice(startIndex, endIndex);
     };
 }

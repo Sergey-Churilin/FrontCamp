@@ -55,6 +55,21 @@ router.route('/todos')
 // on routes that end in /todos/:todo_id
 // ----------------------------------------------------
 router.route('/todos/:todo_id')
+    .post(function (req, res, next) {
+        // .post(function (req, res, next) {
+        const todoData = req.body;
+        const newTodo = new TodoModel({'id':todoData.id, 'name': todoData.name,'content': todoData.content, 'date': todoData.date, 'status': todoData.status, 'mode': todoData.mode, 'visible': todoData.visible});
+        newTodo.save(function (err, newTodo) {
+            if (err) {
+                err.description = "Error in adding new todo";
+                console.log('error to add new todo');
+                next(err);
+            } else {
+                res.send(newTodo);
+                console.log("Todo created");
+            }
+        });
+    })
 // get the post with that id
     .get(function (req, res, next) {
         const id = Number(req.params.todo_id);

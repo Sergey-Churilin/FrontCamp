@@ -1,7 +1,7 @@
-function PaginationFactory () {
+function PaginationFactory() {
     var service = {};
 
-    service.getPager = function(totalItems, currentPage, pageSize) {
+    service.getPager = function (totalItems, currentPage, pageSize) {
         // default to first page
         currentPage = currentPage || 1;
 
@@ -36,7 +36,7 @@ function PaginationFactory () {
 
         // create an array of pages to ng-repeat in the pager control
         var pages = [];
-        for(var i=1; i<endPage + 1; i++){
+        for (var i = 1; i < endPage + 1; i++) {
             pages.push(i);
         }
 

@@ -4,6 +4,7 @@ var angular = require('angular'),
     editController = require('./Controllers/editController'),
     todoComponent = require('./Components/TodoComponent/toDoComponent'),
     paginationComponent = require('./Components/Pagination/PaginationComponent'),
+    buttonComponent = require('./Components/Button/AddArticleComponent'),
     minLengthDirective = require('./Directives/minLength'),
     paginationFactory = require('./Factories/paginationFactory'),
     requestFactory = require('./Factories/requestFactory'),
@@ -19,12 +20,12 @@ angular
             .when("/home", {
                 template: require("./Components/Home/home.html"),
                 controller: "HomeController",
-                controllerAs:"homeCtrl"
+                controllerAs: "homeCtrl"
             })
             .when("/add", {
                 template: require("./Templates/addEditTodo.html"),
                 controller: "addTodoController",
-                controllerAs:"ctrl"
+                controllerAs: "ctrl"
             })
             .when("/:id/edit", {
                 template: require("./Templates/addEditTodo.html"),
@@ -35,6 +36,7 @@ angular
     .controller('HomeController', HomeController)
     .controller('addTodoController', addTodoController)
     .controller('editController', editController)
+    .component(buttonComponent.name, buttonComponent)
     .component(todoComponent.name, todoComponent)
     .component(paginationComponent.name, paginationComponent)
     .directive('minLength', minLengthDirective)
