@@ -78,9 +78,9 @@ router.route('/todos/:todo_id')
                 err.description = "Todo with id " + id + "  does not exist";
                 next(err);
             } else {
-                if (post) {
+                if (todo) {
                     console.log('todo = ' + todo);
-                    res.send(post);
+                    res.send(todo);
                 } else {
                     res.status(403).send('No todos');
                 }

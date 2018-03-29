@@ -2,9 +2,9 @@
 <form class="addForm">
     <ng-form name="addForm">
         <label class="label" for="newText">Enter a text for task:</label>
-        <input class="input" type="text" id="newText" name="newText" ng-model="ctrl.text" required min-length/>
+        <input class="input" type="text" id="newText" name="newText" ng-model="ctrl.task.name" required min-length/>
         <span class="error" ng-if="!addForm.newText.$valid">The min length of text is 20 symbols</span>
-        <textarea name="content" ng-model="ctrl.content" required rows="5"></textarea>
+        <textarea name="content" ng-model="ctrl.task.content" required rows="5"></textarea>
         <button type="button" class="btnSave" ng-click="ctrl.save()" ng-disabled="!addForm.$valid">Save</button>
     </ng-form>
 </form>
