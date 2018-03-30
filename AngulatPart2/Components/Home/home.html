@@ -5,7 +5,7 @@
     <div class="tasksList">
         <ul>
             <li ng-repeat="task in homeCtrl.items">
-                <todo task="task" viewDeleted="homeCtrl.viewDeleted(task)"></todo>
+                <todo task="task" view-deleted="homeCtrl.viewDeleted()"></todo>
             </li>
         </ul>
     </div>

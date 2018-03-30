@@ -14,12 +14,22 @@ function requestFactory($resource) {
             return Todos.query();
         },
 
-        updateTask: function (todo) {
+        updateTask: function (todo, callback) {
             Todos.update({id: todo.id}, todo)
+                .$promise.then(function(){
+                if(callback){
+                    callback();
+                }
+            })
         },
 
-        removeTask: function (todo) {
-            Todos.delete({id: todo.id});
+        removeTask: function (todo, callback) {
+            Todos.delete({id: todo.id})
+                .$promise.then(function(){
+                    if(callback){
+                        callback();
+                    }
+            });
         },
         getTaskById: function(id){
             return Todos.getTaskById({id: id});

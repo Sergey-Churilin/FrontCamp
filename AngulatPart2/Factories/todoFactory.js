@@ -18,11 +18,11 @@ function todoFactory(requestFactory) {
             };
             requestFactory.addTask(task);
         },
-        removeTask: function removeTask(todo) {
-            requestFactory.removeTask(todo);
+        removeTask: function removeTask(todo, callback) {
+            requestFactory.removeTask(todo, callback)
         },
-        save: function (task) {
-            requestFactory.updateTask(task);
+        save: function (task, callback) {
+            requestFactory.updateTask(task, callback);
         }
     };
 }

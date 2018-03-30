@@ -2,8 +2,10 @@ function toDoController(todoFactory) {
     var vm = this;
 
     vm.removeTask = function (task) {
-        todoFactory.removeTask(task);
-        vm.viewDeleted(task);
+        todoFactory.removeTask(task, function(){
+            vm.viewDeleted();
+        });
+
     };
 }
 

@@ -5,8 +5,9 @@ function editController($location, $routeParams, todoFactory) {
     vm.task = todoFactory.getTaskById(Number($routeParams.id));
 
     vm.save = function () {
-        todoFactory.save(vm.task);
-        $location.path('/home');
+        todoFactory.save(vm.task, function(){
+            $location.path('/home');
+        });
     };
 
 }
