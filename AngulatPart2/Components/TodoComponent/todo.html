@@ -1,0 +1,10 @@
+<div>
+    <button class="delete" ng-click="todoCtrl.removeTask(todoCtrl.task)">x</button>
+    <p><b>Name: </b>
+        <a ng-href="#!{{ todoCtrl.task.id }}/edit" class="taskLink">{{ todoCtrl.task.name }}</a>
+    </p>
+    <p><b>Content: </b>{{todoCtrl.task.content}}</p>
+    <div><b>Date: </b><span>{{ todoCtrl.task.date | date:'medium'}}</span></div>
+
+    <p><b>Status: </b>{{ todoCtrl.task.status }}</p>
+</div>
