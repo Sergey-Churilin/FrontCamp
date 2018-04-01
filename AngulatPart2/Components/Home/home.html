@@ -1,0 +1,14 @@
+<div>
+    <h3>Active ({{ homeCtrl.tasks.length }})</h3>
+    <span ng-if="homeCtrl.tasks.length === 0">You have no active tasks!</span>
+    <btnaddarticle></btnaddarticle>
+    <div class="tasksList">
+        <ul>
+            <li ng-repeat="task in homeCtrl.items">
+                <todo task="task" view-deleted="homeCtrl.viewDeleted()"></todo>
+            </li>
+        </ul>
+    </div>
+    <pagination class="pagination-wrapper" update-view="homeCtrl.updateView(startIndex, endIndex)"
+                elements-amount="homeCtrl.tasks.length"></pagination>
+</div>
