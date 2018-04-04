@@ -1,49 +1,17 @@
-var app = require('../../src/app');
-describe('addTodoController', function() {
-/*    var controller, todoFactory, stubFunction;
-
-    beforeEach(function(){
-        module('app');
-        inject(function(_addTodoController_, _todoFactory_){
-            // The injector unwraps the underscores (_) from around the parameter names when matching
-            controller = _addTodoController_;
+describe('addTodoController tests', function () {
+    var $controller, todoFactory, controller;
+    beforeEach(function () {
+        angular.mock.module("app");
+        inject(function (_$controller_, _todoFactory_) {
+            $controller = _$controller_;
             todoFactory = _todoFactory_;
         });
-
-        //controller = controller('addTodoController');
-        //todoFactory = todoFactory('todoFactory');
-        stubFunction = jasmine.stub(
-            function() {
-                return(true)
-            });
-        jasmine.createSpyObj(todoFactory, [ 'addTask' ]);
-    });*/
-
-    var controller;
-    beforeEach(function () {
-        module('app');
-        inject(function (_addTodoController_) {
-            controller = _addTodoController_;
-        });
+        controller = $controller('addTodoController');
     });
 
-    it('!!', function () {
-        expect(2).toEqual(2);
-    });
-
-   /* it('todoFactory.addTask has to be called', function(done) {
-       /!* expect(2).toEqual(2);
-        done();*!/
+    it('todoFactory.addTask has to be called', function () {
+        spyOn(todoFactory, 'addTask');
         controller.save();
-        expect(todoFactory.addTask.calledOnce).toBeTruthy();
-        todoFactory.addTask.restore();
-        done();
-    });*/
-
-  /*  it('task.text and task.content should be empty strings', function(done) {
-        expect(2).toEqual(2);
-        done();
-        /!*controller.save();
-        expect(controller.task).to.deep.equal({text:"",content:""});*!/
-    });*/
+        expect(todoFactory.addTask).toHaveBeenCalled();
+    });
 });

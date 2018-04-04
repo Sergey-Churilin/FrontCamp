@@ -1,4 +1,4 @@
-function PaginationController($timeout, PaginationFactory) {
+function PaginationController(PaginationFactory) {
     var vm = this;
     vm.pager = {};
 

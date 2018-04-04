@@ -5,7 +5,6 @@ function toDoController(todoFactory) {
         todoFactory.removeTask(task, function(){
             vm.viewDeleted();
         });
-
     };
 }
 

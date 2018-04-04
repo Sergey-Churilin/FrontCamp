@@ -7,7 +7,6 @@
     "build": "webpack  --watch",
     "start": "http-server",
     "server": "node src/server/server.js",
-    "stryker": "stryker run stryker.conf.js",
     "test": "gulp test",
     "test:coverage": "gulp test:coverage",
     "lint": "eslint ./"
@@ -33,21 +32,13 @@
     "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.1.1",
     "karma-jasmine-html-reporter": "^1.0.0",
-    "karma-junit-reporter": "^1.2.0",
     "karma-mocha-reporter": "^2.2.5",
     "karma-ng-html2js-preprocessor": "^1.0.0",
-    "karma-requirejs": "^1.1.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^3.0.0",
     "mongoose": "^5.0.11",
     "nodemon": "^1.14.11",
     "requirejs": "^2.3.5",
-    "stryker": "^0.21.0",
-    "stryker-api": "^0.15.0",
-    "stryker-html-reporter": "^0.13.0",
-    "stryker-jasmine": "^0.8.0",
-    "stryker-javascript-mutator": "^0.5.0",
-    "stryker-karma-runner": "^0.13.0",
     "text-loader": "0.0.1",
     "webpack": "^3.11.0"
   },
@@ -61,11 +52,57 @@
     "gulp-jasmine": "^3.0.0",
     "jasmine": "^3.1.0",
     "jasmine-reporters": "^2.3.0",
+    "karma-requirejs": "^1.1.0",
     "mocha": "^5.0.5",
     "mongoose": "^5.0.3",
     "sinon": "^4.5.0"
+  }
+}
+
+
+{
+  "name": "angularpart2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack  --watch",
+    "start": "http-server",
+    "server": "node src/server/server.js",
+    "test": "gulp test",
+    "test:coverage": "gulp test:coverage",
+    "lint": "eslint ./"
   },
-  "initStrykerConfig": {
-    "karmaConfigFile": "karma.conf.js"
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "angular-mocks": "1.5.6",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "istanbul-instrumenter-loader": "^2.0.0",
+    "jasmine": "2.5.2",
+    "jasmine-core": "2.5.2",
+    "jasmine-reporters": "2.2.0",
+    "karma": "1.3.0",
+    "karma-chrome-launcher": "2.0.0",
+    "karma-coverage": "1.1.1",
+    "karma-jasmine": "1.0.2",
+    "karma-junit-reporter": "1.1.0",
+    "karma-mocha": "1.2.0",
+    "karma-ng-html2js-preprocessor": "1.0.0",
+    "karma-requirejs": "1.1.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "2.0.3",
+    "webpack": "2.2.1"
+  },
+  "dependencies": {
+    "angular": "1.5.6",
+    "angular-resource": "1.5.6",
+    "angular-route": "1.5.6",
+    "angular-ui-router": "1.0.0-rc.1",
+    "babel-polyfill": "6.9.1",
+    "requirejs": "2.1.20",
+    "text-loader": "0.0.1"
   }
 }
