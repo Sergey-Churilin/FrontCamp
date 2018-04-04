@@ -8,7 +8,7 @@ module.exports = function(config) {
             {pattern: 'test/**/*.js', watched: false},
             {pattern: 'src/**/*.html', watched: false}
         ],
-        reporters: ['progress', 'coverage'],
+        reporters: ['progress', 'coverage', 'spec'],
         preprocessors: {
             'test/**/*.js': ['webpack', 'sourcemap'],
             '**/*.html': ['ng-html2js']

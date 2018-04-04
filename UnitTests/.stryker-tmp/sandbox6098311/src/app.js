@@ -1,14 +1,14 @@
 var angular = require('angular'),
-    HomeController = require('./../Components/Home/HomeController'),
-    addTodoController = require('./../Controllers/addTodoController'),
-    editController = require('./../Controllers/editController'),
-    todoComponent = require('./../Components/TodoComponent/toDoComponent'),
-    paginationComponent = require('./../Components/Pagination/PaginationComponent'),
-    buttonComponent = require('./../Components/Button/AddArticleComponent'),
-    minLengthDirective = require('./../Directives/minLength'),
-    paginationFactory = require('../Factories/paginationFactory'),
-    requestFactory = require('./../Factories/requestFactory'),
-    todoFactory = require('./../Factories/todoFactory');
+    HomeController = require('./Components/Home/HomeController'),
+    addTodoController = require('./Controllers/addTodoController'),
+    editController = require('./Controllers/editController'),
+    todoComponent = require('./Components/TodoComponent/toDoComponent'),
+    paginationComponent = require('./Components/Pagination/PaginationComponent'),
+    buttonComponent = require('./Components/Button/AddArticleComponent'),
+    minLengthDirective = require('./Directives/minLength'),
+    paginationFactory = require('./Factories/paginationFactory'),
+    requestFactory = require('./Factories/requestFactory'),
+    todoFactory = require('./Factories/todoFactory');
 
 require('angular-resource');
 require('angular-route');

@@ -2,6 +2,7 @@ var angular = require('angular');
 require('angular-mocks');
 require('../../src/app');
 
+
 describe('Todo factory tests', function () {
     var todoFactory, requestFactory, todos;
     beforeEach(function () {

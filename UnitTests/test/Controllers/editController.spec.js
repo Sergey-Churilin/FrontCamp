@@ -9,12 +9,6 @@ describe('editController tests', function () {
         controller = $controller('editController');
     });
 
-        xit('todoFactory.getTaskById has to be called', function() {
-            spyOn(todoFactory, 'getTaskById');
-            controller = $controller('addTodoController');
-            expect(todoFactory.getTaskById).toHaveBeenCalled();
-        });
-
     it('todoFactory.save has to be called', function () {
         spyOn(todoFactory, 'save').and.callFake(function (task, callback) {
             callback();
