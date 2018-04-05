@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="post"
+>
+  <div>
+    <h3
+      className="author"
+    >
+      author
+    </h3>
+    <div>
+      text
+    </div>
+    <button
+      className="delete"
+      onClick={[Function]}
+    >
+      X
+    </button>
+  </div>
+</div>
+`;
