@@ -1,0 +1,50 @@
+{
+    "name": "angularpart2",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "webpack  --watch",
+        "start": "http-server",
+        "server": "node src/server/server.js",
+        "test": "karma start",
+        "stryker": "stryker run stryker.conf.js",
+        "mutate": "node_modules/.bin/stryker run"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "angular-mocks": "1.5.6",
+        "babel-core": "^6.26.0",
+        "babel-loader": "^7.1.4",
+        "babel-preset-env": "^1.6.1",
+        "istanbul-instrumenter-loader": "^2.0.0",
+        "jasmine": "2.5.2",
+        "jasmine-core": "2.5.2",
+        "jasmine-reporters": "2.2.0",
+        "karma": "1.3.0",
+        "karma-chrome-launcher": "2.0.0",
+        "karma-coverage": "1.1.1",
+        "karma-jasmine": "1.0.2",
+        "karma-junit-reporter": "1.1.0",
+        "karma-mocha": "1.2.0",
+        "karma-ng-html2js-preprocessor": "1.0.0",
+        "karma-requirejs": "1.1.0",
+        "karma-sourcemap-loader": "^0.3.7",
+        "karma-webpack": "2.0.3",
+        "stryker": "^0.6.1",
+        "stryker-api": "^0.5.0",
+        "stryker-html-reporter": "^0.4.1",
+        "stryker-jasmine": "^0.2.1",
+        "stryker-karma-runner": "^0.4.0",
+        "webpack": "2.2.1"
+    },
+    "dependencies": {
+        "angular": "1.5.6",
+        "angular-resource": "1.5.6",
+        "angular-route": "1.5.6",
+        "babel-polyfill": "6.9.1",
+        "requirejs": "2.1.20",
+        "text-loader": "0.0.1"
+    }
+}

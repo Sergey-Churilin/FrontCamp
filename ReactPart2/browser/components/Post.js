@@ -21,5 +21,5 @@ class Post extends React.Component {
     }
 }
 
-module.exports = connect(mapStateToProps, mapActionsToProps)(Post);
+module.exports = Post;
 

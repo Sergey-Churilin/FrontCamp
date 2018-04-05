@@ -1,0 +1,1 @@
+{"sourceFilePath":"D:\\Mavric\\FrontCamp\\FrontCamp\\UnitTests\\src\\Factories\\paginationFactory.js","mutatorName":"RemoveConditionals","status":3,"replacement":"false","location":{"start":{"line":15,"column":12},"end":{"line":15,"column":28}},"range":[420,436],"testsRan":[],"originalLines":"        if (totalPages <= 10) {","mutatedLines":"        if (false) {"}
