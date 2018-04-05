@@ -1,0 +1,1 @@
+{"sourceFilePath":"D:\\Mavric\\FrontCamp\\FrontCamp\\UnitTests\\src\\Factories\\requestFactory.js","mutatorName":"RemoveConditionals","status":3,"replacement":"false","location":{"start":{"line":20,"column":19},"end":{"line":20,"column":27}},"range":[566,574],"testsRan":[],"originalLines":"                if(callback){","mutatedLines":"                if(false){"}

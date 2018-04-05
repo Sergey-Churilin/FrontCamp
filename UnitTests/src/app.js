@@ -44,6 +44,7 @@ angular
     .factory('requestFactory', requestFactory)
     .factory('todoFactory', todoFactory);
 
+/*
 angular.element(document).ready(function bootstrap() {
     angular.bootstrap(document, ['app']);
-});
+});*/
